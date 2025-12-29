@@ -12,14 +12,17 @@ export type Post = {
 };
 
 export function getPosts(): Post[] {
-	return fs.readdirSync(POSTS_DIR).map((file) => {
-		const raw = fs.readFileSync(path.join(POSTS_DIR, file), "utf-8");
-		const { data, content } = matter(raw);
-		return {
-			title: data.title,
-			slug: data.slug,
-			date: data.date,
-			content,
-		};
-	});
+	return fs
+		.readdirSync(POSTS_DIR, { withFileTypes: true })
+		.filter((entry) => entry.isFile() && entry.name.endsWith(".md"))
+		.map((file) => {
+			const raw = fs.readFileSync(path.join(POSTS_DIR, file.name), "utf-8");
+			const { data, content } = matter(raw);
+			return {
+				title: data.title,
+				slug: data.slug,
+				date: data.date,
+				content,
+			};
+		});
 }
