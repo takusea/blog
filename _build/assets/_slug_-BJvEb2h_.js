@@ -1,1 +1,0 @@
-import{i as o,l as s,t as i}from"./web-_pKa4lge.js";import{g as n}from"./posts-1Npts_VF.js";import{u as m}from"./routing-CCDChabW.js";var p=i("<article><h1></h1><pre>");function c(){const a=m(),e=n().find(t=>t.slug===a.slug);return(()=>{var t=o(p),r=t.firstChild,l=r.nextSibling;return s(r,()=>e?.title),s(l,()=>e?.content),t})()}export{c as default};
