@@ -20,7 +20,7 @@ export function getPosts(): Post[] {
 			const { data, content } = matter(raw);
 			return {
 				title: data.title,
-				slug: data.slug,
+				slug: file.name.split(".")[0],
 				date: data.date,
 				content,
 			};
