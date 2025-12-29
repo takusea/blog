@@ -1,17 +1,23 @@
+import { createAsync } from "@solidjs/router";
+import { For } from "solid-js";
 import { getPosts } from "~/lib/posts";
 
 export default function Index() {
-	const posts = getPosts();
+	const posts = createAsync(() => getPosts());
 
 	return (
 		<main>
 			<h1>Blog</h1>
 			<ul>
-				{posts.map((p) => (
-					<li>
-						<a href={`./${p.slug}`}>{p.title}</a>
-					</li>
-				))}
+				<For each={posts()}>
+					{(post) => (
+						<li>
+							<a href={`./${post.data.frontmatter.slug}`}>
+								{post.data.frontmatter.title}
+							</a>
+						</li>
+					)}
+				</For>
 			</ul>
 		</main>
 	);
