@@ -14,6 +14,8 @@ import rehypeExtractToc from "@stefanprobst/rehype-extract-toc";
 import yaml from "yaml";
 
 const parseMarkdown = async (markdown: string) => {
+	"use server";
+
 	const processor = unified()
 		.use(remarkParse)
 		.use(remarkFrontmatter)
