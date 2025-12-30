@@ -15,28 +15,57 @@
   font-weight: 700;
 }
 
+.document :where(h1, h2, h3, h4, h5, h6)::before {
+  margin-right: 0.5rem;
+  color: var(--color-sub);
+}
+
 .document h1 {
   font-size: 1.75rem;
+}
+
+.document h1::before {
+  content: "#";
 }
 
 .document h2 {
   font-size: 1.5rem;
 }
 
+.document h2::before {
+  content: "##";
+}
+
 .document h3 {
   font-size: 1.25rem;
+}
+
+.document h3::before {
+  content: "###";
 }
 
 .document h4 {
   font-size: 1.115rem;
 }
 
+.document h4::before {
+  content: "####";
+}
+
 .document h5 {
   font-size: 1.0625rem;
 }
 
+.document h5::before {
+  content: "#####";
+}
+
 .document h6 {
   font-size: 1rem;
+}
+
+.document h6::before {
+  content: "######";
 }
 
 .document a:not(:global(.remark-link-card-plus__card)) {
@@ -69,7 +98,8 @@
 }
 
 .document :not(pre) > code {
-  padding: 0.25rem;
+  display: inline-block;
+  padding-inline: 0.25rem;
   border-radius: 0.5rem;
   border: 1px solid var(--color-border);
   background-color: var(--color-surface);
@@ -77,8 +107,8 @@
 
 .document blockquote {
   padding: 1rem;
-  border-radius: 1rem;
-  border: 1px solid var(--color-border);
+  border: 0 solid var(--color-border);
+  border-left-width: 4px;
   background-color: var(--color-surface);
 }
 
