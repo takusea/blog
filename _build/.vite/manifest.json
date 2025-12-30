@@ -1,6 +1,6 @@
 {
-  "_posts-vubwQS_t.js": {
-    "file": "assets/posts-vubwQS_t.js",
+  "_posts-CqWb3Eng.js": {
+    "file": "assets/posts-CqWb3Eng.js",
     "name": "posts",
     "imports": [
       "_routing-CoHMnyGh.js"
@@ -11,35 +11,35 @@
     "name": "routing"
   },
   "src/routes/[slug].tsx?pick=default&pick=$css": {
-    "file": "assets/_slug_-eqX3voD0.js",
+    "file": "assets/_slug_-BNHHJemB.js",
     "name": "_slug_",
     "src": "src/routes/[slug].tsx?pick=default&pick=$css",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_routing-CoHMnyGh.js",
-      "_posts-vubwQS_t.js"
+      "_posts-CqWb3Eng.js"
     ],
     "css": [
       "assets/_slug_-BCjgj4e-.css"
     ]
   },
   "src/routes/index.tsx?pick=default&pick=$css": {
-    "file": "assets/index-BwigQ96D.js",
+    "file": "assets/index-D4ao6e9Q.js",
     "name": "index",
     "src": "src/routes/index.tsx?pick=default&pick=$css",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_routing-CoHMnyGh.js",
-      "_posts-vubwQS_t.js"
+      "_posts-CqWb3Eng.js"
     ],
     "css": [
       "assets/index-BdXoa1st.css"
     ]
   },
   "virtual:$vinxi/handler/client": {
-    "file": "assets/client-DEth3k-4.js",
+    "file": "assets/client-Dy6IvC3B.js",
     "name": "client",
     "src": "virtual:$vinxi/handler/client",
     "isEntry": true,
