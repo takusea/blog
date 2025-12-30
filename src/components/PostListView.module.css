@@ -1,0 +1,27 @@
+.posts {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.post {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.post-title {
+  font-weight: 700;
+}
+
+.post-metadata {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.post-tag {
+  padding-inline: 0.5rem;
+  background-color: #000;
+  color: #fff;
+  border-radius: 0.5rem;
+}
