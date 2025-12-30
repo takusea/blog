@@ -13,7 +13,7 @@ const PostListView = (props: Props) => {
 			<For each={props.posts}>
 				{(post) => (
 					<li>
-						<A class={styles.post} href={post.slug}>
+						<A class={styles.post} href={`/${post.slug}`}>
 							<div class={styles["post-title"]}>{post.title}</div>
 							<div class={styles["post-metadata"]}>
 								<time>{post.date}</time>
