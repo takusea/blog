@@ -1,33 +1,9 @@
 import { createAsync, useParams } from "@solidjs/router";
-import { For, Show } from "solid-js";
+import { Show } from "solid-js";
 import { getPosts } from "~/lib/posts";
-
-type Toc = {
-	id: string;
-	value: string;
-	children: Toc[];
-};
-
-type Props = {
-	toc: Toc[];
-};
-
-const TocListView = (props: Props) => {
-	return (
-		<ul>
-			<For each={props.toc}>
-				{(toc) => (
-					<li>
-						<a href={`#${toc.id}`}>{toc.value}</a>
-						<Show when={toc.children}>
-							{(child) => <TocListView toc={child()} />}
-						</Show>
-					</li>
-				)}
-			</For>
-		</ul>
-	);
-};
+import { TocView } from "~/components/TocView";
+import styles from "./slug.module.css";
+import { DocumentView } from "~/components/DocumentView";
 
 export default function BlogPost() {
 	const params = useParams();
@@ -39,16 +15,20 @@ export default function BlogPost() {
 			fallback="error"
 		>
 			{(post) => (
-				<article>
-					<nav>
-						<TocListView toc={post().data.toc} />
-					</nav>
-					<h1>{post().data.frontmatter.title}</h1>
-					<time datetime={post().data.frontmatter.date}>
-						{post().data.frontmatter.date}
-					</time>
-					<div innerHTML={post().value} />
-				</article>
+				<main class={styles.main}>
+					<aside class={styles.side}>
+						<TocView toc={post().data.toc} />
+					</aside>
+					<article class={styles.article}>
+						<div>
+							<h1 class={styles.title}>{post().data.frontmatter.title}</h1>
+							<time class={styles.date} datetime={post().data.frontmatter.date}>
+								{post().data.frontmatter.date}
+							</time>
+						</div>
+						<DocumentView document={post().value} />
+					</article>
+				</main>
 			)}
 		</Show>
 	);

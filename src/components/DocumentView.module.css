@@ -1,0 +1,131 @@
+.document > * {
+  margin-block: 1rem;
+}
+
+.document > :first-child {
+  margin-top: 0;
+}
+
+.document > :last-child {
+  margin-bottom: 0;
+}
+
+.document :where(h1, h2, h3, h4, h5, h6) {
+  margin-top: 2em;
+  font-weight: 700;
+}
+
+.document h1 {
+  font-size: 1.75rem;
+}
+
+.document h2 {
+  font-size: 1.5rem;
+}
+
+.document h3 {
+  font-size: 1.25rem;
+}
+
+.document h4 {
+  font-size: 1.115rem;
+}
+
+.document h5 {
+  font-size: 1.0625rem;
+}
+
+.document h6 {
+  font-size: 1rem;
+}
+
+.document a:not(:global(.remark-link-card-plus__card)) {
+  color: blue;
+  text-decoration: underline;
+}
+
+.document :where(ol, ul) {
+  padding-left: 1.5rem;
+}
+
+.document ul {
+  list-style: circle;
+}
+
+.document ol {
+  list-style: decimal;
+}
+
+.document li {
+  margin-block: 0.5rem;
+}
+
+.document li::marker {
+  color: #888;
+}
+
+.document hr {
+  color: #0002;
+}
+
+.document :not(pre) > code {
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+  border: 1px solid #0002;
+}
+
+.document blockquote {
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 1px solid #0002;
+}
+
+.document pre {
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 1px solid #0002;
+  line-height: 1;
+  overflow: auto;
+}
+
+.document table {
+  border-collapse: collapse;
+}
+
+.document :where(th, td) {
+  border: 1px solid #0002;
+  padding: 0.5rem;
+}
+
+.document :global(.remark-link-card-plus__card) {
+  border-radius: 1rem;
+  border: 1px solid #0002;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  overflow: hidden;
+}
+
+.document :global(.remark-link-card-plus__main) {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.document :global(.remark-link-card-plus__image) {
+  object-fit: cover;
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  height: 100%;
+}
+
+.document :global(.remark-link-card-plus__content) {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: auto;
+}
+
+.document :global(.remark-link-card-plus__title) {
+  font-weight: 700;
+}
