@@ -11,7 +11,7 @@
 }
 
 .document :where(h1, h2, h3, h4, h5, h6) {
-  margin-top: 2em;
+  margin-top: 1.5em;
   font-weight: 700;
 }
 
@@ -40,7 +40,7 @@
 }
 
 .document a:not(:global(.remark-link-card-plus__card)) {
-  color: blue;
+  color: var(--color-primary);
   text-decoration: underline;
 }
 
@@ -61,29 +61,44 @@
 }
 
 .document li::marker {
-  color: #888;
+  color: var(--color-sub);
 }
 
 .document hr {
-  color: #0002;
+  color: var(--color-border);
 }
 
 .document :not(pre) > code {
   padding: 0.25rem;
   border-radius: 0.5rem;
-  border: 1px solid #0002;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
 }
 
 .document blockquote {
   padding: 1rem;
   border-radius: 1rem;
-  border: 1px solid #0002;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+}
+
+.document blockquote > * {
+  margin-block: 1rem;
+}
+
+.document blockquote > :first-child {
+  margin-top: 0;
+}
+
+.document blockquote > :last-child {
+  margin-bottom: 0;
 }
 
 .document pre {
   padding: 1rem;
   border-radius: 1rem;
-  border: 1px solid #0002;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
   line-height: 1;
   overflow: auto;
 }
@@ -93,13 +108,14 @@
 }
 
 .document :where(th, td) {
-  border: 1px solid #0002;
+  border: 1px solid var(--color-border);
   padding: 0.5rem;
 }
 
 .document :global(.remark-link-card-plus__card) {
   border-radius: 1rem;
-  border: 1px solid #0002;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
   display: grid;
   grid-template-columns: 1fr 320px;
   overflow: hidden;

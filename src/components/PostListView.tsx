@@ -2,6 +2,7 @@ import { A } from "@solidjs/router";
 import { For } from "solid-js";
 import styles from "./PostListView.module.css";
 import type { PostMetadata } from "~/type/postmetadata";
+import { TagListView } from "./TagListView";
 
 type Props = {
 	posts: PostMetadata[];
@@ -9,17 +10,15 @@ type Props = {
 
 const PostListView = (props: Props) => {
 	return (
-		<ul class={styles.posts}>
+		<ul class={styles.list}>
 			<For each={props.posts}>
 				{(post) => (
 					<li>
-						<A class={styles.post} href={`/${post.slug}`}>
-							<div class={styles["post-title"]}>{post.title}</div>
-							<div class={styles["post-metadata"]}>
-								<time>{post.date}</time>
-								<For each={post.tags}>
-									{(tag) => <div class={styles["post-tag"]}>{tag}</div>}
-								</For>
+						<A class={styles.item} href={`/${post.slug}`}>
+							<div class={styles.title}>{post.title}</div>
+							<div class={styles.metadata}>
+								<time class={styles.date}>{post.date}</time>
+								<TagListView tags={post.tags} />
 							</div>
 						</A>
 					</li>

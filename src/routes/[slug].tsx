@@ -4,6 +4,7 @@ import { getPosts } from "~/lib/posts";
 import { TocView } from "~/components/TocView";
 import styles from "./slug.module.css";
 import { DocumentView } from "~/components/DocumentView";
+import { TagListView } from "~/components/TagListView";
 
 export default function BlogPost() {
 	const params = useParams();
@@ -20,11 +21,12 @@ export default function BlogPost() {
 						<TocView toc={post().data.toc} />
 					</aside>
 					<article class={styles.article}>
-						<div>
+						<div class={styles.header}>
 							<h1 class={styles.title}>{post().data.frontmatter.title}</h1>
 							<time class={styles.date} datetime={post().data.frontmatter.date}>
 								{post().data.frontmatter.date}
 							</time>
+							<TagListView tags={post().data.frontmatter.tags} />
 						</div>
 						<DocumentView document={post().value} />
 					</article>

@@ -8,11 +8,11 @@
 }
 
 .item::marker {
-  color: #0008;
+  color: var(--color-sub);
 }
 
 .link {
   display: block;
-  color: blue;
+  color: var(--color-primary);
   text-decoration: underline;
 }
