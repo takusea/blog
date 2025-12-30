@@ -2,6 +2,8 @@ import fs from "node:fs";
 import path from "node:path";
 
 const findFiles = (dir: string, extension: string) => {
+	"use server";
+
 	return fs
 		.readdirSync(dir, { withFileTypes: true })
 		.filter((entry) => entry.isFile() && entry.name.endsWith(`.${extension}`))
