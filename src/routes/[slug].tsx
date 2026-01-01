@@ -8,7 +8,7 @@ import { TagListView } from "~/components/TagListView";
 
 export default function BlogPost() {
 	const params = useParams();
-	const posts = createAsync(() => getPosts());
+	const posts = createAsync(() => getPosts(), { deferStream: true });
 
 	return (
 		<Show

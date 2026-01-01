@@ -5,7 +5,7 @@ import { PostListView } from "~/components/PostListView";
 import { Show } from "solid-js";
 
 export default function Index() {
-	const posts = createAsync(() => getPosts());
+	const posts = createAsync(() => getPosts(), { deferStream: true });
 
 	return (
 		<main class={styles.main}>
