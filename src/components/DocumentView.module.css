@@ -73,10 +73,6 @@
   text-decoration: underline;
 }
 
-.document :where(ol, ul) {
-  padding-left: 1.5rem;
-}
-
 .document ul {
   list-style: circle;
 }
@@ -86,11 +82,22 @@
 }
 
 .document li {
+  margin-left: 1.5rem;
   margin-block: 0.5rem;
 }
 
-.document li::marker {
+.document ::marker {
   color: var(--color-sub);
+}
+
+.document :global(.contains-task-list) {
+  list-style: none;
+}
+
+.document input[type="checkbox"] {
+  appearance: auto;
+  margin-left: -1.5rem;
+  margin-right: 0.5rem;
 }
 
 .document hr {
