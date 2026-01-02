@@ -1,64 +1,64 @@
 {
-  "_TagListView-CMWzubEx.css": {
-    "file": "assets/TagListView-CMWzubEx.css",
-    "src": "_TagListView-CMWzubEx.css"
-  },
-  "_TagListView-DLpJ44uE.js": {
-    "file": "assets/TagListView-DLpJ44uE.js",
+  "_TagListView-ByQhTgfD.js": {
+    "file": "assets/TagListView-ByQhTgfD.js",
     "name": "TagListView",
     "imports": [
-      "_routing-DxVwMsir.js"
+      "_routing-VLiYKZQK.js"
     ],
     "css": [
-      "assets/TagListView-CMWzubEx.css"
+      "assets/TagListView-dfdQsqSZ.css"
     ]
   },
-  "_routing-DxVwMsir.js": {
-    "file": "assets/routing-DxVwMsir.js",
+  "_TagListView-dfdQsqSZ.css": {
+    "file": "assets/TagListView-dfdQsqSZ.css",
+    "src": "_TagListView-dfdQsqSZ.css"
+  },
+  "_routing-VLiYKZQK.js": {
+    "file": "assets/routing-VLiYKZQK.js",
     "name": "routing"
   },
   "src/routes/[slug].tsx?pick=default&pick=$css": {
-    "file": "assets/_slug_-Ct_GlZTr.js",
+    "file": "assets/_slug_-Cf4uLveW.js",
     "name": "_slug_",
     "src": "src/routes/[slug].tsx?pick=default&pick=$css",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_routing-DxVwMsir.js",
-      "_TagListView-DLpJ44uE.js"
+      "_routing-VLiYKZQK.js",
+      "_TagListView-ByQhTgfD.js"
     ],
     "css": [
-      "assets/_slug_-9fngVR9n.css"
+      "assets/_slug_-CNIsMION.css"
     ]
   },
   "src/routes/index.tsx?pick=default&pick=$css": {
-    "file": "assets/index-DpreRG7W.js",
+    "file": "assets/index-SIb9KAnR.js",
     "name": "index",
     "src": "src/routes/index.tsx?pick=default&pick=$css",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_routing-DxVwMsir.js",
-      "_TagListView-DLpJ44uE.js"
+      "_routing-VLiYKZQK.js",
+      "_TagListView-ByQhTgfD.js"
     ],
     "css": [
       "assets/index-Dna2g9sI.css"
     ]
   },
   "virtual:$vinxi/handler/client": {
-    "file": "assets/client-DD1xfXJz.js",
+    "file": "assets/client-BNCxrNod.js",
     "name": "client",
     "src": "virtual:$vinxi/handler/client",
     "isEntry": true,
     "imports": [
-      "_routing-DxVwMsir.js"
+      "_routing-VLiYKZQK.js"
     ],
     "dynamicImports": [
       "src/routes/[slug].tsx?pick=default&pick=$css",
       "src/routes/index.tsx?pick=default&pick=$css"
     ],
     "css": [
-      "assets/client-DHIHJzBC.css"
+      "assets/client-DfEmCUko.css"
     ]
   }
 }
