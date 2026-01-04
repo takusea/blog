@@ -3,9 +3,13 @@ import path from "node:path";
 import type { Root } from "hast";
 import { visit } from "unist-util-visit";
 
-type Options = { base: string };
+type Options = {
+	baseUrl: string;
+	sourceDir: string;
+	destinationDir: string;
+};
 
-const rehypeImagePlugin = (options: Options) => {
+const rehypeRelocateLocalImage = (options: Options) => {
 	return (tree: Root) => {
 		visit(tree, "element", (node) => {
 			if (node.tagName !== "img") return;
@@ -14,9 +18,12 @@ const rehypeImagePlugin = (options: Options) => {
 			if (src === "") return;
 			if (src.startsWith("http")) return;
 
-			copyImage(`/posts/${src}`, `/public/post-images/${src}`);
+			copyImage(
+				`/${options.sourceDir}/${src}`,
+				`/${options.destinationDir}/${src}`,
+			);
 
-			node.properties.src = `/${options.base}/post-images/${src}`;
+			node.properties.src = `/${options.baseUrl}/post-images/${src}`;
 		});
 	};
 };
@@ -32,4 +39,4 @@ const copyImage = (sourceDir: string, destinationDir: string) => {
 	}
 };
 
-export { rehypeImagePlugin };
+export { rehypeRelocateLocalImage };

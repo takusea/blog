@@ -12,7 +12,8 @@ import rehypePrettyCode from "rehype-pretty-code";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypeExtractToc from "@stefanprobst/rehype-extract-toc";
 import yaml from "yaml";
-import { rehypeImagePlugin } from "~/plugins/rehypeImagePlugin";
+import { rehypeRelocateLocalImage } from "~/lib/unifiedPlugins/rehypeRelocateLocalImage";
+import { isDev } from "solid-js/web";
 
 const parseMarkdown = async (markdown: string) => {
 	"use server";
@@ -31,7 +32,13 @@ const parseMarkdown = async (markdown: string) => {
 		})
 		.use(remarkRehype, { allowDangerousHtml: true })
 		.use(rehypeRaw)
-		.use(rehypeImagePlugin, { base: "blog" })
+		.use(rehypeRelocateLocalImage, {
+			baseUrl: "blog",
+			sourceDir: "posts",
+			destinationDir: isDev
+				? "public/post-images"
+				: ".output/public/post-images",
+		})
 		.use(rehypeSlug)
 		.use(rehypeExtractToc)
 		.use(rehypeExternalLinks, { target: "_blank" })
