@@ -12,6 +12,7 @@ import rehypePrettyCode from "rehype-pretty-code";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypeExtractToc from "@stefanprobst/rehype-extract-toc";
 import yaml from "yaml";
+import { rehypeImagePlugin } from "~/plugins/rehypeImagePlugin";
 
 const parseMarkdown = async (markdown: string) => {
 	"use server";
@@ -30,6 +31,7 @@ const parseMarkdown = async (markdown: string) => {
 		})
 		.use(remarkRehype, { allowDangerousHtml: true })
 		.use(rehypeRaw)
+		.use(rehypeImagePlugin, { base: "blog" })
 		.use(rehypeSlug)
 		.use(rehypeExtractToc)
 		.use(rehypeExternalLinks, { target: "_blank" })
