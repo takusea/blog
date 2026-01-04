@@ -18,7 +18,7 @@
     "name": "routing"
   },
   "src/routes/[slug].tsx?pick=default&pick=$css": {
-    "file": "assets/_slug_-Cf4uLveW.js",
+    "file": "assets/_slug_-D1AOG1-z.js",
     "name": "_slug_",
     "src": "src/routes/[slug].tsx?pick=default&pick=$css",
     "isEntry": true,
@@ -28,7 +28,7 @@
       "_TagListView-ByQhTgfD.js"
     ],
     "css": [
-      "assets/_slug_-CNIsMION.css"
+      "assets/_slug_-BssP-6lO.css"
     ]
   },
   "src/routes/index.tsx?pick=default&pick=$css": {
@@ -46,7 +46,7 @@
     ]
   },
   "virtual:$vinxi/handler/client": {
-    "file": "assets/client-BNCxrNod.js",
+    "file": "assets/client-YZRJ_SXP.js",
     "name": "client",
     "src": "virtual:$vinxi/handler/client",
     "isEntry": true,
