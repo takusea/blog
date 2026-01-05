@@ -32,7 +32,6 @@ const parseMarkdown = async (markdown: string) => {
 		.use(remarkRehype, { allowDangerousHtml: true })
 		.use(rehypeRaw)
 		.use(rehypeRelocateLocalImage, {
-			baseUrl: "blog",
 			sourceDir: "posts",
 			destinationDir: import.meta.env.DEV
 				? "public/post-images"

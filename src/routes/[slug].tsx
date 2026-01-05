@@ -18,19 +18,19 @@ export default function BlogPost() {
 		<Show when={post()} fallback="error">
 			{(post) => (
 				<MetaProvider>
-					<Title>{`${post().data.frontmatter.title} - たくしいの雑記`}</Title>
+					<Title>{`${post().data.frontmatter.title} - たくしいのこんせき`}</Title>
 					<Link
 						rel="canonical"
-						href={`https://takusea.com/blog/${post().data.frontmatter.slug}`}
+						href={`https://blog.takusea.com/${post().data.frontmatter.slug}`}
 					/>
 					<Meta
 						property="og:title"
-						content={`${post().data.frontmatter.title} - たくしいの雑記`}
+						content={`${post().data.frontmatter.title} - たくしいのこんせき`}
 					/>
 					<Meta property="og:type" content="article" />
 					<Meta
 						property="og:url"
-						content={`https://takusea.com/blog/${post().data.frontmatter.slug}`}
+						content={`https://blog.takusea.com/${post().data.frontmatter.slug}`}
 					/>
 					<main class={styles.main}>
 						<aside class={styles.side}>

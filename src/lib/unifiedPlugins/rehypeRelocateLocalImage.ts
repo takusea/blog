@@ -4,7 +4,6 @@ import type { Root } from "hast";
 import { visit } from "unist-util-visit";
 
 type Options = {
-	baseUrl: string;
 	sourceDir: string;
 	destinationDir: string;
 };
@@ -23,7 +22,7 @@ const rehypeRelocateLocalImage = (options: Options) => {
 				`/${options.destinationDir}/${src}`,
 			);
 
-			node.properties.src = `/${options.baseUrl}/post-images/${src}`;
+			node.properties.src = `/post-images/${src}`;
 		});
 	};
 };
