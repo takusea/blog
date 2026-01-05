@@ -1,57 +1,57 @@
 {
-  "_TagListView-ByQhTgfD.js": {
-    "file": "assets/TagListView-ByQhTgfD.js",
-    "name": "TagListView",
+  "_index-C9v3RrFd.js": {
+    "file": "assets/index-C9v3RrFd.js",
+    "name": "index",
     "imports": [
-      "_routing-VLiYKZQK.js"
+      "_routing-B-VA0lQI.js"
     ],
     "css": [
-      "assets/TagListView-dfdQsqSZ.css"
+      "assets/index-dfdQsqSZ.css"
     ]
   },
-  "_TagListView-dfdQsqSZ.css": {
-    "file": "assets/TagListView-dfdQsqSZ.css",
-    "src": "_TagListView-dfdQsqSZ.css"
+  "_index-dfdQsqSZ.css": {
+    "file": "assets/index-dfdQsqSZ.css",
+    "src": "_index-dfdQsqSZ.css"
   },
-  "_routing-VLiYKZQK.js": {
-    "file": "assets/routing-VLiYKZQK.js",
+  "_routing-B-VA0lQI.js": {
+    "file": "assets/routing-B-VA0lQI.js",
     "name": "routing"
   },
   "src/routes/[slug].tsx?pick=default&pick=$css": {
-    "file": "assets/_slug_-D1AOG1-z.js",
+    "file": "assets/_slug_-Bed-NPHe.js",
     "name": "_slug_",
     "src": "src/routes/[slug].tsx?pick=default&pick=$css",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_routing-VLiYKZQK.js",
-      "_TagListView-ByQhTgfD.js"
+      "_routing-B-VA0lQI.js",
+      "_index-C9v3RrFd.js"
     ],
     "css": [
-      "assets/_slug_-BssP-6lO.css"
+      "assets/_slug_-CNkYzx2Y.css"
     ]
   },
   "src/routes/index.tsx?pick=default&pick=$css": {
-    "file": "assets/index-SIb9KAnR.js",
+    "file": "assets/index-BqGb_pvl.js",
     "name": "index",
     "src": "src/routes/index.tsx?pick=default&pick=$css",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_routing-VLiYKZQK.js",
-      "_TagListView-ByQhTgfD.js"
+      "_routing-B-VA0lQI.js",
+      "_index-C9v3RrFd.js"
     ],
     "css": [
       "assets/index-Dna2g9sI.css"
     ]
   },
   "virtual:$vinxi/handler/client": {
-    "file": "assets/client-YZRJ_SXP.js",
+    "file": "assets/client-DKn5-p5H.js",
     "name": "client",
     "src": "virtual:$vinxi/handler/client",
     "isEntry": true,
     "imports": [
-      "_routing-VLiYKZQK.js"
+      "_routing-B-VA0lQI.js"
     ],
     "dynamicImports": [
       "src/routes/[slug].tsx?pick=default&pick=$css",
