@@ -2,15 +2,30 @@
   padding: 1rem;
   margin: auto;
   display: grid;
-  grid-template-columns: 1fr minmax(480px, 720px) 1fr;
+  grid-template-columns: minmax(auto, 480px) minmax(480px, 720px) minmax(320px, 480px);
   grid-template-areas: "left main right";
   gap: 2rem;
+  width: fit-content;
 }
 
 .header {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+
+.breadcrumbs {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.breadcrumb {
+  display: contents;
+}
+
+.breadcrumb::after {
+  content: '>';
+  color: var(--color-sub);
 }
 
 .title {

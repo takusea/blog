@@ -9,6 +9,7 @@
 		"check:ci": "biome ci ."
 	},
 	"dependencies": {
+		"@solidjs/meta": "^0.29.4",
 		"@solidjs/router": "^0.15.4",
 		"@solidjs/start": "^1.1.0",
 		"@stefanprobst/rehype-extract-toc": "^3.0.0",
