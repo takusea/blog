@@ -13,7 +13,6 @@ import rehypeExternalLinks from "rehype-external-links";
 import rehypeExtractToc from "@stefanprobst/rehype-extract-toc";
 import yaml from "yaml";
 import { rehypeRelocateLocalImage } from "~/lib/unifiedPlugins/rehypeRelocateLocalImage";
-import { isDev } from "solid-js/web";
 
 const parseMarkdown = async (markdown: string) => {
 	"use server";
@@ -35,7 +34,7 @@ const parseMarkdown = async (markdown: string) => {
 		.use(rehypeRelocateLocalImage, {
 			baseUrl: "blog",
 			sourceDir: "posts",
-			destinationDir: isDev
+			destinationDir: import.meta.env.DEV
 				? "public/post-images"
 				: ".output/public/post-images",
 		})
