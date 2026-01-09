@@ -27,6 +27,5 @@ gitignore
 .DS_Store
 Thumbs.db
 
-/posts/
+/public/posts/
 /public/remark-link-card-plus/
-/public/post-images/

@@ -144,7 +144,7 @@
   border-collapse: collapse;
 }
 
-.document img:not([src=""]) {
+.document img:not([src=""]):not([class]) {
   width: 100%;
   border-radius: 1rem;
   border: 1px solid var(--color-border);
@@ -188,4 +188,10 @@
 
 .document :global(.remark-link-card-plus__title) {
   font-weight: 700;
+}
+
+.document :global(.remark-link-card-plus__meta) {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
 }
