@@ -1,18 +1,32 @@
-import { findFiles } from "./file";
+import { Toc } from "~/type/toc";
+import { findFiles, readFile } from "./file";
 import { parseMarkdown } from "./markdown";
 import { query } from "@solidjs/router";
+import path from "node:path";
+import type { PostMetadata } from "~/type/postmetadata";
+import type { Post } from "~/type/post";
 
-const getPosts = query(async () => {
+const getPosts = query(async (): Promise<Post[]> => {
 	"use server";
 
-	const results = findFiles("public/posts", "md").map(parseMarkdown);
-	return (await Promise.all(results))
-		.map((result) => JSON.stringify(result))
-		.map((s) => JSON.parse(s))
+	const files = findFiles("public/posts", "md");
+	const fileNames = files.map((file) => path.parse(file).name);
+
+	return (await Promise.all(files.map(readFile).map(parseMarkdown)))
+		.map((result, i) => {
+			return {
+				content: result.value.toString(),
+				metadata: {
+					...(result.data.frontmatter as PostMetadata),
+					slug: encodeURI(fileNames[i]),
+				} as PostMetadata,
+				toc: result.data.toc as Toc[],
+			};
+		})
 		.toSorted(
 			(a, b) =>
-				new Date(b.data.frontmatter.date).getTime() -
-				new Date(a.data.frontmatter.date).getTime(),
+				new Date(b.metadata.date).getTime() -
+				new Date(a.metadata.date).getTime(),
 		);
 }, "posts");
 

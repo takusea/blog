@@ -9,9 +9,10 @@ const findFiles = (dir: string, extension: string) => {
 	return fs
 		.readdirSync(joinRootPath(dir), { withFileTypes: true })
 		.filter((entry) => entry.isFile() && entry.name.endsWith(`.${extension}`))
-		.map((file) => path.join(dir, file.name))
-		.map((filepath) => fs.readFileSync(filepath, "utf-8"));
+		.map((file) => path.join(dir, file.name));
 };
+
+const readFile = (filepath: string) => fs.readFileSync(filepath, "utf-8");
 
 const copyFile = (fromDir: string, toDir: string) => {
 	"use server";
@@ -26,4 +27,4 @@ const copyFile = (fromDir: string, toDir: string) => {
 	}
 };
 
-export { findFiles, copyFile };
+export { findFiles, copyFile, readFile };

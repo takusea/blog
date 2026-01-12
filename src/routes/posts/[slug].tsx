@@ -11,30 +11,30 @@ export default function BlogPost() {
 	const params = useParams();
 	const posts = createAsync(() => getPosts(), { deferStream: true });
 	const post = createMemo(() =>
-		posts()?.find((post) => post.data.frontmatter.slug === params.slug),
+		posts()?.find((post) => post.metadata.slug === params.slug),
 	);
 
 	return (
 		<Show when={post()} fallback="error">
 			{(post) => (
 				<MetaProvider>
-					<Title>{`${post().data.frontmatter.title} - たくしいのこんせき`}</Title>
+					<Title>{`${post().metadata.title} - たくしいのこんせき`}</Title>
 					<Link
 						rel="canonical"
-						href={`https://blog.takusea.com/posts/${post().data.frontmatter.slug}`}
+						href={`https://blog.takusea.com/posts/${post().metadata.slug}`}
 					/>
 					<Meta
 						property="og:title"
-						content={`${post().data.frontmatter.title} - たくしいのこんせき`}
+						content={`${post().metadata.title} - たくしいのこんせき`}
 					/>
 					<Meta property="og:type" content="article" />
 					<Meta
 						property="og:url"
-						content={`https://blog.takusea.com/posts/${post().data.frontmatter.slug}`}
+						content={`https://blog.takusea.com/posts/${post().metadata.slug}`}
 					/>
 					<main class={styles.main}>
 						<aside class={styles.side}>
-							<TocView toc={post().data.toc} />
+							<TocView toc={post().toc} />
 						</aside>
 						<article class={styles.article}>
 							<div class={styles.header}>
@@ -43,16 +43,13 @@ export default function BlogPost() {
 										<A href="/">ホーム</A>
 									</div>
 								</div>
-								<h1 class={styles.title}>{post().data.frontmatter.title}</h1>
-								<time
-									class={styles.date}
-									datetime={post().data.frontmatter.date}
-								>
-									{post().data.frontmatter.date}
+								<h1 class={styles.title}>{post().metadata.title}</h1>
+								<time class={styles.date} datetime={post().metadata.date}>
+									{post().metadata.date}
 								</time>
-								<TagListView tags={post().data.frontmatter.tags} />
+								<TagListView tags={post().metadata.tags} />
 							</div>
-							<DocumentView document={post().value} />
+							<DocumentView document={post().content} />
 						</article>
 					</main>
 				</MetaProvider>

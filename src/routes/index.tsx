@@ -19,7 +19,7 @@ export default function Index() {
 				<h1 class={styles.title}>たくしいのこんせき</h1>
 				<p>雑記だとか備忘録だとか。</p>
 				<Show
-					when={posts()?.map((post) => post.data.frontmatter)}
+					when={posts()?.map((post) => post.metadata)}
 					fallback={<p>Loading...</p>}
 				>
 					{(postMetadatas) => <PostListView posts={postMetadatas()} />}
