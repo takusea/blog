@@ -1,4 +1,5 @@
 import styles from "./DocumentView.module.css";
+import "./RemarkLinkCardPlus.css";
 
 type Props = {
 	document: string;
