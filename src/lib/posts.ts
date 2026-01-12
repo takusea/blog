@@ -8,7 +8,12 @@ const getPosts = query(async () => {
 	const results = findFiles("public/posts", "md").map(parseMarkdown);
 	return (await Promise.all(results))
 		.map((result) => JSON.stringify(result))
-		.map((s) => JSON.parse(s));
+		.map((s) => JSON.parse(s))
+		.toSorted(
+			(a, b) =>
+				new Date(b.data.frontmatter.date).getTime() -
+				new Date(a.data.frontmatter.date).getTime(),
+		);
 }, "posts");
 
 export { getPosts };
