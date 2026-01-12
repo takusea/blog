@@ -38,6 +38,11 @@
 
 .remark-link-card-plus__description {
   font-size: 0.75rem;
+  overflow: hidden;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }
 
 .remark-link-card-plus__meta {
