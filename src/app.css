@@ -5,6 +5,7 @@
   line-break: strict;
   scroll-behavior: smooth;
   scroll-padding: 1rem;
+	scrollbar-gutter: stable;
   color-scheme: light dark;
 
   --hue: 180;
