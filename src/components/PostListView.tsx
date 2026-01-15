@@ -15,7 +15,7 @@ const PostListView = (props: Props) => {
 				{(post) => (
 					<li>
 						<A class={styles.item} href={`/posts/${post.slug}`}>
-							<div class={styles.title}>{post.title}</div>
+							<h2 class={styles.title}>{post.title}</h2>
 							<div class={styles.metadata}>
 								<time class={styles.date}>{post.date}</time>
 								<TagListView tags={post.tags} />

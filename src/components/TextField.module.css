@@ -1,0 +1,10 @@
+.search {
+	padding: 0.5rem;
+	border-radius: 0.5rem;
+	border: 1px solid var(--color-border);
+	background-color: var(--color-surface);
+}
+
+.search::placeholder {
+	color: var(--color-sub);
+}

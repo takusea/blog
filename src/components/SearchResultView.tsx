@@ -1,0 +1,40 @@
+import { A } from "@solidjs/router";
+import { createEffect, createSignal, For } from "solid-js";
+import type { ResultData, ResultType } from "~/lib/pagefind";
+import styles from "./SearchResultView.module.css";
+
+type Props = {
+	results: ResultType[];
+};
+
+const SearchResultView = (props: Props) => {
+	const [results, setResults] = createSignal<ResultData[]>([]);
+
+	createEffect(() => {
+		async function fetchData() {
+			const resultData = await Promise.all(
+				props.results.map((result) => result.data()),
+			);
+
+			setResults(resultData);
+		}
+		fetchData();
+	});
+
+	return (
+		<ul class={styles.list}>
+			<For each={results()}>
+				{(data) => (
+					<li>
+						<A href={data.url} class={styles.item}>
+							<h2 class={styles.title}>{data.meta.title}</h2>
+							<p class={styles.excerpt} innerHTML={data.excerpt} />
+						</A>
+					</li>
+				)}
+			</For>
+		</ul>
+	);
+};
+
+export { SearchResultView };

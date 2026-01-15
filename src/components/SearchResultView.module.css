@@ -18,18 +18,10 @@
 	font-weight: 700;
 }
 
-.metadata {
-	display: flex;
-	gap: 0.5rem;
-}
-
-.date {
-	color: var(--color-sub);
-}
-
-.tag {
-	padding-inline: 0.5rem;
-	background-color: var(--color-primary);
-	color: var(--color-incolor);
-	border-radius: 0.5rem;
+.excerpt :global(mark) {
+  display: inline-block;
+  padding-inline: 0.25rem;
+  border-radius: 0.5rem;
+  background-color: var(--color-primary);
+  color: var(--color-incolor);
 }

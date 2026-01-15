@@ -44,7 +44,11 @@ export default function BlogPost() {
 									</div>
 								</div>
 								<h1 class={styles.title}>{post().metadata.title}</h1>
-								<time class={styles.date} datetime={post().metadata.date}>
+								<time
+									class={styles.date}
+									datetime={post().metadata.date}
+									data-pagefind-sort="date[datatime]"
+								>
 									{post().metadata.date}
 								</time>
 								<TagListView tags={post().metadata.tags} />

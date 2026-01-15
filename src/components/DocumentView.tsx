@@ -6,7 +6,13 @@ type Props = {
 };
 
 const DocumentView = (props: Props) => {
-	return <div class={styles.document} innerHTML={props.document} />;
+	return (
+		<div
+			class={styles.document}
+			innerHTML={props.document}
+			data-pagefind-body
+		/>
+	);
 };
 
 export { DocumentView };
