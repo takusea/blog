@@ -8,13 +8,13 @@
 	border-radius: 1rem;
 }
 
-.top {
+.search {
 	display: grid;
 	grid-template-columns: 1fr auto;
 	gap: 0.5rem;
 }
 
-.order {
+.column {
 	display: flex;
 	flex-direction: column;
 	gap: 0.5rem;

@@ -60,7 +60,7 @@ const SearchBar = () => {
 
 	return (
 		<div class={styles.card}>
-			<div class={styles.top}>
+			<div class={styles.search}>
 				<TextField
 					placeholder="検索"
 					value={searchParams().query ?? ""}
@@ -85,15 +85,17 @@ const SearchBar = () => {
 			</Show>
 			<Show when={detailShowed()}>
 				<hr class={styles.line} />
-				<div class={styles.label}>
-					<IconTag />
-					タグ一覧
+				<div class={styles.column}>
+					<div class={styles.label}>
+						<IconTag />
+						タグ一覧
+					</div>
+					<TagListView
+						tags={tagList().filter((tag) => !searchParams().tags.includes(tag))}
+						onSelect={toggleSelectedTags}
+					/>
 				</div>
-				<TagListView
-					tags={tagList().filter((tag) => !searchParams().tags.includes(tag))}
-					onSelect={toggleSelectedTags}
-				/>
-				<div class={styles.order}>
+				<div class={styles.column}>
 					<div class={styles.label}>
 						<IconArrowsSort />
 						並び替え
