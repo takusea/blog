@@ -1,73 +1,107 @@
 .main {
-  padding: 1rem;
-  margin: auto;
-  display: grid;
-  grid-template-columns: minmax(auto, 480px) minmax(480px, 720px) minmax(320px, 480px);
-  grid-template-areas: "left main right";
-  gap: 2rem;
-  width: fit-content;
+	padding: 1rem;
+	margin: auto;
+	display: grid;
+	grid-template-columns:
+		minmax(auto, 480px)
+		minmax(480px, 720px)
+		minmax(320px, 480px);
+	grid-template-rows: auto 1fr;
+	grid-template-areas:
+		". top ."
+		". main right";
+	gap: 2rem;
+	width: fit-content;
 }
 
 .header {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+	grid-area: top;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
 }
 
 .breadcrumbs {
-  display: flex;
-  gap: 0.5rem;
+	display: flex;
+	align-items: center;
 }
 
 .breadcrumb {
-  display: contents;
-}
-
-.breadcrumb::after {
-  content: '>';
-  color: var(--color-sub);
+	color: var(--color-primary);
+	text-decoration: underline;
 }
 
 .title {
-  font-weight: 700;
-  font-size: 2rem;
+	font-weight: 700;
+	font-size: 2rem;
+}
+
+.metadata {
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+	flex-wrap: wrap;
+	color: var(--color-sub);
 }
 
 .date {
-  color: var(--color-sub);
+	display: grid;
+	gap: 0.5rem;
+	align-items: center;
+	grid-template-columns: auto 1fr;
+}
+
+.tag {
+	display: grid;
+	gap: 0.5rem;
+	align-items: center;
+	grid-template-columns: auto 1fr;
 }
 
 .side {
-  grid-area: right;
-  position: sticky;
-  top: 1rem;
-  height: fit-content;
+	grid-area: right;
+	position: sticky;
+	top: 1rem;
+	height: fit-content;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
 }
 
 .article {
-  grid-area: main;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+	grid-area: main;
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
 }
 
 @media screen and (max-width: 960px) {
-  .main {
-    display: flex;
-    flex-direction: column;
-    max-width: 720px;
-  }
+	.main {
+		display: flex;
+		flex-direction: column;
+		max-width: 720px;
+	}
 
-  .side {
-    position: relative;
-    top: 0;
-  }
+	.side {
+		display: contents;
+	}
 
-  .article {
-    display: contents;
-  }
+	.toc {
+		position: relative;
+		top: 0;
+	}
 
-  .header {
-    order: -1;
-  }
+	.profile {
+		position: relative;
+		top: 0;
+		order: 1;
+	}
+
+	.article {
+		display: contents;
+	}
+
+	.header {
+		order: -1;
+	}
 }

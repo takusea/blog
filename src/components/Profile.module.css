@@ -1,0 +1,67 @@
+.card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+	padding: 1rem;
+	border-radius: 1rem;
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border);
+}
+
+.icon {
+	aspect-ratio: 1 / 1;
+	width: 8rem;
+	border-radius: 8rem;
+	border: 1px solid var(--color-border);
+}
+
+.name {
+	font-weight: 600;
+	font-size: 1.25rem;
+}
+
+.description {
+	text-align: center;
+}
+
+.snslist {
+	display: flex;
+	gap: 0.5rem;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.sns {
+	display: grid;
+	place-content: center;
+	border: 1px solid var(--color-border);
+	height: 2.5rem;
+	width: 2.5rem;
+	border-radius: 2rem;
+	color: oklch(from var(--color-mono) 95% c h);
+}
+
+.sns[data-link="profile"] {
+	background-color: #4cdabc;
+}
+
+.sns[data-link="x"] {
+	background-color: #000;
+}
+
+.sns[data-link="bluesky"] {
+	background-color: #006aff;
+}
+
+.sns[data-link="youtube"] {
+	background-color: #ff0033;
+}
+
+.sns[data-link="niconico"] {
+	background-color: #252525;
+}
+
+.sns[data-link="github"] {
+	background-color: #171515;
+}

@@ -14,6 +14,7 @@
 		"@solidjs/router": "^0.15.4",
 		"@solidjs/start": "^1.1.0",
 		"@stefanprobst/rehype-extract-toc": "^3.0.0",
+		"@tabler/icons-solidjs": "^3.36.1",
 		"destyle.css": "^4.0.1",
 		"open-graph-scraper": "^6.11.0",
 		"rehype-external-links": "^3.0.0",
