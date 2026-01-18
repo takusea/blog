@@ -8,6 +8,7 @@ import { SearchResultView } from "~/components/SearchResultView";
 import useSearch from "~/hooks/useSearch";
 import { SearchBar } from "~/components/SearchBar";
 import { Profile } from "~/components/Profile";
+import { ThemeSwitcher } from "~/components/ThemeSwitcher";
 
 export default function Index() {
 	const posts = createAsync(() => getPosts(), { deferStream: true });
@@ -28,6 +29,9 @@ export default function Index() {
 					</div>
 					<div class={styles.profile}>
 						<Profile />
+					</div>
+					<div>
+						<ThemeSwitcher />
 					</div>
 				</aside>
 				<div class={styles.header}>

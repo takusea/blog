@@ -1,0 +1,29 @@
+.card {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 1rem;
+	border-radius: 1rem;
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border);
+	font-weight: 600;
+}
+
+.list {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+:root:has([data-theme="light"]) {
+	color-scheme: only light;
+}
+
+:root:has([data-theme="dark"]) {
+	color-scheme: only dark;
+}
+
+:root:has([data-theme="device"]) {
+	color-scheme: light dark;
+}

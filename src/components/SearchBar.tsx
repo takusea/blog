@@ -1,12 +1,17 @@
 import styles from "./SearchBar.module.css";
 import { createEffect, Show } from "solid-js";
-import { TextField } from "./TextField";
 import { TagListView } from "./TagListView";
 import useSearch from "~/hooks/useSearch";
 import { Button } from "./Button";
 import { createSignal } from "solid-js";
 import type { PagefindWindow } from "~/lib/pagefind";
 import { clientOnly } from "@solidjs/start";
+
+const TextField = clientOnly(() =>
+	import("~/components/TextField").then((m) => ({
+		default: m.TextField,
+	})),
+);
 
 const IconSearch = clientOnly(() =>
 	import("@tabler/icons-solidjs").then((m) => ({

@@ -8,6 +8,7 @@ import { TagListView } from "~/components/TagListView";
 import { Link, Meta, MetaProvider, Title } from "@solidjs/meta";
 import { clientOnly } from "@solidjs/start";
 import { Profile } from "~/components/Profile";
+import { ThemeSwitcher } from "~/components/ThemeSwitcher";
 
 const IconChevronRight = clientOnly(() =>
 	import("@tabler/icons-solidjs").then((m) => ({
@@ -87,6 +88,9 @@ export default function BlogPost() {
 							</div>
 							<div class={styles.profile}>
 								<Profile />
+							</div>
+							<div>
+								<ThemeSwitcher />
 							</div>
 						</aside>
 						<article class={styles.article}>
