@@ -2,7 +2,7 @@ import { createAsync } from "@solidjs/router";
 import { getPosts } from "~/lib/posts";
 import styles from "./index.module.css";
 import { PostListView } from "~/components/PostListView";
-import { Show } from "solid-js";
+import { Match, Show, Switch } from "solid-js";
 import { Link, Meta, MetaProvider, Title } from "@solidjs/meta";
 import { SearchResultView } from "~/components/SearchResultView";
 import useSearch from "~/hooks/useSearch";
@@ -40,12 +40,23 @@ export default function Index() {
 						fallback={<p>Loading...</p>}
 					>
 						{(postMetadatas) => (
-							<Show
-								when={isSearching()}
-								fallback={<PostListView posts={postMetadatas()} />}
+							<Switch
+								fallback={
+									<div class={styles.empty}>
+										<div class={styles["empty-image"]} />
+										<p class={styles["empty-text"]}>
+											記事が見つかりませんでした。
+										</p>
+									</div>
+								}
 							>
-								<SearchResultView results={results()} />
-							</Show>
+								<Match when={!isSearching()}>
+									<PostListView posts={postMetadatas()} />
+								</Match>
+								<Match when={results().length !== 0}>
+									<SearchResultView results={results()} />
+								</Match>
+							</Switch>
 						)}
 					</Show>
 				</div>
