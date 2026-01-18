@@ -1,9 +1,18 @@
 .button {
+	display: flex;
+	gap: 0.5rem;
+	justify-content: center;
+	align-items: center;
 	height: 2.5rem;
 	padding-inline: 1rem;
 	border-radius: 0.5rem;
 	border: 1px solid var(--color-border);
 	font-weight: 600;
+}
+
+.button:has(svg:only-child) {
+	width: 2.5rem;
+	padding: 0;
 }
 
 .button[data-variant="default"] {
