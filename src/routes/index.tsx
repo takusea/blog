@@ -2,32 +2,16 @@ import { createAsync } from "@solidjs/router";
 import { getPosts } from "~/lib/posts";
 import styles from "./index.module.css";
 import { PostListView } from "~/components/PostListView";
-import { createEffect, createSignal, Show } from "solid-js";
+import { Show } from "solid-js";
 import { Link, Meta, MetaProvider, Title } from "@solidjs/meta";
-import { TextField } from "~/components/TextField";
-import type { PagefindWindow, ResultType } from "~/lib/pagefind";
 import { SearchResultView } from "~/components/SearchResultView";
-
-declare const window: PagefindWindow;
+import useSearch from "~/hooks/useSearch";
+import { SearchBar } from "~/components/SearchBar";
 
 export default function Index() {
 	const posts = createAsync(() => getPosts(), { deferStream: true });
 
-	const [results, setResults] = createSignal<ResultType[]>([]);
-	const [query, setQuery] = createSignal<string>("");
-
-	async function handleSearch(query: string) {
-		if (!window.pagefind) {
-			return;
-		}
-
-		const search = await window.pagefind.search(query);
-		setResults(search.results);
-	}
-
-	createEffect(() => {
-		handleSearch(query());
-	});
+	const { results, isSearching } = useSearch();
 
 	return (
 		<MetaProvider>
@@ -39,18 +23,14 @@ export default function Index() {
 			<main class={styles.main} data-pagefind-ignore>
 				<h1 class={styles.title}>たくしいのこんせき</h1>
 				<p>雑記だとか備忘録だとか。</p>
-				<TextField
-					placeholder="検索"
-					value={query()}
-					onInput={(e) => setQuery(e.currentTarget.value)}
-				/>
+				<SearchBar />
 				<Show
 					when={posts()?.map((post) => post.metadata)}
 					fallback={<p>Loading...</p>}
 				>
 					{(postMetadatas) => (
 						<Show
-							when={query() !== ""}
+							when={isSearching()}
 							fallback={<PostListView posts={postMetadatas()} />}
 						>
 							<SearchResultView results={results()} />

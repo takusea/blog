@@ -1,0 +1,16 @@
+.button {
+	height: 2.5rem;
+	padding-inline: 1rem;
+	border-radius: 0.5rem;
+	border: 1px solid var(--color-border);
+	font-weight: 600;
+}
+
+.button[data-variant="default"] {
+	background-color: var(--color-surface);
+}
+
+.button[data-variant="primary"] {
+	background-color: var(--color-primary);
+	color: var(--color-incolor);
+}
