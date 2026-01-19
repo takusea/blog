@@ -1,7 +1,8 @@
 import styles from "./ThemeSwitcher.module.css";
-import { Button } from "./Button";
+import { Button } from "./base/Button";
 import { clientOnly } from "@solidjs/start";
 import useCookie from "~/hooks/useCookie";
+import { Card } from "./base/Card";
 
 const IconSun = clientOnly(() =>
 	import("@tabler/icons-solidjs").then((m) => ({
@@ -25,31 +26,33 @@ const ThemeSwitcher = () => {
 	const [theme, setTheme] = useCookie("theme");
 
 	return (
-		<div class={styles.card} data-theme={theme()}>
-			テーマ
-			<div class={styles.list}>
-				<Button
-					variant={theme() === "light" ? "primary" : "default"}
-					onClick={() => setTheme("light")}
-				>
-					<IconSun />
-				</Button>
-				<Button
-					variant={theme() === "dark" ? "primary" : "default"}
-					onClick={() => setTheme("dark")}
-				>
-					<IconMoon />
-				</Button>
-				<Button
-					variant={
-						theme() !== "light" && theme() !== "dark" ? "primary" : "default"
-					}
-					onClick={() => setTheme("device")}
-				>
-					<IconDevicesPc />
-				</Button>
+		<Card>
+			<div class={styles.card} data-theme={theme()}>
+				テーマ
+				<div class={styles.list}>
+					<Button
+						variant={theme() === "light" ? "primary" : "default"}
+						onClick={() => setTheme("light")}
+					>
+						<IconSun />
+					</Button>
+					<Button
+						variant={theme() === "dark" ? "primary" : "default"}
+						onClick={() => setTheme("dark")}
+					>
+						<IconMoon />
+					</Button>
+					<Button
+						variant={
+							theme() !== "light" && theme() !== "dark" ? "primary" : "default"
+						}
+						onClick={() => setTheme("device")}
+					>
+						<IconDevicesPc />
+					</Button>
+				</div>
 			</div>
-		</div>
+		</Card>
 	);
 };
 

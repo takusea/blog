@@ -7,7 +7,7 @@ type Props = {
 
 const DocumentView = (props: Props) => {
 	return (
-		<div
+		<article
 			class={styles.document}
 			innerHTML={props.document}
 			data-pagefind-body

@@ -1,6 +1,6 @@
 import type { Toc } from "~/type/toc";
 import { TocList } from "./TocList";
-import styles from "./TocView.module.css";
+import styles from "./TocCard.module.css";
 import { clientOnly } from "@solidjs/start";
 
 const IconList = clientOnly(() =>
@@ -13,7 +13,7 @@ type Props = {
 	toc: Toc[];
 };
 
-const TocView = (props: Props) => {
+const TocCard = (props: Props) => {
 	return (
 		<nav class={styles.container}>
 			<h2 class={styles.header}>
@@ -25,4 +25,4 @@ const TocView = (props: Props) => {
 	);
 };
 
-export { TocView };
+export { TocCard };

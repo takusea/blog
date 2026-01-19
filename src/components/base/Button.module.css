@@ -10,9 +10,12 @@
 	font-weight: 600;
 }
 
-.button:has(svg:only-child) {
-	width: 2.5rem;
-	padding: 0;
+.button:has(svg:first-child) {
+	padding-inline-start: 0.5rem;
+}
+
+.button:has(svg:last-child) {
+	padding-inline-end: 0.5rem;
 }
 
 .button[data-variant="default"] {

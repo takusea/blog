@@ -1,14 +1,15 @@
 import { A, createAsync, useNavigate, useParams } from "@solidjs/router";
 import { createMemo, Show } from "solid-js";
 import { getPosts } from "~/lib/posts";
-import { TocView } from "~/components/TocView";
+import { TocCard } from "~/components/TocCard";
 import styles from "./[slug].module.css";
 import { DocumentView } from "~/components/DocumentView";
 import { TagListView } from "~/components/TagListView";
 import { Link, Meta, MetaProvider, Title } from "@solidjs/meta";
 import { clientOnly } from "@solidjs/start";
-import { Profile } from "~/components/Profile";
+import { ProfileCard } from "~/components/ProfileCard";
 import { ThemeSwitcher } from "~/components/ThemeSwitcher";
+import { GlobalLayout } from "~/components/layout/GlobalLayout";
 
 const IconChevronRight = clientOnly(() =>
 	import("@tabler/icons-solidjs").then((m) => ({
@@ -55,48 +56,45 @@ export default function BlogPost() {
 						property="og:url"
 						content={`https://blog.takusea.com/posts/${post().metadata.slug}`}
 					/>
-					<main class={styles.main}>
-						<div class={styles.header}>
-							<div class={styles.breadcrumbs}>
-								<A href="/" class={styles.breadcrumb}>
-									ホーム
-								</A>
-								<IconChevronRight />
-							</div>
-							<h1 class={styles.title}>{post().metadata.title}</h1>
-							<div class={styles.metadata}>
-								<time
-									class={styles.date}
-									datetime={post().metadata.date}
-									data-pagefind-sort="date[datatime]"
-								>
-									<IconCalendar />
-									{post().metadata.date}
-								</time>
-								<div class={styles.tag}>
-									<IconTag />
-									<TagListView
-										tags={post().metadata.tags}
-										onSelect={(tag) => navigate(`/?tags=${encodeURI(tag)}`)}
-									/>
+					<GlobalLayout
+						header={
+							<>
+								<div class={styles.breadcrumbs}>
+									<A href="/" class={styles.breadcrumb}>
+										ホーム
+									</A>
+									<IconChevronRight />
 								</div>
-							</div>
-						</div>
-						<aside class={styles.side}>
-							<div class={styles.toc}>
-								<TocView toc={post().toc} />
-							</div>
-							<div class={styles.profile}>
-								<Profile />
-							</div>
-							<div>
+								<h1 class={styles.title}>{post().metadata.title}</h1>
+								<div class={styles.metadata}>
+									<time
+										class={styles.date}
+										datetime={post().metadata.date}
+										data-pagefind-sort="date[datatime]"
+									>
+										<IconCalendar />
+										{post().metadata.date}
+									</time>
+									<div class={styles.tag}>
+										<IconTag />
+										<TagListView
+											tags={post().metadata.tags}
+											onSelect={(tag) => navigate(`/?tags=${encodeURI(tag)}`)}
+										/>
+									</div>
+								</div>
+							</>
+						}
+						sideTop={<TocCard toc={post().toc} />}
+						sideBottom={
+							<>
+								<ProfileCard />
 								<ThemeSwitcher />
-							</div>
-						</aside>
-						<article class={styles.article}>
-							<DocumentView document={post().content} />
-						</article>
-					</main>
+							</>
+						}
+					>
+						<DocumentView document={post().content} />
+					</GlobalLayout>
 				</MetaProvider>
 			)}
 		</Show>

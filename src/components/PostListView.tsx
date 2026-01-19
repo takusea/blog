@@ -4,6 +4,7 @@ import styles from "./PostListView.module.css";
 import type { PostMetadata } from "~/type/postmetadata";
 import { TagListView } from "./TagListView";
 import useSearch from "~/hooks/useSearch";
+import { Card } from "./base/Card";
 
 type Props = {
 	posts: PostMetadata[];
@@ -17,12 +18,19 @@ const PostListView = (props: Props) => {
 			<For each={props.posts}>
 				{(post) => (
 					<li>
-						<A class={styles.item} href={`/posts/${post.slug}`}>
-							<h2 class={styles.title}>{post.title}</h2>
-							<div class={styles.metadata}>
-								<time class={styles.date}>{post.date}</time>
-								<TagListView tags={post.tags} onSelect={toggleSelectedTags} />
-							</div>
+						<A href={`/posts/${post.slug}`}>
+							<Card>
+								<div class={styles.inner}>
+									<h2 class={styles.title}>{post.title}</h2>
+									<div class={styles.metadata}>
+										<time class={styles.date}>{post.date}</time>
+										<TagListView
+											tags={post.tags}
+											onSelect={toggleSelectedTags}
+										/>
+									</div>
+								</div>
+							</Card>
 						</A>
 					</li>
 				)}
