@@ -1,8 +1,8 @@
-import styles from "./ThemeSwitcher.module.css";
-import { Button } from "./base/Button";
 import { clientOnly } from "@solidjs/start";
 import useCookie from "~/hooks/useCookie";
+import { Button } from "./base/Button";
 import { Card } from "./base/Card";
+import styles from "./ThemeSwitcher.module.css";
 
 const IconSun = clientOnly(() =>
 	import("@tabler/icons-solidjs").then((m) => ({

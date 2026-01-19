@@ -1,12 +1,11 @@
-import styles from "./SearchCard.module.css";
-import { createEffect, Show } from "solid-js";
-import { TagListView } from "./TagListView";
-import useSearch from "~/hooks/useSearch";
-import { Button } from "./base/Button";
-import { createSignal } from "solid-js";
-import type { PagefindWindow } from "~/lib/pagefind";
 import { clientOnly } from "@solidjs/start";
+import { createEffect, createSignal, Show } from "solid-js";
+import useSearch from "~/hooks/useSearch";
+import type { PagefindWindow } from "~/lib/pagefind";
+import { Button } from "./base/Button";
 import { Card } from "./base/Card";
+import styles from "./SearchCard.module.css";
+import { TagListView } from "./TagListView";
 
 const TextField = clientOnly(() =>
 	import("~/components/base/TextField").then((m) => ({

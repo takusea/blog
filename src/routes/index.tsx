@@ -1,15 +1,15 @@
+import { Link, Meta, MetaProvider, Title } from "@solidjs/meta";
 import { createAsync } from "@solidjs/router";
+import { Match, Show, Switch } from "solid-js";
+import { GlobalLayout } from "~/components/layout/GlobalLayout";
+import { PostListView } from "~/components/PostListView";
+import { ProfileCard } from "~/components/ProfileCard";
+import { SearchCard } from "~/components/SearchCard";
+import { SearchResultView } from "~/components/SearchResultView";
+import { ThemeSwitcher } from "~/components/ThemeSwitcher";
+import useSearch from "~/hooks/useSearch";
 import { getPosts } from "~/lib/posts";
 import styles from "./index.module.css";
-import { PostListView } from "~/components/PostListView";
-import { Match, Show, Switch } from "solid-js";
-import { Link, Meta, MetaProvider, Title } from "@solidjs/meta";
-import { SearchResultView } from "~/components/SearchResultView";
-import useSearch from "~/hooks/useSearch";
-import { SearchCard } from "~/components/SearchCard";
-import { ProfileCard } from "~/components/ProfileCard";
-import { ThemeSwitcher } from "~/components/ThemeSwitcher";
-import { GlobalLayout } from "~/components/layout/GlobalLayout";
 
 export default function Index() {
 	const posts = createAsync(() => getPosts(), { deferStream: true });

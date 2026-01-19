@@ -1,4 +1,4 @@
-import { Show, type ComponentProps, type JSX } from "solid-js";
+import { type ComponentProps, type JSX, Show } from "solid-js";
 import styles from "./TextField.module.css";
 
 type Props = ComponentProps<"input"> & {

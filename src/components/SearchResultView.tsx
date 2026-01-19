@@ -1,8 +1,8 @@
 import { A } from "@solidjs/router";
 import { createEffect, createSignal, For } from "solid-js";
 import type { ResultData, ResultType } from "~/lib/pagefind";
-import styles from "./SearchResultView.module.css";
 import { Card } from "./base/Card";
+import styles from "./SearchResultView.module.css";
 
 type Props = {
 	results: ResultType[];

@@ -1,7 +1,7 @@
-import type { Toc } from "~/type/toc";
-import { TocList } from "./TocList";
-import styles from "./TocCard.module.css";
 import { clientOnly } from "@solidjs/start";
+import type { Toc } from "~/type/toc";
+import styles from "./TocCard.module.css";
+import { TocList } from "./TocList";
 
 const IconList = clientOnly(() =>
 	import("@tabler/icons-solidjs").then((m) => ({

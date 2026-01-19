@@ -1,10 +1,10 @@
-import { Toc } from "~/type/toc";
+import path from "node:path";
+import { query } from "@solidjs/router";
+import type { Post } from "~/type/post";
+import type { PostMetadata } from "~/type/postmetadata";
+import type { Toc } from "~/type/toc";
 import { findFiles, readFile } from "./file";
 import { parseMarkdown } from "./markdown";
-import { query } from "@solidjs/router";
-import path from "node:path";
-import type { PostMetadata } from "~/type/postmetadata";
-import type { Post } from "~/type/post";
 
 const getPosts = query(async (): Promise<Post[]> => {
 	"use server";

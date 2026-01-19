@@ -1,15 +1,15 @@
-import { A, createAsync, useNavigate, useParams } from "@solidjs/router";
-import { createMemo, Show } from "solid-js";
-import { getPosts } from "~/lib/posts";
-import { TocCard } from "~/components/TocCard";
-import styles from "./[slug].module.css";
-import { DocumentView } from "~/components/DocumentView";
-import { TagListView } from "~/components/TagListView";
 import { Link, Meta, MetaProvider, Title } from "@solidjs/meta";
+import { A, createAsync, useNavigate, useParams } from "@solidjs/router";
 import { clientOnly } from "@solidjs/start";
-import { ProfileCard } from "~/components/ProfileCard";
-import { ThemeSwitcher } from "~/components/ThemeSwitcher";
+import { createMemo, Show } from "solid-js";
+import { DocumentView } from "~/components/DocumentView";
 import { GlobalLayout } from "~/components/layout/GlobalLayout";
+import { ProfileCard } from "~/components/ProfileCard";
+import { TagListView } from "~/components/TagListView";
+import { ThemeSwitcher } from "~/components/ThemeSwitcher";
+import { TocCard } from "~/components/TocCard";
+import { getPosts } from "~/lib/posts";
+import styles from "./[slug].module.css";
 
 const IconChevronRight = clientOnly(() =>
 	import("@tabler/icons-solidjs").then((m) => ({

@@ -1,6 +1,6 @@
 import { clientOnly } from "@solidjs/start";
-import styles from "./ProfileCard.module.css";
 import { Card } from "./base/Card";
+import styles from "./ProfileCard.module.css";
 
 const IconBrandBluesky = clientOnly(() =>
 	import("@tabler/icons-solidjs").then((m) => ({

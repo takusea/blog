@@ -1,18 +1,18 @@
 .list {
-  padding-left: 1.5rem;
+	padding-left: 1.5rem;
 }
 
 .item {
-  list-style: decimal;
-  margin-block: 0.5rem;
+	list-style: decimal;
+	margin-block: 0.5rem;
 }
 
 .item::marker {
-  color: var(--color-sub);
+	color: var(--color-sub);
 }
 
 .link {
-  display: block;
-  color: var(--color-primary);
-  text-decoration: underline;
+	display: block;
+	color: var(--color-primary);
+	text-decoration: underline;
 }

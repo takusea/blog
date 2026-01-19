@@ -1,10 +1,10 @@
 import { A } from "@solidjs/router";
 import { For } from "solid-js";
-import styles from "./PostListView.module.css";
-import type { PostMetadata } from "~/type/postmetadata";
-import { TagListView } from "./TagListView";
 import useSearch from "~/hooks/useSearch";
+import type { PostMetadata } from "~/type/postmetadata";
 import { Card } from "./base/Card";
+import styles from "./PostListView.module.css";
+import { TagListView } from "./TagListView";
 
 type Props = {
 	posts: PostMetadata[];
