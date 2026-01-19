@@ -1,9 +1,7 @@
 import { useSearchParams } from "@solidjs/router";
 import { createEffect, createMemo, createSignal } from "solid-js";
 import { debounce } from "~/lib/debounce";
-import type { PagefindWindow, ResultType } from "~/lib/pagefind";
-
-declare const window: PagefindWindow;
+import type { ResultType } from "~/type/pagefind";
 
 type OrderType = "relevance" | "newer" | "older";
 

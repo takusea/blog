@@ -1,7 +1,6 @@
 import { clientOnly } from "@solidjs/start";
 import { createEffect, createSignal, Show } from "solid-js";
 import useSearch from "~/hooks/useSearch";
-import type { PagefindWindow } from "~/lib/pagefind";
 import { Button } from "./base/Button";
 import { Card } from "./base/Card";
 import styles from "./SearchCard.module.css";
@@ -36,8 +35,6 @@ const IconTag = clientOnly(() =>
 		default: m.IconTag,
 	})),
 );
-
-declare const window: PagefindWindow;
 
 const SearchCard = () => {
 	const [detailShowed, setDetailShowed] = createSignal(false);

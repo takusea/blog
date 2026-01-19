@@ -26,18 +26,3 @@ export type ResultType = {
 	id: string;
 	data: () => Promise<ResultData>;
 };
-
-type SearchOption = {
-	filters?: Record<string, string | string[]>;
-	sort?: Record<string, "desc" | "asc">;
-};
-
-export interface PagefindWindow extends Window {
-	pagefind?: {
-		search: (
-			query: string | null,
-			option: SearchOption,
-		) => Promise<{ results: ResultType[] }>;
-		filters: () => Promise<Record<string, Record<string, number>>>;
-	};
-}

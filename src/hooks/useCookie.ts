@@ -6,19 +6,19 @@ const useCookie = (key: string) => {
 	const [value, setValue] = signal;
 
 	const readCookie = async () => {
-		const cookie = await cookieStore.get(key);
+		const cookie = await window.cookieStore.get(key);
 		return cookie?.value;
 	};
 
 	const writeCookie = async (value: string) => {
-		await cookieStore.set({
+		await window.cookieStore.set({
 			name: key,
 			value,
 		});
 	};
 
 	const deleteCookie = async () => {
-		await cookieStore.delete(key);
+		await window.cookieStore.delete(key);
 	};
 
 	createEffect(() => {
