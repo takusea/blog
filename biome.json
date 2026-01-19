@@ -18,6 +18,11 @@
 			"recommended": true
 		}
 	},
+	"css": {
+		"parser": {
+			"cssModules": true
+		}
+	},
 	"javascript": {
 		"formatter": {
 			"quoteStyle": "double"
@@ -27,7 +32,8 @@
 		"enabled": true,
 		"actions": {
 			"source": {
-				"organizeImports": "on"
+				"organizeImports": "on",
+				"useSortedProperties": "on"
 			}
 		}
 	}
