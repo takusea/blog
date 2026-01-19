@@ -1,12 +1,12 @@
 .wrapper {
 	display: flex;
-	align-items: center;
 	gap: 0.5rem;
-	border-radius: 0.5rem;
-	border: 1px solid var(--color-border);
-	background-color: var(--color-surface);
+	align-items: center;
 	height: 2.5rem;
 	padding-inline: 0.5rem;
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: 0.5rem;
 }
 
 .wrapper:focus-within {

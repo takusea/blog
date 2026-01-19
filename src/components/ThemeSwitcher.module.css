@@ -1,16 +1,16 @@
 .card {
 	display: flex;
-	justify-content: space-between;
-	align-items: center;
 	flex-wrap: wrap;
 	gap: 0.5rem;
+	align-items: center;
+	justify-content: space-between;
 	font-weight: 600;
 }
 
 .list {
 	display: flex;
-	align-items: center;
 	gap: 0.5rem;
+	align-items: center;
 }
 
 :root:has([data-theme="light"]) {

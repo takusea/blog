@@ -1,20 +1,20 @@
 .inner {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
 	gap: 1rem;
+	align-items: center;
 }
 
 .icon {
-	aspect-ratio: 1 / 1;
 	width: 8rem;
-	border-radius: 8rem;
+	aspect-ratio: 1 / 1;
 	border: 1px solid var(--color-border);
+	border-radius: 8rem;
 }
 
 .name {
-	font-weight: 600;
 	font-size: 1.25rem;
+	font-weight: 600;
 }
 
 .description {
@@ -23,19 +23,19 @@
 
 .snslist {
 	display: flex;
+	flex-wrap: wrap;
 	gap: 0.5rem;
 	justify-content: center;
-	flex-wrap: wrap;
 }
 
 .sns {
 	display: grid;
 	place-content: center;
-	border: 1px solid var(--color-border);
-	height: 2.5rem;
 	width: 2.5rem;
-	border-radius: 2rem;
+	height: 2.5rem;
 	color: oklch(from var(--color-mono) 95% c h);
+	border: 1px solid var(--color-border);
+	border-radius: 2rem;
 }
 
 .sns[data-link="profile"] {

@@ -3,8 +3,8 @@
 }
 
 .item {
-	list-style: decimal;
 	margin-block: 0.5rem;
+	list-style: decimal;
 }
 
 .item::marker {

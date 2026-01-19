@@ -1,20 +1,20 @@
 .title {
-	font-weight: 700;
 	font-size: 2rem;
+	font-weight: 700;
 }
 
 .empty {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
 	gap: 0.5rem;
+	align-items: center;
 }
 
 .empty-image {
+	width: 100%;
+	max-width: 400px;
 	aspect-ratio: 1 / 1;
 	background-color: var(--color-front);
-	max-width: 400px;
-	width: 100%;
 	mask-image: url("/empty.png");
 	mask-size: 100%;
 }

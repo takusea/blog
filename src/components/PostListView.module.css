@@ -16,9 +16,9 @@
 
 .metadata {
 	display: flex;
+	flex-wrap: wrap;
 	gap: 0.5rem;
 	align-items: center;
-	flex-wrap: wrap;
 }
 
 .date {
@@ -27,7 +27,7 @@
 
 .tag {
 	padding-inline: 0.5rem;
-	background-color: var(--color-primary);
 	color: var(--color-incolor);
+	background-color: var(--color-primary);
 	border-radius: 0.5rem;
 }

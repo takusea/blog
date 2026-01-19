@@ -15,9 +15,9 @@
 }
 
 .excerpt :global(mark) {
-  display: inline-block;
-  padding-inline: 0.25rem;
-  border-radius: 0.5rem;
-  background-color: var(--color-primary);
-  color: var(--color-incolor);
+	display: inline-block;
+	padding-inline: 0.25rem;
+	color: var(--color-incolor);
+	background-color: var(--color-primary);
+	border-radius: 0.5rem;
 }

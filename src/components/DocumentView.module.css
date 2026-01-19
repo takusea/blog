@@ -1,157 +1,157 @@
 .document > * {
-  margin-block: 1rem;
+	margin-block: 1rem;
 }
 
 .document > :first-child {
-  margin-top: 0;
+	margin-top: 0;
 }
 
 .document > :last-child {
-  margin-bottom: 0;
+	margin-bottom: 0;
 }
 
 .document :where(h1, h2, h3, h4, h5, h6) {
-  margin-top: 1.5em;
-  font-weight: 700;
+	margin-top: 1.5em;
+	font-weight: 700;
 }
 
 .document :where(h1, h2, h3, h4, h5, h6)::before {
-  margin-right: 0.5rem;
-  color: var(--color-sub);
+	margin-right: 0.5rem;
+	color: var(--color-sub);
 }
 
 .document h1 {
-  font-size: 1.75rem;
+	font-size: 1.75rem;
 }
 
 .document h1::before {
-  content: "#";
+	content: "#";
 }
 
 .document h2 {
-  font-size: 1.5rem;
+	font-size: 1.5rem;
 }
 
 .document h2::before {
-  content: "##";
+	content: "##";
 }
 
 .document h3 {
-  font-size: 1.25rem;
+	font-size: 1.25rem;
 }
 
 .document h3::before {
-  content: "###";
+	content: "###";
 }
 
 .document h4 {
-  font-size: 1.115rem;
+	font-size: 1.115rem;
 }
 
 .document h4::before {
-  content: "####";
+	content: "####";
 }
 
 .document h5 {
-  font-size: 1.0625rem;
+	font-size: 1.0625rem;
 }
 
 .document h5::before {
-  content: "#####";
+	content: "#####";
 }
 
 .document h6 {
-  font-size: 1rem;
+	font-size: 1rem;
 }
 
 .document h6::before {
-  content: "######";
+	content: "######";
 }
 
 .document a:not(:global(.remark-link-card-plus__card)) {
-  color: var(--color-primary);
-  text-decoration: underline;
+	color: var(--color-primary);
+	text-decoration: underline;
 }
 
 .document ul {
-  list-style: circle;
+	list-style: circle;
 }
 
 .document ol {
-  list-style: decimal;
+	list-style: decimal;
 }
 
 .document li {
-  margin-left: 1.5rem;
-  margin-block: 0.5rem;
+	margin-block: 0.5rem;
+	margin-left: 1.5rem;
 }
 
 .document ::marker {
-  color: var(--color-sub);
+	color: var(--color-sub);
 }
 
 .document :global(.contains-task-list) {
-  list-style: none;
+	list-style: none;
 }
 
 .document input[type="checkbox"] {
-  appearance: auto;
-  margin-left: -1.5rem;
-  margin-right: 0.5rem;
+	margin-right: 0.5rem;
+	margin-left: -1.5rem;
+	appearance: auto;
 }
 
 .document hr {
-  color: var(--color-border);
+	color: var(--color-border);
 }
 
 .document :not(pre) > code {
-  display: inline-block;
-  padding-inline: 0.25rem;
-  border-radius: 0.5rem;
-  border: 1px solid var(--color-border);
-  background-color: var(--color-surface);
+	display: inline-block;
+	padding-inline: 0.25rem;
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: 0.5rem;
 }
 
 .document blockquote {
-  padding: 1rem;
-  border: 0 solid var(--color-border);
-  border-left-width: 4px;
-  background-color: var(--color-surface);
+	padding: 1rem;
+	background-color: var(--color-surface);
+	border: 0 solid var(--color-border);
+	border-left-width: 4px;
 }
 
 .document blockquote > * {
-  margin-block: 1rem;
+	margin-block: 1rem;
 }
 
 .document blockquote > :first-child {
-  margin-top: 0;
+	margin-top: 0;
 }
 
 .document blockquote > :last-child {
-  margin-bottom: 0;
+	margin-bottom: 0;
 }
 
 .document pre {
-  padding: 1rem;
-  border-radius: 1rem;
-  border: 1px solid var(--color-border);
-  background-color: var(--color-surface);
-  line-height: 1;
-  overflow: auto;
+	padding: 1rem;
+	overflow: auto;
+	line-height: 1;
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: 1rem;
 }
 
 .document table {
-  border-collapse: collapse;
+	border-collapse: collapse;
 }
 
 .document img:not([src=""]):not([class]) {
-  width: 100%;
-  border-radius: 1rem;
-  border: 1px solid var(--color-border);
-  background-color: var(--color-surface);
+	width: 100%;
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: 1rem;
 }
 
 .document :where(th, td) {
-  border: 1px solid var(--color-border);
-  padding: 0.5rem;
+	padding: 0.5rem;
+	border: 1px solid var(--color-border);
 }

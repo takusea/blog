@@ -1,13 +1,13 @@
 .list {
 	display: flex;
-	gap: 0.5rem;
 	flex-wrap: wrap;
+	gap: 0.5rem;
 }
 
 .item {
 	padding-inline: 0.5rem;
-	border: 1px solid var(--color-border);
-	background-color: var(--color-primary);
 	color: var(--color-incolor);
+	background-color: var(--color-primary);
+	border: 1px solid var(--color-border);
 	border-radius: 0.5rem;
 }
