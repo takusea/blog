@@ -7,7 +7,8 @@
 		"postbuild": "pagefind --site .output/public",
 		"start": "vinxi start",
 		"check": "biome check --write .",
-		"check:ci": "biome ci ."
+		"check:ci": "biome ci .",
+		"typecheck": "tsc --noEmit"
 	},
 	"dependencies": {
 		"@solidjs/meta": "^0.29.4",
