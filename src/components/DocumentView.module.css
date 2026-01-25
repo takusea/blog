@@ -69,6 +69,7 @@
 }
 
 .document a:not(:global(.remark-link-card-plus__card)) {
+	color: var(--color-primary);
 	text-decoration: underline;
 }
 
@@ -155,8 +156,10 @@
 	border-collapse: collapse;
 }
 
-.document img:not([src=""]):not([class]) {
-	width: 100%;
+.document img:not(:global(.remark-link-card-plus__image)) {
+	display: block;
+	max-width: 100%;
+	line-height: 1;
 	background-color: var(--color-surface);
 	border: 1px solid var(--color-border);
 	border-radius: 1rem;
