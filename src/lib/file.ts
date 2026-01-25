@@ -22,11 +22,13 @@ const copyFile = (fromDir: string, toDir: string) => {
 
 	fs.mkdirSync(path.dirname(to), { recursive: true });
 
-	if (fs.existsSync(from) && !fs.existsSync(to)) {
+	if (!fs.existsSync(from)) {
+		console.error(`image cannot find: ${from}`);
+	} else if (fs.existsSync(to)) {
+		console.error(`image already exists: ${to}`);
+	} else {
 		fs.copyFileSync(from, to);
 		console.log(`image copied: ${to}`);
-	} else {
-		throw new Error(`image cannot copied: ${from} -> ${to}`);
 	}
 };
 
