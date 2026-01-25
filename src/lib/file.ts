@@ -24,6 +24,9 @@ const copyFile = (fromDir: string, toDir: string) => {
 
 	if (fs.existsSync(from) && !fs.existsSync(to)) {
 		fs.copyFileSync(from, to);
+		console.log(`image copied: ${to}`);
+	} else {
+		throw new Error(`image cannot copied: ${from} -> ${to}`);
 	}
 };
 
