@@ -69,7 +69,6 @@
 }
 
 .document a:not(:global(.remark-link-card-plus__card)) {
-	color: var(--color-primary);
 	text-decoration: underline;
 }
 
@@ -113,10 +112,22 @@
 }
 
 .document blockquote {
+	position: relative;
 	padding: 1rem;
+	overflow: hidden;
 	background-color: var(--color-surface);
-	border: 0 solid var(--color-border);
-	border-left-width: 4px;
+	border: 1px solid var(--color-border);
+	border-radius: 1rem;
+}
+
+.document blockquote::before {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 4px;
+	height: 100%;
+	content: "";
+	background-color: var(--color-primary);
 }
 
 .document blockquote > * {
@@ -131,7 +142,7 @@
 	margin-bottom: 0;
 }
 
-.document pre {
+.document pre:not:where([data-rehype-pretty-code-figure]) {
 	padding: 1rem;
 	overflow: auto;
 	line-height: 1;

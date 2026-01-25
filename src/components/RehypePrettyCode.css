@@ -1,0 +1,72 @@
+[data-rehype-pretty-code-figure] {
+	overflow: hidden;
+	font-size: 0.875rem;
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: 1rem;
+}
+
+[data-rehype-pretty-code-title] {
+	padding-block: 0.5rem;
+	padding-inline: 1rem;
+	font-weight: 600;
+	border-bottom: 1px solid var(--color-border);
+}
+
+[data-rehype-pretty-code-figure] pre {
+	padding-block: 0.5rem;
+	overflow: auto;
+}
+
+[data-rehype-pretty-code-figure] span {
+	color: light-dark(var(--shiki-light), var(--shiki-dark));
+}
+
+[data-line] {
+	position: relative;
+	padding-inline: 1rem;
+}
+
+[data-highlighted-chars],
+[data-highlighted-line] {
+	background-color: oklch(from var(--color-primary) l c h / 0.2);
+}
+
+[data-line].diff::after {
+	position: absolute;
+	left: 0;
+	padding-left: 0.5rem;
+}
+
+[data-line].diff.add {
+	background-color: #0f03;
+}
+
+[data-line].diff.remove {
+	background-color: #f003;
+}
+
+[data-line].diff.add::after {
+	color: #0f0;
+	content: "+";
+}
+
+[data-line].diff.remove::after {
+	color: #f00;
+	content: "-";
+}
+
+[data-line-numbers] {
+	counter-reset: line;
+}
+
+[data-line-numbers] > [data-line]::before {
+	position: sticky;
+	display: inline-block;
+	width: 1rem;
+	margin-right: 1rem;
+	color: var(--color-sub);
+	text-align: right;
+	content: counter(line);
+	counter-increment: line;
+}

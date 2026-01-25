@@ -1,6 +1,7 @@
+import { transformerNotationDiff } from "@shikijs/transformers";
 import rehypeExtractToc from "@stefanprobst/rehype-extract-toc";
 import rehypeExternalLinks from "rehype-external-links";
-import rehypePrettyCode from "rehype-pretty-code";
+import rehypePrettyCode, { type Options } from "rehype-pretty-code";
 import rehypeRaw from "rehype-raw";
 import rehypeSlug from "rehype-slug";
 import rehypeStringify from "rehype-stringify";
@@ -30,12 +31,19 @@ const parseMarkdown = async (markdown: string) => {
 			shortenUrl: true,
 		})
 		.use(remarkRehype, { allowDangerousHtml: true })
-		.use(rehypeRaw)
 		.use(rehypeRelocateLocalImage)
 		.use(rehypeSlug)
 		.use(rehypeExtractToc)
 		.use(rehypeExternalLinks, { target: "_blank" })
-		.use(rehypePrettyCode)
+		.use(rehypePrettyCode, {
+			theme: {
+				light: "one-light",
+				dark: "one-dark-pro",
+			},
+			keepBackground: false,
+			transformers: [transformerNotationDiff()],
+		} as Options)
+		.use(rehypeRaw)
 		.use(rehypeStringify, { allowDangerousHtml: true });
 
 	return processor.process(markdown);
