@@ -31,7 +31,6 @@ const parseMarkdown = async (markdown: string) => {
 			shortenUrl: true,
 		})
 		.use(remarkRehype, { allowDangerousHtml: true })
-		.use(rehypeRelocateLocalImage)
 		.use(rehypeSlug)
 		.use(rehypeExtractToc)
 		.use(rehypeExternalLinks, { target: "_blank" })
@@ -44,6 +43,7 @@ const parseMarkdown = async (markdown: string) => {
 			transformers: [transformerNotationDiff()],
 		} as Options)
 		.use(rehypeRaw)
+		.use(rehypeRelocateLocalImage)
 		.use(rehypeStringify, { allowDangerousHtml: true });
 
 	return processor.process(markdown);
