@@ -20,9 +20,21 @@ export default function Index() {
 		<MetaProvider>
 			<Title>たくしいのこんせき</Title>
 			<Link rel="canonical" href="https://blog.takusea.com" />
-			<Meta property="og:title" content="たくしいの雑記" />
+			<Meta
+				name="description"
+				content="雑記だとか備忘録だとかを残すブログです。たくしいはお絵描き・動画投稿・プログラミング・ゲームなどをするひとです。"
+			/>
+			<Meta property="og:title" content="たくしいのこんせき" />
 			<Meta property="og:type" content="website" />
 			<Meta property="og:url" content="https://blog.takusea.com" />
+			<Meta property="og:site_name" content="たくしいのこんせき" />
+			<Meta
+				property="og:description"
+				content="雑記だとか備忘録だとかを残すブログです。たくしいはお絵描き・動画投稿・プログラミング・ゲームなどをするひとです。"
+			/>
+			<Meta property="og:image" content="https://blog.takusea.com/icon.png" />
+			<Meta name="twitter:site" content="@takusea" />
+			<Meta name="twitter:card" content="summary_large_image" />
 			<GlobalLayout
 				header={
 					<>

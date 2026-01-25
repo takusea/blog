@@ -56,6 +56,9 @@ export default function BlogPost() {
 						property="og:url"
 						content={`https://blog.takusea.com/posts/${post().metadata.slug}`}
 					/>
+					<Meta property="og:site_name" content="たくしいのこんせき" />
+					<Meta name="twitter:site" content="@takusea" />
+					<Meta name="twitter:card" content="summary" />
 					<GlobalLayout
 						header={
 							<>

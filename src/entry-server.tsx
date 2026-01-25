@@ -6,7 +6,7 @@ export default createHandler(() => (
 	<StartServer
 		document={({ assets, children, scripts }) => (
 			<html lang="ja">
-				<head>
+				<head prefix="og: https://ogp.me/ns#">
 					<meta charset="utf-8" />
 					<meta name="viewport" content="width=device-width, initial-scale=1" />
 					<link rel="icon" href="/favicon.png" />
