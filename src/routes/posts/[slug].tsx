@@ -59,45 +59,55 @@ export default function BlogPost() {
 					<Meta property="og:site_name" content="たくしいのこんせき" />
 					<Meta name="twitter:site" content="@takusea" />
 					<Meta name="twitter:card" content="summary" />
-					<GlobalLayout
-						header={
-							<>
-								<div class={styles.breadcrumbs}>
-									<A href="/" class={styles.breadcrumb}>
-										ホーム
-									</A>
-									<IconChevronRight />
-								</div>
-								<h1 class={styles.title}>{post().metadata.title}</h1>
-								<div class={styles.metadata}>
-									<time
-										class={styles.date}
-										datetime={post().metadata.date}
-										data-pagefind-sort="date[datatime]"
-									>
-										<IconCalendar />
-										{post().metadata.date}
-									</time>
-									<div class={styles.tag}>
-										<IconTag />
-										<TagListView
-											tags={post().metadata.tags}
-											onSelect={(tag) => navigate(`/?tags=${encodeURI(tag)}`)}
-										/>
+					<div class="h-entry">
+						<GlobalLayout
+							header={
+								<>
+									<div class={styles.breadcrumbs}>
+										<A href="/" class={styles.breadcrumb}>
+											ホーム
+										</A>
+										<IconChevronRight />
 									</div>
-								</div>
-							</>
-						}
-						sideTop={<TocCard toc={post().toc} />}
-						sideBottom={
-							<>
-								<ProfileCard />
-								<ThemeSwitcher />
-							</>
-						}
-					>
-						<DocumentView document={post().content} />
-					</GlobalLayout>
+									<h1 class={`${styles.title} `}>{post().metadata.title}</h1>
+									<div class={styles.metadata}>
+										<time
+											class={`${styles.date} dt-published`}
+											datetime={post().metadata.date}
+											data-pagefind-sort="date[datatime]"
+										>
+											<IconCalendar />
+											{post().metadata.date}
+										</time>
+										<div class={styles.tag}>
+											<IconTag />
+											<TagListView
+												tags={post().metadata.tags}
+												onSelect={(tag) => navigate(`/?tags=${encodeURI(tag)}`)}
+											/>
+										</div>
+									</div>
+								</>
+							}
+							sideTop={<TocCard toc={post().toc} />}
+							sideBottom={
+								<>
+									<ProfileCard />
+									<ThemeSwitcher />
+								</>
+							}
+						>
+							<div class="e-content">
+								<DocumentView document={post().content} />
+							</div>
+						</GlobalLayout>
+						{/** biome-ignore lint/a11y/useAnchorContent: <explanation> */}
+						<a
+							style="display: none;"
+							class="u-bridgy-fed"
+							href="https://fed.brid.gy/"
+						></a>
+					</div>
 				</MetaProvider>
 			)}
 		</Show>

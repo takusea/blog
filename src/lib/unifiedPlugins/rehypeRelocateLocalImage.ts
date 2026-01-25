@@ -15,6 +15,7 @@ const rehypeRelocateLocalImage = () => {
 
 			if (!src.includes("link-card")) {
 				node.properties.src = `/posts/${src}`;
+				node.properties.class = "u-photo";
 			}
 
 			copyFile(
