@@ -1,6 +1,7 @@
 import { clientOnly } from "@solidjs/start";
 import { createSignal, onCleanup, onMount } from "solid-js";
 import type { Toc } from "~/type/toc";
+import { Card } from "./base/Card";
 import styles from "./TocCard.module.css";
 import { TocList } from "./TocList";
 
@@ -52,13 +53,15 @@ const TocCard = (props: Props) => {
 	});
 
 	return (
-		<nav class={styles.container}>
-			<h2 class={styles.header}>
-				<IconList />
-				目次
-			</h2>
-			<TocList toc={props.toc} activeId={activeId()} />
-		</nav>
+		<Card>
+			<nav class={styles.container}>
+				<h2 class={styles.header}>
+					<IconList />
+					目次
+				</h2>
+				<TocList toc={props.toc} activeId={activeId()} />
+			</nav>
+		</Card>
 	);
 };
 

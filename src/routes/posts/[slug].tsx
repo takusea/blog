@@ -3,6 +3,7 @@ import { A, createAsync, useNavigate, useParams } from "@solidjs/router";
 import { clientOnly } from "@solidjs/start";
 import { createMemo, Show } from "solid-js";
 import { DocumentView } from "~/components/DocumentView";
+import { LatestPostsCard } from "~/components/LatestPostsCard";
 import { GlobalLayout } from "~/components/layout/GlobalLayout";
 import { ProfileCard } from "~/components/ProfileCard";
 import { SearchCard } from "~/components/SearchCard";
@@ -90,10 +91,24 @@ export default function BlogPost() {
 									</div>
 								</>
 							}
-							sideTop={<TocCard toc={post().toc} />}
-							sideBottom={
+							sideTop={
 								<>
 									<SearchCard />
+									<TocCard toc={post().toc} />
+								</>
+							}
+							sideBottom={
+								<>
+									<Show when={posts()}>
+										{(posts) => (
+											<LatestPostsCard
+												posts={posts()
+													?.map((p) => p.metadata)
+													.filter((p) => p.slug !== post().metadata.slug)
+													.toSpliced(5)}
+											/>
+										)}
+									</Show>
 									<ProfileCard />
 									<ThemeSwitcher />
 								</>
