@@ -37,6 +37,7 @@ const IconTag = clientOnly(() =>
 );
 
 const SearchCard = () => {
+	let textField!: HTMLInputElement;
 	const [detailShowed, setDetailShowed] = createSignal(false);
 
 	const [tagList, setTagList] = createSignal<string[]>([]);
@@ -55,15 +56,23 @@ const SearchCard = () => {
 	const { searchParams, setQuery, toggleSelectedTags, setOrderType } =
 		useSearch();
 
+	createEffect(() => {
+		if (textField && searchParams().query !== "") {
+			textField.focus();
+		}
+	});
+
 	return (
 		<Card>
 			<div class={styles.card}>
 				<div class={styles.search}>
 					<TextField
+						type="search"
 						placeholder="検索"
-						value={searchParams().query ?? ""}
+						value={searchParams().query}
 						start={<IconSearch />}
-						onInput={(e) => setQuery(e.currentTarget.value)}
+						onChange={(e) => setQuery(e.currentTarget.value)}
+						ref={textField}
 					/>
 					<Button
 						variant={detailShowed() ? "primary" : "default"}

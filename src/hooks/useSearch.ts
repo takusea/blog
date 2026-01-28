@@ -1,4 +1,4 @@
-import { useSearchParams } from "@solidjs/router";
+import { useLocation, useNavigate, useSearchParams } from "@solidjs/router";
 import { createEffect, createMemo, createSignal } from "solid-js";
 import { debounce } from "~/lib/debounce";
 import type { ResultType } from "~/type/pagefind";
@@ -18,7 +18,7 @@ const parseParams = (
 ): SearchParams => ({
 	query: typeof params.q === "string" ? params.q : "",
 	tags: typeof params.tags === "string" ? params.tags.split(",") : [],
-	order: (params.order as OrderType) ?? "relevance",
+	order: (params.order as OrderType) ?? "",
 });
 
 const serializeParams = (params: SearchParams) => ({
@@ -28,6 +28,8 @@ const serializeParams = (params: SearchParams) => ({
 });
 
 const useSearch = () => {
+	const navigate = useNavigate();
+	const location = useLocation();
 	const [rawParams, setRawParams] = useSearchParams();
 	const searchParams = createMemo<SearchParams>(() => parseParams(rawParams));
 
@@ -38,7 +40,17 @@ const useSearch = () => {
 	const [results, setResults] = createSignal<ResultType[]>([]);
 
 	const setParams = (params: Partial<SearchParams>) => {
-		setRawParams(serializeParams({ ...searchParams(), ...params }));
+		const marged = serializeParams({ ...searchParams(), ...params });
+		if (location.pathname !== "/") {
+			const paramStr = Object.entries(marged)
+				.filter((e) => e[1])
+				.map((e) => `${e[0]}=${e[1]}`)
+				.join("&");
+			navigate(`/?${paramStr}`);
+			return;
+		}
+
+		setRawParams(marged);
 	};
 
 	const setQuery = debounce((query: string) => {

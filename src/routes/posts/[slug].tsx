@@ -5,6 +5,7 @@ import { createMemo, Show } from "solid-js";
 import { DocumentView } from "~/components/DocumentView";
 import { GlobalLayout } from "~/components/layout/GlobalLayout";
 import { ProfileCard } from "~/components/ProfileCard";
+import { SearchCard } from "~/components/SearchCard";
 import { TagListView } from "~/components/TagListView";
 import { ThemeSwitcher } from "~/components/ThemeSwitcher";
 import { TocCard } from "~/components/TocCard";
@@ -92,6 +93,7 @@ export default function BlogPost() {
 							sideTop={<TocCard toc={post().toc} />}
 							sideBottom={
 								<>
+									<SearchCard />
 									<ProfileCard />
 									<ThemeSwitcher />
 								</>

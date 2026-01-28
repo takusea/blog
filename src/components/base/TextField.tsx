@@ -4,6 +4,19 @@ import styles from "./TextField.module.css";
 type Props = ComponentProps<"input"> & {
 	start?: JSX.Element;
 	end?: JSX.Element;
+	type?:
+		| "date"
+		| "datetime-local"
+		| "month"
+		| "time"
+		| "week"
+		| "email"
+		| "number"
+		| "password"
+		| "search"
+		| "tel"
+		| "text"
+		| "url";
 };
 
 const TextField = (props: Props) => {
