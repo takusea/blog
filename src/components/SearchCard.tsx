@@ -111,7 +111,9 @@ const SearchCard = () => {
 						</div>
 						<Button
 							variant={
-								searchParams().order === "relevance" ? "primary" : "default"
+								searchParams().order === "relevance" || !searchParams().order
+									? "primary"
+									: "default"
 							}
 							onClick={() => setOrderType("relevance")}
 						>
