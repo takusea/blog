@@ -4,6 +4,7 @@ import styles from "./TocList.module.css";
 
 type Props = {
 	toc: Toc[];
+	activeId?: string;
 };
 
 const TocList = (props: Props) => {
@@ -12,11 +13,15 @@ const TocList = (props: Props) => {
 			<For each={props.toc}>
 				{(toc) => (
 					<li class={styles.item}>
-						<a class={styles.link} href={`#${toc.id}`}>
+						<a
+							class={styles.link}
+							href={`#${toc.id}`}
+							data-active={props.activeId === toc.id}
+						>
 							{toc.value}
 						</a>
 						<Show when={toc.children}>
-							{(child) => <TocList toc={child()} />}
+							{(child) => <TocList toc={child()} activeId={props.activeId} />}
 						</Show>
 					</li>
 				)}
