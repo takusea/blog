@@ -10,7 +10,7 @@
 
 	--hue: 180;
 	--color-base: oklch(72.126% 0.13582 var(--hue));
-	--color-mono: oklch(from var(--color-base) l 0.005 h);
+	--color-mono: oklch(from var(--color-base) l 0.001 h);
 
 	--color-primary: light-dark(
 		oklch(from var(--color-base) 60% c h),
