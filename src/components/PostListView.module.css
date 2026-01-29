@@ -1,3 +1,15 @@
+.background {
+	position: absolute;
+	inset: -4px;
+	z-index: -1;
+	background-image: var(--background);
+	background-position: center;
+	background-size: cover;
+	border-radius: 1rem;
+	opacity: 0.1;
+	filter: blur(4px);
+}
+
 .list {
 	display: flex;
 	flex-direction: column;

@@ -56,6 +56,12 @@ export default function BlogPost() {
 					<Meta name="twitter:site" content="@takusea" />
 					<Meta name="twitter:card" content="summary" />
 					<div class="h-entry">
+						<Show when={post().metadata.thumbnail}>
+							<div
+								class={styles.background}
+								style={{ "--background": `url(${post().metadata.thumbnail})` }}
+							></div>
+						</Show>
 						<GlobalLayout
 							header={
 								<>

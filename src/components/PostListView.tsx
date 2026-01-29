@@ -1,5 +1,5 @@
 import { A } from "@solidjs/router";
-import { For } from "solid-js";
+import { For, Show } from "solid-js";
 import useSearch from "~/hooks/useSearch";
 import type { PostMetadata } from "~/type/postmetadata";
 import { Card } from "./base/Card";
@@ -20,6 +20,12 @@ const PostListView = (props: Props) => {
 					<li>
 						<A href={`/posts/${post.slug}`}>
 							<Card>
+								<Show when={post.thumbnail}>
+									<div
+										class={styles.background}
+										style={{ "--background": `url(${post.thumbnail})` }}
+									></div>
+								</Show>
 								<div class={styles.inner}>
 									<h2 class={styles.title}>{post.title}</h2>
 									<div class={styles.metadata}>

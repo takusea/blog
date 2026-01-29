@@ -19,6 +19,7 @@ const getPosts = query(async (): Promise<Post[]> => {
 				metadata: {
 					...(result.data.frontmatter as PostMetadata),
 					slug: encodeURI(fileNames[i]),
+					thumbnail: result.data.thumbnail as string,
 				} as PostMetadata,
 				toc: result.data.toc as Toc[],
 			};
