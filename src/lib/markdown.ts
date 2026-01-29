@@ -1,5 +1,7 @@
 import { transformerNotationDiff } from "@shikijs/transformers";
 import rehypeExtractToc from "@stefanprobst/rehype-extract-toc";
+import { h } from "hastscript";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypePrettyCode, { type Options } from "rehype-pretty-code";
 import rehypeRaw from "rehype-raw";
@@ -34,6 +36,13 @@ const parseMarkdown = async (markdown: string) => {
 		.use(rehypeSlug)
 		.use(rehypeExtractToc)
 		.use(rehypeExternalLinks, { target: "_blank" })
+		.use(rehypeAutolinkHeadings, {
+			behavior: "prepend",
+			content(node) {
+				const headingNumber = Number.parseInt(node.tagName.charAt(1), 10);
+				return h("span.header-link", new Array(headingNumber).fill("#"));
+			},
+		})
 		.use(rehypePrettyCode, {
 			theme: {
 				light: "one-light",

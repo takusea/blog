@@ -12,8 +12,10 @@
 }
 
 .link {
-	display: block;
 	color: var(--color-primary);
+}
+
+.link:hover {
 	text-decoration: underline;
 }
 
