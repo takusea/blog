@@ -13,12 +13,6 @@ import { TocCard } from "~/components/TocCard";
 import { getPosts } from "~/lib/posts";
 import styles from "./[slug].module.css";
 
-const IconChevronRight = clientOnly(() =>
-	import("@tabler/icons-solidjs").then((m) => ({
-		default: m.IconChevronRight,
-	})),
-);
-
 const IconTag = clientOnly(() =>
 	import("@tabler/icons-solidjs").then((m) => ({
 		default: m.IconTag,
@@ -65,12 +59,11 @@ export default function BlogPost() {
 						<GlobalLayout
 							header={
 								<>
-									<div class={styles.breadcrumbs}>
-										<A href="/" class={styles.breadcrumb}>
-											ホーム
-										</A>
-										<IconChevronRight />
-									</div>
+									<A
+										href="/"
+										class={styles.logo}
+										aria-label="たくしいのこんせき"
+									/>
 									<h1 class={`${styles.title} `}>{post().metadata.title}</h1>
 									<div class={styles.metadata}>
 										<time

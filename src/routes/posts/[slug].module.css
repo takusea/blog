@@ -1,11 +1,13 @@
-.breadcrumbs {
-	display: flex;
-	align-items: center;
-}
-
-.breadcrumb {
-	color: var(--color-primary);
-	text-decoration: underline;
+.logo {
+	width: 100%;
+	height: 2rem;
+	margin: 1rem;
+	margin-left: 0;
+	background-color: var(--color-front);
+	mask-image: url("/logo.svg");
+	mask-repeat: no-repeat;
+	mask-position: left center;
+	mask-size: contain;
 }
 
 .title {

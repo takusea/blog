@@ -38,7 +38,7 @@ export default function Index() {
 			<GlobalLayout
 				header={
 					<>
-						<h1 class={styles.title}>たくしいのこんせき</h1>
+						<h1 class={styles.logo} aria-label="たくしいのこんせき" />
 						<p>雑記だとか備忘録だとか。</p>
 					</>
 				}

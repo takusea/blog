@@ -1,6 +1,13 @@
-.title {
-	font-size: 2rem;
-	font-weight: 700;
+.logo {
+	width: 100%;
+	height: 4rem;
+	margin: 1rem;
+	margin-left: 0;
+	background-color: var(--color-front);
+	mask-image: url("/logo.svg");
+	mask-repeat: no-repeat;
+	mask-position: left center;
+	mask-size: contain;
 }
 
 .empty {
