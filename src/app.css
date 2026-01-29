@@ -25,8 +25,8 @@
 		oklch(from var(--color-mono) 95% c h)
 	);
 	--color-surface: light-dark(
-		oklch(from var(--color-mono) 100% c h / 0.5),
-		oklch(from var(--color-mono) 100% c h / 0.1)
+		oklch(from var(--color-mono) 100% c h / 0.2),
+		oklch(from var(--color-mono) 50% c h / 0.2)
 	);
 	--color-sub: oklch(from var(--color-front) l c h / 0.5);
 	--color-border: oklch(from var(--color-front) l c h / 0.2);

@@ -1,5 +1,6 @@
 .remark-link-card-plus__container {
 	container-type: inline-size;
+	backdrop-filter: blur(16px);
 }
 
 .remark-link-card-plus__card {
