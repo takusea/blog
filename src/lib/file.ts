@@ -14,22 +14,4 @@ const findFiles = (dir: string, extension: string) => {
 
 const readFile = (filepath: string) => fs.readFileSync(filepath, "utf-8");
 
-const copyFile = (fromDir: string, toDir: string) => {
-	"use server";
-
-	const from = joinRootPath(fromDir);
-	const to = joinRootPath(toDir);
-
-	fs.mkdirSync(path.dirname(to), { recursive: true });
-
-	if (!fs.existsSync(from)) {
-		console.error(`image cannot find: ${from}`);
-	} else if (fs.existsSync(to)) {
-		console.error(`image already exists: ${to}`);
-	} else {
-		fs.copyFileSync(from, to);
-		console.log(`image copied: ${to}`);
-	}
-};
-
-export { findFiles, copyFile, readFile };
+export { findFiles, readFile };

@@ -2,11 +2,9 @@ import type { Root } from "hast";
 import { visit } from "unist-util-visit";
 import type { VFile } from "vfile";
 
-const rehypeSelectThumbnail = () => {
+const rehypeRelocateLocalImage = () => {
 	return (tree: Root, vfile: VFile) => {
 		visit(tree, "element", (node) => {
-			if (vfile.data.thumbnail) return;
-
 			if (node.tagName !== "img") return;
 
 			const src = node.properties?.src;
@@ -20,9 +18,14 @@ const rehypeSelectThumbnail = () => {
 				return;
 			}
 
-			vfile.data.thumbnail = node.properties.src;
+			node.properties.src = `/posts/${src}`;
+			node.properties.class = "u-photo";
+
+			if (!vfile.data.thumbnail) {
+				vfile.data.thumbnail = node.properties.src;
+			}
 		});
 	};
 };
 
-export { rehypeSelectThumbnail };
+export default rehypeRelocateLocalImage;

@@ -4,7 +4,7 @@
 	"scripts": {
 		"dev": "vinxi dev",
 		"build": "vinxi build",
-		"postbuild": "pagefind --site .output/public",
+		"postbuild": "node scripts/copy-images.js && pagefind --site .output/public",
 		"start": "vinxi start",
 		"check": "biome check --write .",
 		"check:ci": "biome ci .",

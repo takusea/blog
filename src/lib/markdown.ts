@@ -13,8 +13,7 @@ import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import { unified } from "unified";
 import yaml from "yaml";
-import { rehypeRelocateLocalImage } from "~/lib/unifiedPlugins/rehypeRelocateLocalImage";
-import { rehypeSelectThumbnail } from "./unifiedPlugins/rehypeSelectThumbnail";
+import rehypeRelocateLocalImage from "~/lib/unifiedPlugins/rehypeLocalImage";
 
 const parseMarkdown = async (markdown: string) => {
 	"use server";
@@ -45,7 +44,6 @@ const parseMarkdown = async (markdown: string) => {
 		} as Options)
 		.use(rehypeRaw)
 		.use(rehypeRelocateLocalImage)
-		.use(rehypeSelectThumbnail)
 		.use(rehypeStringify, { allowDangerousHtml: true });
 
 	return processor.process(markdown);
