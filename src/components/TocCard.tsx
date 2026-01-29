@@ -23,11 +23,15 @@ const TocCard = (props: Props) => {
 	const [activeId, setActiveId] = createSignal<string>();
 
 	onMount(() => {
-		const headings = document.querySelectorAll(
-			flattenToc(props.toc)
-				.map((t) => `#${t.id}`)
-				.join(","),
-		);
+		const tocQuery = flattenToc(props.toc)
+			.map((t) => `#${t.id}`)
+			.join(",");
+
+		if (tocQuery === "") {
+			return;
+		}
+
+		const headings = document.querySelectorAll(tocQuery);
 
 		const observer = new IntersectionObserver(
 			(entries) => {

@@ -94,7 +94,9 @@ export default function BlogPost() {
 							sideTop={
 								<>
 									<SearchCard />
-									<TocCard toc={post().toc} />
+									<Show when={post().toc.length !== 0}>
+										<TocCard toc={post().toc} />
+									</Show>
 								</>
 							}
 							sideBottom={
