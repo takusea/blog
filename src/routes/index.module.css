@@ -1,10 +1,9 @@
 .logo {
 	width: 100%;
-	height: 4rem;
-	margin: 1rem;
-	margin-left: 0;
+	aspect-ratio: 6 / 1;
+	image-rendering: pixelated;
 	background-color: var(--color-front);
-	mask-image: url("/logo.svg");
+	mask-image: url("/logo.png");
 	mask-repeat: no-repeat;
 	mask-position: left center;
 	mask-size: contain;
