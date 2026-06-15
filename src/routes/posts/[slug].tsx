@@ -41,7 +41,7 @@ export default function BlogPost() {
 					<Title>{`${post().metadata.title} - たくしいのこんせき`}</Title>
 					<Link
 						rel="canonical"
-						href={`https://blog.takusea.com/posts/${post().metadata.slug}`}
+						href={`https://blog.takusea.com/posts/${post().metadata.slug}/`}
 					/>
 					<Meta
 						property="og:title"
@@ -50,7 +50,7 @@ export default function BlogPost() {
 					<Meta property="og:type" content="article" />
 					<Meta
 						property="og:url"
-						content={`https://blog.takusea.com/posts/${post().metadata.slug}`}
+						content={`https://blog.takusea.com/posts/${post().metadata.slug}/`}
 					/>
 					<Meta property="og:site_name" content="たくしいのこんせき" />
 					<Meta name="twitter:site" content="@takusea" />
