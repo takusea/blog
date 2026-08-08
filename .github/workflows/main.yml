@@ -24,7 +24,7 @@ jobs:
           path: public/posts
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         with:
           node-version: 24
 
