@@ -18,7 +18,7 @@
 	);
 	--color-back: light-dark(
 		oklch(from var(--color-mono) 99% c h),
-		oklch(from var(--color-mono) 20% c h)
+		oklch(from var(--color-mono) 10% c h)
 	);
 	--color-front: light-dark(
 		oklch(from var(--color-mono) 25% c h),
