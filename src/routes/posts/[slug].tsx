@@ -119,7 +119,7 @@ export default function BlogPost() {
 								<DocumentView document={post().content} />
 							</div>
 						</GlobalLayout>
-						{/** biome-ignore lint/a11y/useAnchorContent: <explanation> */}
+						{/** biome-ignore lint/a11y/useAnchorContent: Bridgy Fed用のリンク */}
 						<a
 							style="display: none;"
 							class="u-bridgy-fed"
