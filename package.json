@@ -6,8 +6,9 @@
 		"build": "vite build",
 		"start": "vite start",
 		"postbuild": "node scripts/copy-images.js && pagefind --site .output/public",
-		"check": "biome check --write .",
-		"check:ci": "biome ci .",
+		"lint:check": "biome check",
+		"lint:fix": "biome check --write",
+		"lint:ci": "biome ci",
 		"typecheck": "tsc --noEmit"
 	},
 	"dependencies": {
