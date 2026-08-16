@@ -1,5 +1,4 @@
-import { useLocation, useNavigate, useSearchParams } from "@solidjs/router";
-import { createEffect, createMemo, createSignal } from "solid-js";
+import { createEffect, createMemo, createSignal, onCleanup } from "solid-js";
 import { debounce } from "~/lib/debounce";
 import type { ResultType } from "~/type/pagefind";
 
@@ -13,44 +12,64 @@ type SearchParams = {
 
 const SEARCH_DEBOUNCE_MS = 300;
 
-const parseParams = (
-	params: Record<string, string | string[] | undefined>,
-): SearchParams => ({
-	query: typeof params.q === "string" ? params.q : "",
-	tags: typeof params.tags === "string" ? params.tags.split(",") : [],
-	order: (params.order as OrderType) ?? "",
+const parseSearchParams = (params: URLSearchParams): SearchParams => ({
+	query: params.get("q") ?? "",
+	tags: params.get("tags")?.split(",").filter(Boolean) ?? [],
+	order: (params.get("order") as OrderType) ?? "relevance",
 });
 
-const serializeParams = (params: SearchParams) => ({
-	q: params.query || undefined,
-	tags: params.tags?.length ? params.tags.join(",") : undefined,
-	order: params.order,
-});
+const serializeParams = (params: SearchParams) => {
+	const next = new URLSearchParams();
+
+	if (params.query) next.set("q", params.query);
+	if (params.tags.length > 0) next.set("tags", params.tags.join(","));
+	if (params.order && params.order !== "relevance") {
+		next.set("order", params.order);
+	}
+
+	return next;
+};
+
+const readParams = () => {
+	if (typeof window === "undefined") {
+		return { query: "", tags: [], order: "relevance" } as SearchParams;
+	}
+	return parseSearchParams(new URLSearchParams(window.location.search));
+};
+
+const [searchParams, setSearchParams] = createSignal<SearchParams>(
+	readParams(),
+);
+const [results, setResults] = createSignal<ResultType[]>([]);
+
+const isSearching = createMemo(
+	() => searchParams().query !== "" || searchParams().tags.length !== 0,
+);
 
 const useSearch = () => {
-	const navigate = useNavigate();
-	const location = useLocation();
-	const [rawParams, setRawParams] = useSearchParams();
-	const searchParams = createMemo<SearchParams>(() => parseParams(rawParams));
+	const syncFromLocation = () => {
+		setSearchParams(readParams());
+	};
 
-	const isSearching = createMemo(() => {
-		return searchParams().query !== "" || searchParams().tags.length !== 0;
-	});
-
-	const [results, setResults] = createSignal<ResultType[]>([]);
+	if (typeof window !== "undefined") {
+		window.addEventListener("popstate", syncFromLocation);
+		onCleanup(() => window.removeEventListener("popstate", syncFromLocation));
+	}
 
 	const setParams = (params: Partial<SearchParams>) => {
-		const marged = serializeParams({ ...searchParams(), ...params });
-		if (location.pathname !== "/") {
-			const paramStr = Object.entries(marged)
-				.filter((e) => e[1])
-				.map((e) => `${e[0]}=${e[1]}`)
-				.join("&");
-			navigate(`/?${paramStr}`);
-			return;
+		const merged = { ...searchParams(), ...params };
+		const next = serializeParams(merged);
+
+		if (typeof window !== "undefined") {
+			const nextUrl = `/${next.size > 0 ? `?${next.toString()}` : ""}`;
+			if (window.location.pathname !== "/") {
+				window.location.href = nextUrl;
+			} else {
+				window.history.replaceState({}, "", nextUrl);
+			}
 		}
 
-		setRawParams(marged);
+		setSearchParams(merged);
 	};
 
 	const setQuery = debounce((query: string) => {
@@ -59,7 +78,6 @@ const useSearch = () => {
 
 	const toggleSelectedTags = (tag: string) => {
 		const { tags } = searchParams();
-
 		const next = tags.includes(tag)
 			? tags.filter((t) => t !== tag)
 			: [...tags, tag];
@@ -72,7 +90,7 @@ const useSearch = () => {
 	};
 
 	const search = async (params: SearchParams) => {
-		if (!window.pagefind) return;
+		if (typeof window === "undefined" || !window.pagefind) return;
 
 		const sort =
 			params.order === "relevance"
@@ -90,8 +108,7 @@ const useSearch = () => {
 	};
 
 	createEffect(() => {
-		const params = searchParams();
-		search(params);
+		search(searchParams());
 	});
 
 	return {

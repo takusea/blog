@@ -1,40 +1,40 @@
 import { createEffect, createSignal } from "solid-js";
 
-const signal = createSignal<string | undefined>();
+const getCookieValue = async (key: string) => {
+	return (await cookieStore.get(key))?.value;
+};
+
+const setCookieValue = async (key: string, value: string) => {
+	await cookieStore.set({
+		name: key,
+		value,
+		path: "/",
+		expires: Date.now() + 31536000 * 1000,
+		sameSite: "lax",
+	});
+};
+
+const deleteCookieValue = async (key: string) => {
+	await cookieStore.delete(key);
+};
 
 const useCookie = (key: string) => {
-	const [value, setValue] = signal;
-
-	const readCookie = async () => {
-		const cookie = await window.cookieStore.get(key);
-		return cookie?.value;
-	};
-
-	const writeCookie = async (value: string) => {
-		await window.cookieStore.set({
-			name: key,
-			value,
-		});
-	};
-
-	const deleteCookie = async () => {
-		await window.cookieStore.delete(key);
-	};
+	const [value, setValue] = createSignal<string | undefined>();
 
 	createEffect(() => {
-		readCookie().then(setValue);
+		void getCookieValue(key).then(setValue);
 	});
 
 	createEffect(() => {
-		const v = value();
-		if (v) {
-			writeCookie(v);
+		const current = value();
+		if (current) {
+			void setCookieValue(key, current);
 		} else {
-			deleteCookie();
+			void deleteCookieValue(key);
 		}
 	});
 
-	return signal;
+	return [value, setValue] as const;
 };
 
 export default useCookie;

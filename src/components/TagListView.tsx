@@ -1,12 +1,14 @@
 import { For } from "solid-js";
+import useSearch from "~/hooks/useSearch";
 import styles from "./TagListView.module.css";
 
 type Props = {
 	tags: string[];
-	onSelect?: (tag: string) => void;
 };
 
 const TagListView = (props: Props) => {
+	const { toggleSelectedTags } = useSearch();
+
 	return (
 		<ul class={styles.list}>
 			<For each={props.tags}>
@@ -17,7 +19,7 @@ const TagListView = (props: Props) => {
 							class={styles.item}
 							on:click={(e) => {
 								e.preventDefault();
-								props.onSelect?.(tag);
+								toggleSelectedTags(tag);
 							}}
 						>
 							{tag}

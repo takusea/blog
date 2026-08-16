@@ -1,42 +1,13 @@
-import { clientOnly } from "@solidjs/start";
+import {
+	IconBrandBluesky,
+	IconBrandGithub,
+	IconBrandX,
+	IconBrandYoutube,
+	IconDeviceTv,
+	IconUserCircle,
+} from "@tabler/icons-solidjs";
 import { Card } from "./base/Card";
 import styles from "./ProfileCard.module.css";
-
-const IconBrandBluesky = clientOnly(() =>
-	import("@tabler/icons-solidjs").then((m) => ({
-		default: m.IconBrandBluesky,
-	})),
-);
-
-const IconBrandGithub = clientOnly(() =>
-	import("@tabler/icons-solidjs").then((m) => ({
-		default: m.IconBrandGithub,
-	})),
-);
-
-const IconBrandX = clientOnly(() =>
-	import("@tabler/icons-solidjs").then((m) => ({
-		default: m.IconBrandX,
-	})),
-);
-
-const IconBrandYoutube = clientOnly(() =>
-	import("@tabler/icons-solidjs").then((m) => ({
-		default: m.IconBrandYoutube,
-	})),
-);
-
-const IconDeviceTv = clientOnly(() =>
-	import("@tabler/icons-solidjs").then((m) => ({
-		default: m.IconDeviceTv,
-	})),
-);
-
-const IconUserCircle = clientOnly(() =>
-	import("@tabler/icons-solidjs").then((m) => ({
-		default: m.IconUserCircle,
-	})),
-);
 
 const ProfileCard = () => {
 	return (

@@ -1,15 +1,9 @@
-import { clientOnly } from "@solidjs/start";
+import { IconList } from "@tabler/icons-solidjs";
 import { createSignal, onCleanup, onMount } from "solid-js";
 import type { Toc } from "~/type/toc";
 import { Card } from "./base/Card";
 import styles from "./TocCard.module.css";
 import { TocList } from "./TocList";
-
-const IconList = clientOnly(() =>
-	import("@tabler/icons-solidjs").then((m) => ({
-		default: m.IconList,
-	})),
-);
 
 type Props = {
 	toc: Toc[];

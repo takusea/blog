@@ -1,4 +1,3 @@
-import { A } from "@solidjs/router";
 import { createEffect, createSignal, For } from "solid-js";
 import type { ResultData, ResultType } from "~/type/pagefind";
 import { Card } from "./base/Card";
@@ -27,14 +26,14 @@ const SearchResultView = (props: Props) => {
 			<For each={results()}>
 				{(data) => (
 					<li>
-						<A href={data.url}>
+						<a href={data.url}>
 							<Card>
 								<div class={styles.inner}>
 									<h2 class={styles.title}>{data.meta.title}</h2>
 									<p class={styles.excerpt} innerHTML={data.excerpt} />
 								</div>
 							</Card>
-						</A>
+						</a>
 					</li>
 				)}
 			</For>

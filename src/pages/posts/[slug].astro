@@ -1,0 +1,110 @@
+---
+import docStyles from "~/components/DocumentView.module.css";
+import { LatestPostsCard } from "~/components/LatestPostsCard";
+import layoutStyles from "~/components/layout/GlobalLayout.module.css";
+import { ProfileCard } from "~/components/ProfileCard";
+import { SearchCard } from "~/components/SearchCard";
+import { ThemeSwitcher } from "~/components/ThemeSwitcher";
+import { TocCard } from "~/components/TocCard";
+import "~/components/RemarkLinkCardPlus.css";
+import "~/components/RehypePrettyCode.css";
+import { getPosts } from "~/lib/posts";
+import postStyles from "~/routes/posts/[slug].module.css";
+import "~/app.css";
+import "destyle.css";
+import { navigate } from "astro:transitions/client";
+import { IconCalendar, IconTag } from "@tabler/icons-solidjs";
+import { TagListView } from "~/components/TagListView";
+
+export async function getStaticPaths() {
+	const posts = await getPosts();
+	return posts.map((post) => ({
+		params: { slug: post.metadata.slug },
+	}));
+}
+
+const { slug } = Astro.params;
+const posts = await getPosts();
+const post = posts.find((entry) => entry.metadata.slug === slug);
+
+if (!post) {
+	throw new Error(`Post not found: ${slug}`);
+}
+
+const latestPosts = posts
+	.filter((entry) => entry.metadata.slug !== post.metadata.slug)
+	.slice(0, 5)
+	.map((entry) => entry.metadata);
+---
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{`${post.metadata.title} - たくしいのこんせき`}</title>
+    <meta property="og:title" content={`${post.metadata.title} - たくしいのこんせき`} />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content={`https://blog.takusea.com/posts/${post.metadata.slug}/`} />
+    <meta property="og:site_name" content="たくしいのこんせき" />
+    <meta name="twitter:site" content="@takusea" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="canonical" href={`https://blog.takusea.com/posts/${post.metadata.slug}/`} />
+    <script src="/pagefind/pagefind.js" is:inline></script>
+  </head>
+  <body>
+    <div class={layoutStyles.wrapper} style="position: relative;">
+      {post.metadata.thumbnail && (
+        <div
+          class={postStyles.background}
+          style={`--background: url(${post.metadata.thumbnail})`}
+        >
+        </div>
+      )}
+      <div class={layoutStyles.grid}>
+        <header class={layoutStyles.header}>
+          <a href="/" class={postStyles.logo} aria-label="たくしいのこんせき"></a>
+          <h1 class={postStyles.title}>{post.metadata.title}</h1>
+          <div class={postStyles.metadata}>
+            <time class={postStyles.date} datetime={post.metadata.date}>
+              <IconCalendar />
+              {post.metadata.date}
+            </time>
+            <div class={postStyles.tag}>
+              <IconTag />
+              <TagListView
+                tags={post.metadata.tags}
+                client:load
+              />
+            </div>
+          </div>
+        </header>
+
+        <aside class={layoutStyles.side}>
+          <SearchCard client:load />
+          {post.toc.length !== 0 && <TocCard toc={post.toc} client:load />}
+          <div class={layoutStyles.bottom}>
+            <LatestPostsCard posts={latestPosts} client:load />
+            <ProfileCard />
+            <ThemeSwitcher client:load />
+          </div>
+        </aside>
+
+        <main class={layoutStyles.main}>
+          <article class={docStyles.document} set:html={post.content}></article>
+        </main>
+
+        <div class={layoutStyles.mobile}>
+          <LatestPostsCard posts={latestPosts} client:load />
+          <ProfileCard />
+          <ThemeSwitcher client:load />
+        </div>
+      </div>
+      <footer class={layoutStyles.footer}>©2026 takusea</footer>
+    </div>
+
+    <script is:inline>
+      const hue = ((Date.now() % 86400000) / 86400000) * 360;
+      document.documentElement.style.setProperty("--hue", hue.toString());
+    </script>
+  </body>
+</html>

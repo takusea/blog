@@ -1,26 +1,12 @@
-import { clientOnly } from "@solidjs/start";
+import {
+	IconDevicesPc,
+	IconMoon,
+	IconSun,
+} from "@tabler/icons-solidjs";
 import useCookie from "~/hooks/useCookie";
 import { Button } from "./base/Button";
 import { Card } from "./base/Card";
 import styles from "./ThemeSwitcher.module.css";
-
-const IconSun = clientOnly(() =>
-	import("@tabler/icons-solidjs").then((m) => ({
-		default: m.IconSun,
-	})),
-);
-
-const IconMoon = clientOnly(() =>
-	import("@tabler/icons-solidjs").then((m) => ({
-		default: m.IconMoon,
-	})),
-);
-
-const IconDevicesPc = clientOnly(() =>
-	import("@tabler/icons-solidjs").then((m) => ({
-		default: m.IconDevicesPc,
-	})),
-);
 
 const ThemeSwitcher = () => {
 	const [theme, setTheme] = useCookie("theme");

@@ -1,40 +1,16 @@
-import { clientOnly } from "@solidjs/start";
+import {
+	IconArrowsSort,
+	IconDotsVertical,
+	IconSearch,
+	IconTag,
+} from "@tabler/icons-solidjs";
 import { createEffect, createSignal, Show } from "solid-js";
 import useSearch from "~/hooks/useSearch";
 import { Button } from "./base/Button";
 import { Card } from "./base/Card";
+import { TextField } from "./base/TextField";
 import styles from "./SearchCard.module.css";
 import { TagListView } from "./TagListView";
-
-const TextField = clientOnly(() =>
-	import("~/components/base/TextField").then((m) => ({
-		default: m.TextField,
-	})),
-);
-
-const IconSearch = clientOnly(() =>
-	import("@tabler/icons-solidjs").then((m) => ({
-		default: m.IconSearch,
-	})),
-);
-
-const IconDotsVertical = clientOnly(() =>
-	import("@tabler/icons-solidjs").then((m) => ({
-		default: m.IconDotsVertical,
-	})),
-);
-
-const IconArrowsSort = clientOnly(() =>
-	import("@tabler/icons-solidjs").then((m) => ({
-		default: m.IconArrowsSort,
-	})),
-);
-
-const IconTag = clientOnly(() =>
-	import("@tabler/icons-solidjs").then((m) => ({
-		default: m.IconTag,
-	})),
-);
 
 const SearchCard = () => {
 	let textField!: HTMLInputElement;
@@ -53,8 +29,7 @@ const SearchCard = () => {
 		fetchTagList();
 	});
 
-	const { searchParams, setQuery, toggleSelectedTags, setOrderType } =
-		useSearch();
+	const { searchParams, setQuery, setOrderType } = useSearch();
 
 	createEffect(() => {
 		if (textField && searchParams().query !== "") {
@@ -84,10 +59,7 @@ const SearchCard = () => {
 				<Show when={searchParams().tags.length !== 0}>
 					<div class={styles.tags}>
 						<IconTag />
-						<TagListView
-							tags={searchParams().tags}
-							onSelect={toggleSelectedTags}
-						/>
+						<TagListView tags={searchParams().tags} />
 					</div>
 				</Show>
 				<Show when={detailShowed()}>
@@ -101,7 +73,6 @@ const SearchCard = () => {
 							tags={tagList().filter(
 								(tag) => !searchParams().tags.includes(tag),
 							)}
-							onSelect={toggleSelectedTags}
 						/>
 					</div>
 					<div class={styles.column}>

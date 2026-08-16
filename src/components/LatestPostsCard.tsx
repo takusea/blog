@@ -1,14 +1,8 @@
-import { clientOnly } from "@solidjs/start";
+import { IconNews } from "@tabler/icons-solidjs";
 import type { PostMetadata } from "~/type/postmetadata";
 import { Card } from "./base/Card";
 import styles from "./LatestPostsCard.module.css";
 import { PostListView } from "./PostListView";
-
-const IconNews = clientOnly(() =>
-	import("@tabler/icons-solidjs").then((m) => ({
-		default: m.IconNews,
-	})),
-);
 
 type Props = {
 	posts: PostMetadata[];

@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 
 const srcDir = path.join(process.cwd(), "public/");
-const destDir = path.join(process.cwd(), ".output/public");
+const destDir = path.join(process.cwd(), "dist");
 const extensions = [".png", ".jpg", ".jpeg", ".gif", ".webp"];
 
 async function copyRecursive(src, dest) {
