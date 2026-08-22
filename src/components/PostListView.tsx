@@ -1,5 +1,5 @@
 import { For, Show } from "solid-js";
-import type { PostMetadata } from "~/type/postmetadata";
+import type { PostMetadata } from "~/type/post";
 import { Card } from "./base/Card";
 import styles from "./PostListView.module.css";
 import { TagListView } from "./TagListView";

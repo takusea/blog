@@ -5,3 +5,9 @@ export type PostMetadata = {
 	tags: string[];
 	thumbnail: string;
 };
+
+export type PostToc = {
+	id: string;
+	value: string;
+	children: PostToc[];
+};

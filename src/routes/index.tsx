@@ -2,7 +2,7 @@ import { Match, Switch } from "solid-js";
 import { PostListView } from "~/components/PostListView";
 import { SearchResultView } from "~/components/SearchResultView";
 import useSearch from "~/hooks/useSearch";
-import type { PostMetadata } from "~/type/postmetadata";
+import type { PostMetadata } from "~/type/post";
 import styles from "./index.module.css";
 
 type Props = {

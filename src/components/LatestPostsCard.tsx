@@ -1,5 +1,5 @@
 import { IconNews } from "@tabler/icons-solidjs";
-import type { PostMetadata } from "~/type/postmetadata";
+import type { PostMetadata } from "~/type/post";
 import { Card } from "./base/Card";
 import styles from "./LatestPostsCard.module.css";
 import { PostListView } from "./PostListView";

@@ -1,15 +1,15 @@
 import { IconList } from "@tabler/icons-solidjs";
 import { createSignal, onCleanup, onMount } from "solid-js";
-import type { Toc } from "~/type/toc";
+import type { PostToc } from "~/type/post";
 import { Card } from "./base/Card";
 import styles from "./TocCard.module.css";
 import { TocList } from "./TocList";
 
 type Props = {
-	toc: Toc[];
+	toc: PostToc[];
 };
 
-const flattenToc = (tocs: Toc[] = []): Toc[] => {
+const flattenToc = (tocs: PostToc[] = []): PostToc[] => {
 	return tocs.flatMap((toc) => [toc, ...flattenToc(toc.children)]);
 };
 

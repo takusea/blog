@@ -1,9 +1,9 @@
 import { For, Show } from "solid-js";
-import type { Toc } from "~/type/toc";
+import type { PostToc } from "~/type/post";
 import styles from "./TocList.module.css";
 
 type Props = {
-	toc: Toc[];
+	toc: PostToc[];
 	activeId?: string;
 };
 

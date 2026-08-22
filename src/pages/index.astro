@@ -8,7 +8,7 @@ import "~/app.css";
 import "destyle.css";
 import { getCollection } from "astro:content";
 import Index from "~/routes";
-import type { PostMetadata } from "~/type/postmetadata";
+import type { PostMetadata } from "~/type/post";
 
 const posts = (await getCollection("posts"))
 	.map(

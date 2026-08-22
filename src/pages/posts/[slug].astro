@@ -14,8 +14,7 @@ import "destyle.css";
 import { getCollection, render } from "astro:content";
 import { IconCalendar, IconTag } from "@tabler/icons-solidjs";
 import { TagListView } from "~/components/TagListView";
-import type { PostMetadata } from "~/type/postmetadata";
-import type { Toc } from "~/type/toc";
+import type { PostMetadata, PostToc } from "~/type/post";
 
 export async function getStaticPaths() {
 	const posts = await getCollection("posts");
@@ -31,8 +30,8 @@ const post = Astro.props.post ?? posts.find((entry) => entry.id === slug);
 
 const { Content, headings } = await render(post);
 
-const toc = headings.reduce<Toc[]>((tree, heading) => {
-	const item: Toc = {
+const toc = headings.reduce<PostToc[]>((tree, heading) => {
+	const item: PostToc = {
 		id: heading.slug,
 		value: heading.text,
 		children: [],
