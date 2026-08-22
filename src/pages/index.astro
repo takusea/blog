@@ -1,20 +1,25 @@
 ---
 import layoutStyles from "~/components/layout/GlobalLayout.module.css";
-import { PostListView } from "~/components/PostListView";
 import { ProfileCard } from "~/components/ProfileCard";
 import { SearchCard } from "~/components/SearchCard";
 import { ThemeSwitcher } from "~/components/ThemeSwitcher";
-import { getPosts } from "~/lib/posts";
 import homeStyles from "~/routes/index.module.css";
 import "~/app.css";
 import "destyle.css";
-import { SearchResultView } from "~/components/SearchResultView";
-import useSearch from "~/hooks/useSearch";
+import { getCollection } from "astro:content";
 import Index from "~/routes";
+import type { PostMetadata } from "~/type/postmetadata";
 
-const posts = await getPosts();
-const postMetadatas = posts.map((post) => post.metadata);
-const { results, isSearching } = useSearch();
+const posts = (await getCollection("posts"))
+	.map(
+		(entry) =>
+			({
+				...entry.data,
+				slug: entry.id,
+				thumbnail: entry.data.thumbnail,
+			} as PostMetadata),
+	)
+	.toSorted((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 ---
 
 <html lang="ja">
@@ -55,7 +60,7 @@ const { results, isSearching } = useSearch();
           </div>
         </aside>
         <main class={layoutStyles.main}>
-          <Index posts={postMetadatas} client:load />
+          <Index posts={posts} client:load />
         </main>
         <div class={layoutStyles.mobile}>
           <ProfileCard />

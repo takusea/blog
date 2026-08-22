@@ -31,6 +31,6 @@ Thumbs.db
 /.astro/
 /dist/
 
-/public/posts/
+/src/content/posts/
 /public/remark-link-card-plus/
 /public/sitemap*

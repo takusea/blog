@@ -8,71 +8,89 @@ import { ThemeSwitcher } from "~/components/ThemeSwitcher";
 import { TocCard } from "~/components/TocCard";
 import "~/components/RemarkLinkCardPlus.css";
 import "~/components/RehypePrettyCode.css";
-import { getPosts } from "~/lib/posts";
 import postStyles from "~/routes/posts/[slug].module.css";
 import "~/app.css";
 import "destyle.css";
-import { navigate } from "astro:transitions/client";
+import { getCollection, render } from "astro:content";
 import { IconCalendar, IconTag } from "@tabler/icons-solidjs";
 import { TagListView } from "~/components/TagListView";
+import type { PostMetadata } from "~/type/postmetadata";
+import type { Toc } from "~/type/toc";
 
 export async function getStaticPaths() {
-	const posts = await getPosts();
+	const posts = await getCollection("posts");
 	return posts.map((post) => ({
-		params: { slug: post.metadata.slug },
+		params: { slug: post.id },
+		props: { post },
 	}));
 }
 
 const { slug } = Astro.params;
-const posts = await getPosts();
-const post = posts.find((entry) => entry.metadata.slug === slug);
+const posts = await getCollection("posts");
+const post = Astro.props.post ?? posts.find((entry) => entry.id === slug);
 
-if (!post) {
-	throw new Error(`Post not found: ${slug}`);
-}
+const { Content, headings } = await render(post);
+
+const toc = headings.reduce<Toc[]>((tree, heading) => {
+	const item: Toc = {
+		id: heading.slug,
+		value: heading.text,
+		children: [],
+	};
+	let level = heading.depth;
+	let branch = tree;
+
+	while (level > 2 && branch.at(-1)) {
+		branch = branch.at(-1)?.children ?? branch;
+		level -= 1;
+	}
+
+	branch.push(item);
+	return tree;
+}, []);
 
 const latestPosts = posts
-	.filter((entry) => entry.metadata.slug !== post.metadata.slug)
+	.filter((entry) => entry.id !== post.id)
 	.slice(0, 5)
-	.map((entry) => entry.metadata);
+	.map((entry) => ({ ...entry.data, slug: entry.id }) as PostMetadata);
 ---
 
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{`${post.metadata.title} - たくしいのこんせき`}</title>
-    <meta property="og:title" content={`${post.metadata.title} - たくしいのこんせき`} />
+    <title>{`${post.data.title} - たくしいのこんせき`}</title>
+    <meta property="og:title" content={`${post.data.title} - たくしいのこんせき`} />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content={`https://blog.takusea.com/posts/${post.metadata.slug}/`} />
+    <meta property="og:url" content={`https://blog.takusea.com/posts/${post.id}/`} />
     <meta property="og:site_name" content="たくしいのこんせき" />
     <meta name="twitter:site" content="@takusea" />
     <meta name="twitter:card" content="summary" />
-    <link rel="canonical" href={`https://blog.takusea.com/posts/${post.metadata.slug}/`} />
+    <link rel="canonical" href={`https://blog.takusea.com/posts/${post.id}/`} />
     <script src="/pagefind/pagefind.js" is:inline></script>
   </head>
   <body>
     <div class={layoutStyles.wrapper} style="position: relative;">
-      {post.metadata.thumbnail && (
+      {post.data.thumbnail && (
         <div
           class={postStyles.background}
-          style={`--background: url(${post.metadata.thumbnail})`}
+          style={`--background: url(${post.data.thumbnail})`}
         >
         </div>
       )}
       <div class={layoutStyles.grid}>
         <header class={layoutStyles.header}>
           <a href="/" class={postStyles.logo} aria-label="たくしいのこんせき"></a>
-          <h1 class={postStyles.title}>{post.metadata.title}</h1>
+          <h1 class={postStyles.title}>{post.data.title}</h1>
           <div class={postStyles.metadata}>
-            <time class={postStyles.date} datetime={post.metadata.date}>
+            <time class={postStyles.date} datetime={post.data.date}>
               <IconCalendar />
-              {post.metadata.date}
+              {post.data.date}
             </time>
             <div class={postStyles.tag}>
               <IconTag />
               <TagListView
-                tags={post.metadata.tags}
+                tags={post.data.tags}
                 client:load
               />
             </div>
@@ -81,7 +99,7 @@ const latestPosts = posts
 
         <aside class={layoutStyles.side}>
           <SearchCard client:load />
-          {post.toc.length !== 0 && <TocCard toc={post.toc} client:load />}
+          {toc.length !== 0 && <TocCard toc={toc} client:load />}
           <div class={layoutStyles.bottom}>
             <LatestPostsCard posts={latestPosts} client:load />
             <ProfileCard />
@@ -90,7 +108,9 @@ const latestPosts = posts
         </aside>
 
         <main class={layoutStyles.main}>
-          <article class={docStyles.document} set:html={post.content}></article>
+          <article class={docStyles.document} data-pagefind-body>
+            <Content />
+          </article>
         </main>
 
         <div class={layoutStyles.mobile}>
