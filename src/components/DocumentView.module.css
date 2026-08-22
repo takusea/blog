@@ -121,7 +121,7 @@
 	margin-bottom: 0;
 }
 
-.document pre:not:where([data-rehype-pretty-code-figure]) {
+.document pre:not(:where([data-rehype-pretty-code-figure])) {
 	padding: 1rem;
 	overflow: auto;
 	line-height: 1;
@@ -134,7 +134,13 @@
 	border-collapse: collapse;
 }
 
-.document img:not(:global(.remark-link-card-plus__image)) {
+.document
+	img:not(
+		:where(
+			:global(.remark-link-card-plus__card),
+			:global(.remark-link-card-plus__card *)
+		)
+	) {
 	display: block;
 	max-width: 100%;
 	height: auto;

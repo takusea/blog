@@ -53,6 +53,11 @@
 	color: var(--color-sub);
 }
 
+.remark-link-card-plus__favicon {
+	width: 16px;
+	height: 16px;
+}
+
 @container (max-width: 480px) {
 	.remark-link-card-plus__card {
 		grid-template-columns: 1fr;
