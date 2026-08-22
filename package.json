@@ -5,7 +5,7 @@
 		"dev": "astro dev",
 		"build": "astro build",
 		"start": "astro preview",
-		"postbuild": "node scripts/copy-images.js && pagefind --site dist",
+		"postbuild": "pagefind --site dist",
 		"lint:check": "biome check",
 		"lint:fix": "biome check --write",
 		"lint:ci": "biome ci",
