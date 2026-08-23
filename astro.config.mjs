@@ -1,4 +1,5 @@
 import { rehypeHeadingIds, unified } from "@astrojs/markdown-remark";
+import sitemap from "@astrojs/sitemap";
 import solid from "@astrojs/solid-js";
 import { transformerNotationDiff } from "@shikijs/transformers";
 import { defineConfig } from "astro/config";
@@ -15,7 +16,7 @@ export default defineConfig({
 	site: "https://blog.takusea.com",
 	trailingSlash: "always",
 	output: "static",
-	integrations: [solid()],
+	integrations: [solid(), sitemap()],
 	vite: {
 		server: {
 			host: "0.0.0.0",
