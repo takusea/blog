@@ -1,4 +1,4 @@
-import { type ComponentProps, type JSX, Show } from "solid-js";
+import { type ComponentProps, type JSX, Show, splitProps } from "solid-js";
 import styles from "./TextField.module.css";
 
 type Props = ComponentProps<"input"> & {
@@ -20,16 +20,16 @@ type Props = ComponentProps<"input"> & {
 };
 
 const TextField = (props: Props) => {
-	const { start, end, ...inputProps } = props;
+	const [fieldProps, inputProps] = splitProps(props, ["start", "end"]);
 
 	return (
 		<div class={styles.wrapper}>
-			<Show when={start}>
-				<div class={styles.start}>{start}</div>
+			<Show when={fieldProps.start}>
+				<div class={styles.start}>{fieldProps.start}</div>
 			</Show>
 			<input {...inputProps} class={styles.search} />
-			<Show when={end}>
-				<div class={styles.end}>{end}</div>
+			<Show when={fieldProps.end}>
+				<div class={styles.end}>{fieldProps.end}</div>
 			</Show>
 		</div>
 	);

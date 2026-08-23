@@ -57,7 +57,7 @@ const posts = (await getCollection("posts"))
           <p>雑記だとか備忘録だとか。</p>
         </header>
         <aside class={layoutStyles.side}>
-          <SearchCard client:load />
+          <SearchCard client:only />
           <div class={layoutStyles.bottom}>
             <ProfileCard />
             <ThemeSwitcher client:load />
