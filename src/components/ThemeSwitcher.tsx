@@ -1,8 +1,4 @@
-import {
-	IconDevicesPc,
-	IconMoon,
-	IconSun,
-} from "@tabler/icons-solidjs";
+import { IconDevicesPc, IconMoon, IconSun } from "@tabler/icons-solidjs";
 import useCookie from "~/hooks/useCookie";
 import { Button } from "./base/Button";
 import { Card } from "./base/Card";
