@@ -102,7 +102,7 @@ const latestPosts = posts
         </header>
 
         <aside class={layoutStyles.side}>
-          <SearchCard client:load />
+          <SearchCard client:only />
           {toc.length !== 0 && <TocCard toc={toc} client:load />}
           <div class={layoutStyles.bottom}>
             <LatestPostsCard posts={latestPosts} client:load />
