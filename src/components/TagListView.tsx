@@ -4,6 +4,7 @@ import styles from "./TagListView.module.css";
 
 type Props = {
 	tags: string[];
+	asPagefindFilter?: boolean;
 };
 
 const TagListView = (props: Props) => {
@@ -13,7 +14,11 @@ const TagListView = (props: Props) => {
 		<ul class={styles.list}>
 			<For each={props.tags}>
 				{(tag) => (
-					<li data-pagefind-filter="tag">
+					<li
+						{...(props.asPagefindFilter
+							? { "data-pagefind-filter": `tag:${tag}` }
+							: {})}
+					>
 						<button
 							type="button"
 							class={styles.item}

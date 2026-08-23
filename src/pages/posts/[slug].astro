@@ -66,7 +66,11 @@ const latestPosts = posts
     <meta name="twitter:site" content="@takusea" />
     <meta name="twitter:card" content="summary" />
     <link rel="canonical" href={`https://blog.takusea.com/posts/${post.id}/`} />
-    <script src="/pagefind/pagefind.js" is:inline></script>
+    <script src="/pagefind/pagefind.js" type="module" is:inline></script>
+    <script type="module" is:inline>
+      import * as pagefind from "/pagefind/pagefind.js";
+      window.pagefind = pagefind;
+    </script>
   </head>
   <body>
     <div class={layoutStyles.wrapper} style="position: relative;">
@@ -82,7 +86,7 @@ const latestPosts = posts
           <a href="/" class={postStyles.logo} aria-label="たくしいのこんせき"></a>
           <h1 class={postStyles.title}>{post.data.title}</h1>
           <div class={postStyles.metadata}>
-            <time class={postStyles.date} datetime={post.data.date}>
+            <time class={postStyles.date} datetime={post.data.date} data-pagefind-sort="date[datatime]">
               <IconCalendar />
               {post.data.date}
             </time>
@@ -90,6 +94,7 @@ const latestPosts = posts
               <IconTag />
               <TagListView
                 tags={post.data.tags}
+                asPagefindFilter
                 client:load
               />
             </div>

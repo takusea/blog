@@ -1,4 +1,4 @@
-import { createEffect, createSignal, For } from "solid-js";
+import { createResource, For } from "solid-js";
 import type { ResultData, ResultType } from "~/type/pagefind";
 import { Card } from "./base/Card";
 import styles from "./SearchResultView.module.css";
@@ -8,18 +8,11 @@ type Props = {
 };
 
 const SearchResultView = (props: Props) => {
-	const [results, setResults] = createSignal<ResultData[]>([]);
-
-	createEffect(() => {
-		async function fetchData() {
-			const resultData = await Promise.all(
-				props.results.map((result) => result.data()),
-			);
-
-			setResults(resultData);
-		}
-		fetchData();
-	});
+	const [results] = createResource<ResultData[], ResultType[]>(
+		() => props.results,
+		async (searchResults) =>
+			Promise.all(searchResults.map((result) => result.data())),
+	);
 
 	return (
 		<ul class={styles.list}>

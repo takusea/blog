@@ -43,7 +43,11 @@ const posts = (await getCollection("posts"))
     <meta name="twitter:site" content="@takusea" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://blog.takusea.com" />
-    <script src="/pagefind/pagefind.js" is:inline></script>
+    <script src="/pagefind/pagefind.js" type="module" is:inline></script>
+    <script type="module" is:inline>
+      import * as pagefind from "/pagefind/pagefind.js";
+      window.pagefind = pagefind;
+    </script>
   </head>
   <body>
     <div class={layoutStyles.wrapper}>
