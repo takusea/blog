@@ -1,14 +1,12 @@
 ---
-import layoutStyles from "~/components/layout/GlobalLayout.module.css";
+import { getCollection } from "astro:content";
+import { HomeContent } from "~/components/HomeContent";
 import { ProfileCard } from "~/components/ProfileCard";
 import { SearchCard } from "~/components/SearchCard";
 import { ThemeSwitcher } from "~/components/ThemeSwitcher";
-import homeStyles from "~/routes/index.module.css";
-import "~/app.css";
-import "destyle.css";
-import { getCollection } from "astro:content";
-import Index from "~/routes";
+import GlobalLayout from "~/layouts/GlobalLayout.astro";
 import type { PostMetadata } from "~/type/post";
+import styles from "./index.module.css";
 
 const posts = (await getCollection("posts"))
 	.map(
@@ -22,61 +20,20 @@ const posts = (await getCollection("posts"))
 	.toSorted((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 ---
 
-<html lang="ja">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>たくしいのこんせき</title>
-    <meta
-      name="description"
-      content="雑記だとか備忘録だとかを残すブログです。たくしいはお絵描き・動画投稿・プログラミング・ゲームなどをするひとです。"
-    />
-    <meta property="og:title" content="たくしいのこんせき" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://blog.takusea.com" />
-    <meta property="og:site_name" content="たくしいのこんせき" />
-    <meta
-      property="og:description"
-      content="雑記だとか備忘録だとかを残すブログです。たくしいはお絵描き・動画投稿・プログラミング・ゲームなどをするひとです。"
-    />
-    <meta property="og:image" content="https://blog.takusea.com/icon.png" />
-    <meta name="twitter:site" content="@takusea" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <link rel="canonical" href="https://blog.takusea.com" />
-    <script src="/pagefind/pagefind.js" type="module" is:inline></script>
-    <script type="module" is:inline>
-      import * as pagefind from "/pagefind/pagefind.js";
-      window.pagefind = pagefind;
-    </script>
-  </head>
-  <body>
-    <div class={layoutStyles.wrapper}>
-      <div class={layoutStyles.grid}>
-        <header class={layoutStyles.header}>
-          <h1 class={homeStyles.logo} aria-label="たくしいのこんせき"></h1>
-          <p>雑記だとか備忘録だとか。</p>
-        </header>
-        <aside class={layoutStyles.side}>
-          <SearchCard client:only />
-          <div class={layoutStyles.bottom}>
-            <ProfileCard />
-            <ThemeSwitcher client:load />
-          </div>
-        </aside>
-        <main class={layoutStyles.main}>
-          <Index posts={posts} client:load />
-        </main>
-        <div class={layoutStyles.mobile}>
-          <ProfileCard />
-          <ThemeSwitcher client:load />
-        </div>
-      </div>
-      <footer class={layoutStyles.footer}>©2026 takusea</footer>
-    </div>
+<GlobalLayout title="たくしいのこんせき" description="雑記だとか備忘録だとかを残すブログです。たくしいはお絵描き・動画投稿・プログラミング・ゲームなどをするひとです。">
+  <Fragment slot="header">
+    <h1 class={styles.logo} aria-label="たくしいのこんせき"></h1>
+    <p>雑記だとか備忘録だとか。</p>
+  </Fragment>
 
-    <script is:inline>
-      const hue = ((Date.now() % 86400000) / 86400000) * 360;
-      document.documentElement.style.setProperty("--hue", hue.toString());
-    </script>
-  </body>
-</html>
+  <Fragment slot="sidebar-top">
+    <SearchCard client:only />
+  </Fragment>
+
+  <HomeContent posts={posts} client:load />
+
+  <Fragment slot="sidebar-bottom">
+    <ProfileCard />
+    <ThemeSwitcher client:load />
+  </Fragment>
+</GlobalLayout>

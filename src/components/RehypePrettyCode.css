@@ -21,6 +21,7 @@
 [data-line] {
 	position: relative;
 	padding-inline: 1rem;
+	line-height: 1.5;
 }
 
 [data-highlighted-chars],

@@ -1,20 +1,16 @@
 ---
-import docStyles from "~/components/DocumentView.module.css";
-import { LatestPostsCard } from "~/components/LatestPostsCard";
-import layoutStyles from "~/components/layout/GlobalLayout.module.css";
-import { ProfileCard } from "~/components/ProfileCard";
-import { SearchCard } from "~/components/SearchCard";
-import { ThemeSwitcher } from "~/components/ThemeSwitcher";
-import { TocCard } from "~/components/TocCard";
-import "~/components/RemarkLinkCardPlus.css";
-import "~/components/RehypePrettyCode.css";
-import postStyles from "~/routes/posts/[slug].module.css";
-import "~/app.css";
-import "destyle.css";
 import { getCollection, render } from "astro:content";
 import { IconCalendar, IconTag } from "@tabler/icons-solidjs";
+import { DocumentView } from "~/components/DocumentView";
+import { LatestPostsCard } from "~/components/LatestPostsCard";
+import { ProfileCard } from "~/components/ProfileCard";
+import { SearchCard } from "~/components/SearchCard";
 import { TagListView } from "~/components/TagListView";
+import { ThemeSwitcher } from "~/components/ThemeSwitcher";
+import { TocCard } from "~/components/TocCard";
+import GlobalLayout from "~/layouts/GlobalLayout.astro";
 import type { PostMetadata, PostToc } from "~/type/post";
+import styles from "./[slug].module.css";
 
 export async function getStaticPaths() {
 	const posts = await getCollection("posts");
@@ -54,81 +50,46 @@ const latestPosts = posts
 	.map((entry) => ({ ...entry.data, slug: entry.id }) as PostMetadata);
 ---
 
-<html lang="ja">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{`${post.data.title} - たくしいのこんせき`}</title>
-    <meta property="og:title" content={`${post.data.title} - たくしいのこんせき`} />
-    <meta property="og:type" content="article" />
-    <meta property="og:url" content={`https://blog.takusea.com/posts/${post.id}/`} />
-    <meta property="og:site_name" content="たくしいのこんせき" />
-    <meta name="twitter:site" content="@takusea" />
-    <meta name="twitter:card" content="summary" />
-    <link rel="canonical" href={`https://blog.takusea.com/posts/${post.id}/`} />
-    <script src="/pagefind/pagefind.js" type="module" is:inline></script>
-    <script type="module" is:inline>
-      import * as pagefind from "/pagefind/pagefind.js";
-      window.pagefind = pagefind;
-    </script>
-  </head>
-  <body>
-    <div class={layoutStyles.wrapper} style="position: relative;">
-      {post.data.thumbnail && (
-        <div
-          class={postStyles.background}
-          style={`--background: url(${post.data.thumbnail})`}
-        >
-        </div>
-      )}
-      <div class={layoutStyles.grid}>
-        <header class={layoutStyles.header}>
-          <a href="/" class={postStyles.logo} aria-label="たくしいのこんせき"></a>
-          <h1 class={postStyles.title}>{post.data.title}</h1>
-          <div class={postStyles.metadata}>
-            <time class={postStyles.date} datetime={post.data.date} data-pagefind-sort="date[datatime]">
-              <IconCalendar />
-              {post.data.date}
-            </time>
-            <div class={postStyles.tag}>
-              <IconTag />
-              <TagListView
-                tags={post.data.tags}
-                asPagefindFilter
-                client:load
-              />
-            </div>
-          </div>
-        </header>
-
-        <aside class={layoutStyles.side}>
-          <SearchCard client:only />
-          {toc.length !== 0 && <TocCard toc={toc} client:load />}
-          <div class={layoutStyles.bottom}>
-            <LatestPostsCard posts={latestPosts} client:load />
-            <ProfileCard />
-            <ThemeSwitcher client:load />
-          </div>
-        </aside>
-
-        <main class={layoutStyles.main}>
-          <article class={docStyles.document} data-pagefind-body>
-            <Content />
-          </article>
-        </main>
-
-        <div class={layoutStyles.mobile}>
-          <LatestPostsCard posts={latestPosts} client:load />
-          <ProfileCard />
-          <ThemeSwitcher client:load />
-        </div>
-      </div>
-      <footer class={layoutStyles.footer}>©2026 takusea</footer>
+<GlobalLayout title={`${post.data.title} - たくしいのこんせき`} description={post.data.description}>
+  {post.data.thumbnail && (
+    <div
+      class={styles.background}
+      style={`--background: url(${post.data.thumbnail})`}
+    >
     </div>
+  )}
 
-    <script is:inline>
-      const hue = ((Date.now() % 86400000) / 86400000) * 360;
-      document.documentElement.style.setProperty("--hue", hue.toString());
-    </script>
-  </body>
-</html>
+  <Fragment slot="header">
+    <a href="/" class={styles.logo} aria-label="たくしいのこんせき"></a>
+    <h1 class={styles.title}>{post.data.title}</h1>
+    <div class={styles.metadata}>
+      <time class={styles.date} datetime={post.data.date} data-pagefind-sort="date[datatime]">
+        <IconCalendar />
+        {post.data.date}
+      </time>
+      <div class={styles.tag}>
+        <IconTag />
+        <TagListView
+          tags={post.data.tags}
+          asPagefindFilter
+          client:load
+        />
+      </div>
+    </div>
+  </Fragment>
+
+  <Fragment slot="sidebar-top">
+    <SearchCard client:only />
+    {toc.length !== 0 && <TocCard toc={toc} client:load />}
+  </Fragment>
+
+  <DocumentView>
+    <Content />
+  </DocumentView>
+
+  <Fragment slot="sidebar-bottom">
+    <LatestPostsCard posts={latestPosts} client:load />
+    <ProfileCard />
+    <ThemeSwitcher client:load />
+  </Fragment>
+</GlobalLayout>

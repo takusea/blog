@@ -1,0 +1,62 @@
+---
+import styles from "./GlobalLayout.module.css";
+import "~/styles/app.css";
+import "destyle.css";
+
+const { title, description } = Astro.props;
+---
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta
+      name="description"
+      content={description}
+    />
+    <meta property="og:title" content={title} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://blog.takusea.com" />
+    <meta property="og:site_name" content="たくしいのこんせき" />
+    <meta
+      property="og:description"
+      content={description}
+    />
+    <meta property="og:image" content="https://blog.takusea.com/icon.png" />
+    <meta name="twitter:site" content="@takusea" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://blog.takusea.com" />
+    <script src="/pagefind/pagefind.js" type="module" is:inline></script>
+    <script type="module" is:inline>
+      import * as pagefind from "/pagefind/pagefind.js";
+      window.pagefind = pagefind;
+    </script>
+    <script is:inline>
+      const hue = ((Date.now() % 86400000) / 86400000) * 360;
+      document.documentElement.style.setProperty("--hue", hue.toString());
+    </script>
+  </head>
+  <body>
+    <div class={styles.wrapper}>
+      <div class={styles.grid}>
+        <header class={styles.header}>
+          <slot name="header" />
+        </header>
+        <aside class={styles.sideTop}>
+          <slot name="sidebar-top" />
+          <div class={styles.sideBottom}>
+            <slot name="sidebar-bottom" />
+          </div>
+        </aside>
+        <main class={styles.main}>
+          <slot />
+        </main>
+        <div class={styles.mobile}>
+          <slot name="sidebar-bottom" />
+        </div>
+      </div>
+      <footer class={styles.footer}>©2026 takusea</footer>
+    </div>
+  </body>
+</html>

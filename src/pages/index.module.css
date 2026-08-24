@@ -1,0 +1,10 @@
+.logo {
+	width: 100%;
+	aspect-ratio: 6 / 1;
+	image-rendering: pixelated;
+	background-color: var(--color-front);
+	mask-image: url("/logo.png");
+	mask-repeat: no-repeat;
+	mask-position: left center;
+	mask-size: contain;
+}

@@ -29,7 +29,7 @@
 	gap: 0.5rem;
 }
 
-.side {
+.sideTop {
 	position: sticky;
 	top: 1rem;
 	display: flex;
@@ -39,7 +39,7 @@
 	height: fit-content;
 }
 
-.bottom {
+.sideBottom {
 	display: contents;
 }
 
@@ -68,7 +68,7 @@
 		max-width: 720px;
 	}
 
-	.side {
+	.sideTop {
 		position: relative;
 		top: 0;
 	}

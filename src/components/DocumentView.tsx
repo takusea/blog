@@ -1,16 +1,17 @@
 import styles from "./DocumentView.module.css";
 import "./RemarkLinkCardPlus.css";
 import "./RehypePrettyCode.css";
+import type { JSX } from "astro/jsx-runtime";
 
 type Props = {
-	document: string;
+	children: JSX.Element;
 };
 
 const DocumentView = (props: Props) => {
 	return (
 		<article
 			class={styles.document}
-			innerHTML={props.document}
+			innerHTML={props.children}
 			data-pagefind-body
 		/>
 	);

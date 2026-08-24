@@ -3,13 +3,13 @@ import { PostListView } from "~/components/PostListView";
 import { SearchResultView } from "~/components/SearchResultView";
 import useSearch from "~/hooks/useSearch";
 import type { PostMetadata } from "~/type/post";
-import styles from "./index.module.css";
+import styles from "./HomeContent.module.css";
 
 type Props = {
 	posts: PostMetadata[];
 };
 
-export default function Index(props: Props) {
+const HomeContent = (props: Props) => {
 	const { results, isSearching } = useSearch();
 
 	return (
@@ -29,4 +29,6 @@ export default function Index(props: Props) {
 			</Match>
 		</Switch>
 	);
-}
+};
+
+export { HomeContent };
