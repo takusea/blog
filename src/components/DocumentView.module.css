@@ -89,6 +89,7 @@
 	background-color: var(--color-surface);
 	border: 1px solid var(--color-border);
 	border-radius: 0.5rem;
+	backdrop-filter: blur(16px);
 }
 
 .document blockquote {
@@ -98,6 +99,7 @@
 	background-color: var(--color-surface);
 	border: 1px solid var(--color-border);
 	border-radius: 1rem;
+	backdrop-filter: blur(16px);
 }
 
 .document blockquote::before {
@@ -129,6 +131,7 @@
 	background-color: var(--color-surface);
 	border: 1px solid var(--color-border);
 	border-radius: 1rem;
+	backdrop-filter: blur(16px);
 }
 
 .document table {
@@ -149,6 +152,7 @@
 	background-color: var(--color-surface);
 	border: 1px solid var(--color-border);
 	border-radius: 1rem;
+	backdrop-filter: blur(16px);
 }
 
 .document :where(th, td) {
