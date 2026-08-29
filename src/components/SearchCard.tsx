@@ -43,7 +43,7 @@ const SearchCard = () => {
 				<div class={styles.search}>
 					<TextField
 						type="search"
-						placeholder="検索"
+						placeholder="サイト内を検索"
 						value={searchParams().query}
 						start={<IconSearch />}
 						onChange={(e) => setQuery(e.currentTarget.value)}

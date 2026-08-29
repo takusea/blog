@@ -14,7 +14,7 @@ const PostListView = (props: Props) => {
 			<For each={props.posts}>
 				{(post) => (
 					<li>
-						<a href={`/posts/${post.slug}/`}>
+						<a href={`/posts/${post.slug}/`} class={styles.link}>
 							<Card>
 								<Show when={post.thumbnail}>
 									<div

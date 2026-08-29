@@ -95,7 +95,7 @@
 .document blockquote {
 	position: relative;
 	padding: 1rem;
-	overflow: hidden;
+	padding-top: 2rem;
 	background-color: var(--color-surface);
 	border: 1px solid var(--color-border);
 	border-radius: 1rem;
@@ -104,12 +104,12 @@
 
 .document blockquote::before {
 	position: absolute;
-	top: 0;
-	left: 0;
-	width: 4px;
-	height: 100%;
-	content: "";
-	background-color: var(--color-primary);
+	top: -1rem;
+	left: 1rem;
+	font-size: 4rem;
+	line-height: 1;
+	content: "❝";
+	opacity: 0.25;
 }
 
 .document blockquote > * {
@@ -124,7 +124,7 @@
 	margin-bottom: 0;
 }
 
-.document pre:not(:where([data-rehype-pretty-code-figure])) {
+.document :not([data-rehype-pretty-code-figure]) > pre {
 	padding: 1rem;
 	overflow: auto;
 	line-height: 1;
