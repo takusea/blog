@@ -62,7 +62,7 @@ const SearchCard = () => {
 						<TagListView tags={searchParams().tags} />
 					</div>
 				</Show>
-				<Show when={detailShowed()}>
+				<div class={styles.detail} data-show={detailShowed()}>
 					<hr class={styles.line} />
 					<div class={styles.column}>
 						<div class={styles.label}>
@@ -103,7 +103,7 @@ const SearchCard = () => {
 							日付順（古い）
 						</Button>
 					</div>
-				</Show>
+				</div>
 			</div>
 		</Card>
 	);

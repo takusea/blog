@@ -4,6 +4,7 @@ import {
 	IconBrandX,
 	IconBrandYoutube,
 	IconDeviceTv,
+	IconLetterP,
 	IconUserCircle,
 } from "@tabler/icons-solidjs";
 import { Card } from "./base/Card";
@@ -26,6 +27,7 @@ const ProfileCard = () => {
 						class={`${styles.sns} u-url`}
 						rel="me"
 						data-link="profile"
+						aria-label="プロフィールページ"
 					>
 						<IconUserCircle />
 					</a>
@@ -34,6 +36,7 @@ const ProfileCard = () => {
 						class={`${styles.sns} u-url`}
 						rel="me"
 						data-link="x"
+						aria-label="X (旧Twitter)"
 					>
 						<IconBrandX />
 					</a>
@@ -42,6 +45,7 @@ const ProfileCard = () => {
 						class={`${styles.sns} u-url`}
 						rel="me"
 						data-link="bluesky"
+						aria-label="Bluesky"
 					>
 						<IconBrandBluesky />
 					</a>
@@ -50,6 +54,7 @@ const ProfileCard = () => {
 						class={`${styles.sns} u-url`}
 						rel="me"
 						data-link="youtube"
+						aria-label="YouTube"
 					>
 						<IconBrandYoutube />
 					</a>
@@ -58,14 +63,26 @@ const ProfileCard = () => {
 						class={`${styles.sns} u-url`}
 						rel="me"
 						data-link="niconico"
+						aria-label="ニコニコ"
 					>
 						<IconDeviceTv />
+					</a>
+
+					<a
+						href="https://www.pixiv.net/users/81288254"
+						class={`${styles.sns} u-url`}
+						rel="me"
+						data-link="pixiv"
+						aria-label="Pixiv"
+					>
+						<IconLetterP />
 					</a>
 					<a
 						href="https://github.com/takusea"
 						class={`${styles.sns} u-url`}
 						rel="me"
 						data-link="github"
+						aria-label="GitHub"
 					>
 						<IconBrandGithub />
 					</a>

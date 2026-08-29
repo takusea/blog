@@ -7,6 +7,12 @@
 	font-weight: 600;
 }
 
+.title {
+	display: flex;
+	gap: 0.5rem;
+	align-items: center;
+}
+
 .list {
 	display: flex;
 	gap: 0.5rem;

@@ -29,7 +29,10 @@
 		oklch(from var(--color-mono) 30% c h / 0.5)
 	);
 	--color-sub: oklch(from var(--color-front) l c h / 0.5);
-	--color-border: oklch(from var(--color-front) l c h / 0.1);
+	--color-border: light-dark(
+		oklch(from var(--color-front) l c h / 0.2),
+		oklch(from var(--color-front) l c h / 0.1)
+	);
 	--color-incolor: var(--color-back);
 
 	background-color: var(--color-back);

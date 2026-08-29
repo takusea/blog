@@ -59,6 +59,10 @@
 	background-color: #252525;
 }
 
+.sns[data-link="pixiv"] {
+	background-color: #0096fa;
+}
+
 .sns[data-link="github"] {
 	background-color: #171515;
 }

@@ -1,4 +1,9 @@
-import { IconDevicesPc, IconMoon, IconSun } from "@tabler/icons-solidjs";
+import {
+	IconBrightness,
+	IconDevicesPc,
+	IconMoon,
+	IconSun,
+} from "@tabler/icons-solidjs";
 import useCookie from "~/hooks/useCookie";
 import { Button } from "./base/Button";
 import { Card } from "./base/Card";
@@ -10,7 +15,10 @@ const ThemeSwitcher = () => {
 	return (
 		<Card>
 			<div class={styles.card} data-theme={theme()}>
-				テーマ
+				<h2 class={styles.title}>
+					<IconBrightness />
+					テーマ
+				</h2>
 				<div class={styles.list}>
 					<Button
 						variant={theme() === "light" ? "primary" : "default"}

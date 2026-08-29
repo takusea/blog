@@ -32,3 +32,18 @@
 	gap: 0.5rem;
 	align-content: center;
 }
+
+.detail {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	interpolate-size: allow-keywords;
+	overflow: hidden;
+	transition: height 200ms cubic-bezier(0.22, 0.61, 0.36, 1);
+	height: auto;
+}
+
+.detail[data-show="false"] {
+	height: 0;
+	margin-bottom: -1rem;
+}
