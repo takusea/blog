@@ -4,7 +4,7 @@ import {
 	IconSearch,
 	IconTag,
 } from "@tabler/icons-solidjs";
-import { createEffect, createSignal, Show } from "solid-js";
+import { createSignal, onMount, Show } from "solid-js";
 import useSearch from "~/hooks/useSearch";
 import { Button } from "./base/Button";
 import { Card } from "./base/Card";
@@ -14,9 +14,11 @@ import { TagListView } from "./TagListView";
 
 const SearchCard = () => {
 	let textField!: HTMLInputElement;
-	const [detailShowed, setDetailShowed] = createSignal(false);
 
+	const [detailShowed, setDetailShowed] = createSignal(false);
 	const [tagList, setTagList] = createSignal<string[]>([]);
+
+	const { searchParams, setQuery, setOrderType } = useSearch();
 
 	const fetchTagList = async () => {
 		if (!window.pagefind) return;
@@ -25,14 +27,9 @@ const SearchCard = () => {
 		setTagList(Object.keys(filters.tag));
 	};
 
-	createEffect(() => {
+	onMount(() => {
 		fetchTagList();
-	});
-
-	const { searchParams, setQuery, setOrderType } = useSearch();
-
-	createEffect(() => {
-		if (textField && searchParams().query !== "") {
+		if (searchParams().query !== "") {
 			textField.focus();
 		}
 	});

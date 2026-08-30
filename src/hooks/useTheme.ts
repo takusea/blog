@@ -1,29 +1,28 @@
-import { createEffect, createSignal } from "solid-js";
-import { deleteCookie, getCookie, setCookie } from "~/lib/cookie";
+import { createSignal, onMount } from "solid-js";
+import { getCookie, setCookie } from "~/lib/cookie";
+
+type ThemeType = "light" | "dark" | "device";
 
 const COOKIE_KEY = "theme";
 
+const [value, setValue] = createSignal<ThemeType>();
+
+const setValueFromCookie = async () => {
+	const value = await getCookie(COOKIE_KEY);
+	setValue(
+		value === "light" || value === "dark" || value === "device"
+			? value
+			: "device",
+	);
+};
+
 const useTheme = () => {
-	const [value, setValue] = createSignal();
+	onMount(setValueFromCookie);
 
-	const setValueFromCookie = async () => {
-		const value = await getCookie(COOKIE_KEY);
-		setValue(value ?? "device");
-	};
-
-	createEffect(() => {
-		setValueFromCookie();
-	});
-
-	const updateValue = (next: string | undefined) => {
+	const updateValue = (next: ThemeType) => {
 		setValue(next);
-		if (next) {
-			document.documentElement.dataset.theme = next;
-			setCookie(COOKIE_KEY, next);
-		} else {
-			document.documentElement.dataset.theme = "";
-			deleteCookie(COOKIE_KEY);
-		}
+		document.documentElement.dataset.theme = next;
+		setCookie(COOKIE_KEY, next);
 	};
 
 	return [value, updateValue] as const;

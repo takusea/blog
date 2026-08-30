@@ -4,7 +4,6 @@ import {
 	IconMoon,
 	IconSun,
 } from "@tabler/icons-solidjs";
-import { Show } from "solid-js";
 import useTheme from "~/hooks/useTheme";
 import { Button } from "./base/Button";
 import { Card } from "./base/Card";
@@ -21,26 +20,27 @@ const ThemeSwitcher = () => {
 					テーマ
 				</h2>
 				<div class={styles.list}>
-					<Show when={theme()}>
-						<Button
-							variant={theme() === "light" ? "primary" : "default"}
-							onClick={() => setTheme("light")}
-						>
-							<IconSun />
-						</Button>
-						<Button
-							variant={theme() === "dark" ? "primary" : "default"}
-							onClick={() => setTheme("dark")}
-						>
-							<IconMoon />
-						</Button>
-						<Button
-							variant={theme() === "device" ? "primary" : "default"}
-							onClick={() => setTheme("device")}
-						>
-							<IconDevicesPc />
-						</Button>
-					</Show>
+					<Button
+						variant={theme() === "light" ? "primary" : "default"}
+						onClick={() => setTheme("light")}
+						disabled={theme() ? undefined : true}
+					>
+						<IconSun />
+					</Button>
+					<Button
+						variant={theme() === "dark" ? "primary" : "default"}
+						onClick={() => setTheme("dark")}
+						disabled={theme() ? undefined : true}
+					>
+						<IconMoon />
+					</Button>
+					<Button
+						variant={theme() === "device" ? "primary" : "default"}
+						onClick={() => setTheme("device")}
+						disabled={theme() ? undefined : true}
+					>
+						<IconDevicesPc />
+					</Button>
 				</div>
 			</div>
 		</Card>
