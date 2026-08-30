@@ -1,6 +1,5 @@
-import { createEffect, createMemo, createSignal, onMount } from "solid-js";
+import { createMemo, createResource, createSignal, onMount } from "solid-js";
 import { debounce } from "~/lib/debounce";
-import type { ResultType } from "~/type/pagefind";
 
 type OrderType = "relevance" | "newer" | "older";
 
@@ -53,38 +52,34 @@ const [searchParams, setSearchParams] = createSignal<SearchParams>({
 	tags: [],
 	order: "relevance",
 });
-const [results, setResults] = createSignal<ResultType[]>([]);
 
 const isSearching = createMemo(
 	() => searchParams().query !== "" || searchParams().tags.length !== 0,
 );
 
 const search = async (params: SearchParams) => {
-	if (typeof window === "undefined" || !window.pagefind) return;
+	if (typeof window === "undefined" || !window.pagefind) return [];
 
-	const sort =
+	const sort: Record<string, "asc" | "desc"> | undefined =
 		params.order === "relevance"
 			? undefined
 			: {
-					[params.order]: params.order === "newer" ? "desc" : "asc",
+					date: params.order === "newer" ? "desc" : "asc",
 				};
 
 	const res = await window.pagefind.search(params.query || null, {
 		filters: { tag: params.tags },
-		...sort,
+		sort,
 	});
-
-	setResults(res.results);
+	return res.results;
 };
-
-createEffect(() => {
-	search(searchParams());
-});
 
 const useSearch = () => {
 	onMount(() => {
 		setSearchParams(readParams());
 	});
+
+	const [results] = createResource(searchParams, search);
 
 	const setQuery = debounce((query: string) => {
 		writeParams({ query });

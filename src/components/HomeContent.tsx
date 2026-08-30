@@ -13,19 +13,25 @@ const HomeContent = (props: Props) => {
 	const { results, isSearching } = useSearch();
 
 	return (
-		<Switch
-			fallback={
-				<div class={styles.empty}>
-					<div class={styles["empty-image"]} />
-					<p class={styles["empty-text"]}>記事が見つかりませんでした。</p>
-				</div>
-			}
-		>
+		<Switch>
 			<Match when={!isSearching()}>
 				<PostListView posts={props.posts} />
 			</Match>
-			<Match when={results().length !== 0}>
-				<SearchResultView results={results()} />
+			<Match when={results()}>
+				{(results) => (
+					<Switch
+						fallback={
+							<div class={styles.empty}>
+								<div class={styles["empty-image"]} />
+								<p class={styles["empty-text"]}>記事が見つかりませんでした。</p>
+							</div>
+						}
+					>
+						<Match when={results().length !== 0}>
+							<SearchResultView results={results()} />
+						</Match>
+					</Switch>
+				)}
 			</Match>
 		</Switch>
 	);
