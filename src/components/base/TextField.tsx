@@ -1,9 +1,9 @@
-import { type ComponentProps, type JSX, Show, splitProps } from "solid-js";
+import { type Component, type ComponentProps, splitProps } from "solid-js";
 import styles from "./TextField.module.css";
 
 type Props = ComponentProps<"input"> & {
-	start?: JSX.Element;
-	end?: JSX.Element;
+	start?: Component;
+	end?: Component;
 	type?:
 		| "date"
 		| "datetime-local"
@@ -24,13 +24,19 @@ const TextField = (props: Props) => {
 
 	return (
 		<div class={styles.wrapper}>
-			<Show when={fieldProps.start}>
-				<div class={styles.start}>{fieldProps.start}</div>
-			</Show>
+			{fieldProps.start && (
+				<div class={styles.start}>
+					<fieldProps.start />
+				</div>
+			)}
+
 			<input {...inputProps} class={styles.search} />
-			<Show when={fieldProps.end}>
-				<div class={styles.end}>{fieldProps.end}</div>
-			</Show>
+
+			{fieldProps.end && (
+				<div class={styles.end}>
+					<fieldProps.end />
+				</div>
+			)}
 		</div>
 	);
 };

@@ -79,7 +79,7 @@ const latestPosts = posts
   </Fragment>
 
   <Fragment slot="sidebar-top">
-    <SearchCard client:only />
+    <SearchCard client:load />
     {toc.length !== 0 && <TocCard toc={toc} client:load />}
   </Fragment>
 

@@ -27,7 +27,7 @@ const posts = (await getCollection("posts"))
   </Fragment>
 
   <Fragment slot="sidebar-top">
-    <SearchCard client:only />
+    <SearchCard client:load />
   </Fragment>
 
   <HomeContent posts={posts} client:load />

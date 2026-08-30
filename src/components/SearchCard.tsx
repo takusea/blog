@@ -45,7 +45,7 @@ const SearchCard = () => {
 						type="search"
 						placeholder="サイト内を検索"
 						value={searchParams().query}
-						start={<IconSearch />}
+						start={IconSearch}
 						onChange={(e) => setQuery(e.currentTarget.value)}
 						ref={textField}
 					/>
