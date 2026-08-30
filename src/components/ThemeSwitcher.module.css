@@ -17,16 +17,5 @@
 	display: flex;
 	gap: 0.5rem;
 	align-items: center;
-}
-
-:root:has([data-theme="light"]) {
-	color-scheme: only light;
-}
-
-:root:has([data-theme="dark"]) {
-	color-scheme: only dark;
-}
-
-:root:has([data-theme="device"]) {
-	color-scheme: light dark;
+	height: 2rem;
 }

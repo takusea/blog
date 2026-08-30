@@ -38,3 +38,15 @@
 	background-color: var(--color-back);
 	color: var(--color-front);
 }
+
+:root[data-theme="light"] {
+	color-scheme: only light;
+}
+
+:root[data-theme="dark"] {
+	color-scheme: only dark;
+}
+
+:root[data-theme="device"] {
+	color-scheme: light dark;
+}
