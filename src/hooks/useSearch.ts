@@ -47,16 +47,6 @@ const writeParams = (params: Partial<SearchParams>) => {
 	setSearchParams(merged);
 };
 
-const [searchParams, setSearchParams] = createSignal<SearchParams>({
-	query: "",
-	tags: [],
-	order: "relevance",
-});
-
-const isSearching = createMemo(
-	() => searchParams().query !== "" || searchParams().tags.length !== 0,
-);
-
 const search = async (params: SearchParams) => {
 	if (typeof window === "undefined" || !window.pagefind) return [];
 
@@ -73,6 +63,16 @@ const search = async (params: SearchParams) => {
 	});
 	return res.results;
 };
+
+const [searchParams, setSearchParams] = createSignal<SearchParams>({
+	query: "",
+	tags: [],
+	order: "relevance",
+});
+
+const isSearching = createMemo(
+	() => searchParams().query !== "" || searchParams().tags.length !== 0,
+);
 
 const useSearch = () => {
 	onMount(() => {
