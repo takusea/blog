@@ -19,7 +19,7 @@ const PostListView = (props: Props) => {
 								<Show when={post.thumbnail}>
 									<div
 										class={styles.background}
-										style={{ "--background": `url(${post.thumbnail})` }}
+										style={{ "--background": `url(${post.thumbnail?.src})` }}
 									></div>
 								</Show>
 								<div class={styles.inner}>

@@ -1,9 +1,8 @@
 import type { Root } from "hast";
 import { visit } from "unist-util-visit";
-import type { VFile } from "vfile";
 
 const rehypeLocalImage = () => {
-	return (tree: Root, vfile: VFile) => {
+	return (tree: Root) => {
 		visit(tree, "element", (node) => {
 			if (node.tagName !== "img") return;
 
@@ -19,10 +18,6 @@ const rehypeLocalImage = () => {
 			}
 
 			node.properties.class = "u-photo";
-
-			if (!vfile.data.thumbnail) {
-				vfile.data.thumbnail = node.properties.src;
-			}
 		});
 	};
 };
