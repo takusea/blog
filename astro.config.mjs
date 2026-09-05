@@ -13,7 +13,7 @@ import remarkLinkCard from "remark-link-card-plus";
 import rehypeLocalImage from "./src/lib/unifiedPlugins/rehypeLocalImage.js";
 
 export default defineConfig({
-	site: "https://blog.takusea.com",
+	site: "https://blog.takusea.com/",
 	trailingSlash: "always",
 	output: "static",
 	integrations: [solid(), sitemap()],

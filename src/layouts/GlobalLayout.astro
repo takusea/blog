@@ -3,30 +3,40 @@ import styles from "./GlobalLayout.module.css";
 import "~/styles/app.css";
 import "destyle.css";
 
-const { title, description } = Astro.props;
+const { title, description, type, thumbnail } = Astro.props;
+
+const url = new URL(Astro.url.pathname, Astro.site);
+const thumbnailUrl = thumbnail ? new URL(thumbnail, Astro.site) : null;
+
+const siteName = "たくしいのこんせき";
+
 ---
 
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
-    <meta
-      name="description"
-      content={description}
-    />
+    <title>{title ? `${title} - ${siteName}` : siteName}</title>
+    {description && (
+      <meta
+        name="description"
+        content={description}
+      />
+    )}
     <meta property="og:title" content={title} />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://blog.takusea.com" />
-    <meta property="og:site_name" content="たくしいのこんせき" />
-    <meta
-      property="og:description"
-      content={description}
-    />
-    <meta property="og:image" content="https://blog.takusea.com/icon.png" />
+    <meta property="og:type" content={type || "website"} />
+    <meta property="og:url" content={url} />
+    <meta property="og:site_name" content={siteName} />
+    {description && (
+      <meta
+        name="og:description"
+        content={description}
+      />
+    )}
+    {thumbnail && <meta property="og:image" content={thumbnailUrl} />}
     <meta name="twitter:site" content="@takusea" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="canonical" href="https://blog.takusea.com" />
+    <link rel="canonical" href={url} />
     <script src="/pagefind/pagefind.js" type="module" is:inline></script>
     <script type="module" is:inline>
       import * as pagefind from "/pagefind/pagefind.js";
