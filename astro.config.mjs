@@ -2,7 +2,7 @@ import { rehypeHeadingIds, unified } from "@astrojs/markdown-remark";
 import sitemap from "@astrojs/sitemap";
 import solid from "@astrojs/solid-js";
 import { transformerNotationDiff } from "@shikijs/transformers";
-import { defineConfig } from "astro/config";
+import { defineConfig, fontProviders } from "astro/config";
 import { h } from "hastscript";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeExternalLinks from "rehype-external-links";
@@ -21,6 +21,20 @@ export default defineConfig({
 		host: true,
 		open: true,
 	},
+	fonts: [
+		{
+			name: "Press Start 2P",
+			cssVariable: "--font-press-start-2p",
+			provider: fontProviders.google(),
+			formats: ["ttf"],
+		},
+		{
+			name: "DotGothic16",
+			cssVariable: "--font-dot-gothic-16",
+			provider: fontProviders.google(),
+			formats: ["ttf"],
+		},
+	],
 	markdown: {
 		syntaxHighlight: false,
 		processor: unified({
