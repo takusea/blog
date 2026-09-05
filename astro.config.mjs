@@ -17,10 +17,9 @@ export default defineConfig({
 	trailingSlash: "always",
 	output: "static",
 	integrations: [solid(), sitemap()],
-	vite: {
-		server: {
-			host: "0.0.0.0",
-		},
+	server: {
+		host: true,
+		open: true,
 	},
 	markdown: {
 		syntaxHighlight: false,
