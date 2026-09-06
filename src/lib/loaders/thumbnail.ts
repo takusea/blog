@@ -68,6 +68,7 @@ const thumbnailLoader = (): Loader => ({
 			const entryData = {
 				...data,
 				thumbnail: data.thumbnail ?? getFirstImage(body),
+				thumbnailPath: data.thumbnail ?? getFirstImage(body),
 			};
 			const parsedData = await context.parseData({
 				id,

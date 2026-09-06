@@ -50,7 +50,7 @@ const latestPosts = posts
 	.map((entry) => ({ ...entry.data, slug: entry.id }) as PostMetadata);
 ---
 
-<GlobalLayout title={post.data.title} description={post.data.description} type="article" thumbnail={post.data.thumbnail?.src}>
+<GlobalLayout title={post.data.title} description={post.data.description} type="article" thumbnail={`posts/${slug}.png`}>
   {post.data.thumbnail && (
     <div
       class={styles.background}

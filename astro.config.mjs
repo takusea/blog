@@ -23,12 +23,6 @@ export default defineConfig({
 	},
 	fonts: [
 		{
-			name: "Press Start 2P",
-			cssVariable: "--font-press-start-2p",
-			provider: fontProviders.google(),
-			formats: ["ttf"],
-		},
-		{
 			name: "DotGothic16",
 			cssVariable: "--font-dot-gothic-16",
 			provider: fontProviders.google(),

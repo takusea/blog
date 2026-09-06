@@ -21,6 +21,7 @@ const posts = defineCollection({
 				.default([])
 				.transform((values) => values.map((value) => String(value))),
 			thumbnail: image().optional(),
+			thumbnailPath: z.string().optional(),
 		}),
 });
 

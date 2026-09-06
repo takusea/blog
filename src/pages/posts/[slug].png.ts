@@ -12,12 +12,10 @@ export async function getStaticPaths() {
 
 export const GET: APIRoute<Props> = async (context: APIContext) => {
 	const post = context.props.post;
+
 	const png = await renderOgImage({
-		title: post.data.title,
-		tags: post.data.tags,
-		thumbnail: post.data.thumbnail
-			? new URL(post.data.thumbnail.src, context.url).toString()
-			: undefined,
+		post: post.data,
+		thumbnailPath: post.data.thumbnailPath,
 		url: context.url,
 	});
 
