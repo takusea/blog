@@ -43,7 +43,6 @@
 	visibility: visible;
 	transition-property: height, visibility, margin-bottom;
 	transition-duration: 200ms;
-	transition-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
 	height: auto;
 }
 

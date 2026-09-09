@@ -21,8 +21,13 @@ const useTheme = () => {
 
 	const updateValue = (next: ThemeType) => {
 		setValue(next);
-		document.documentElement.dataset.theme = next;
 		setCookie(COOKIE_KEY, next);
+
+		document.documentElement.dataset.theme = next;
+		document.documentElement.dataset.changingTheme = "";
+		setTimeout(() => {
+			delete document.documentElement.dataset.changingTheme;
+		}, 200);
 	};
 
 	return [value, updateValue] as const;

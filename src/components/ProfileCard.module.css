@@ -35,34 +35,44 @@
 	width: 2.5rem;
 	height: 2.5rem;
 	color: oklch(from var(--color-mono) 95% c h);
+	background-color: var(--color-local-background);
 	border: 1px solid var(--color-border);
 	border-radius: 2rem;
+	transition-duration: 50ms;
+	transition-property: background-color;
+}
+
+.sns:hover {
+	background-color: light-dark(
+		oklch(from var(--color-local-background) calc(l - 0.2) c h),
+		oklch(from var(--color-local-background) calc(l + 0.2) c h)
+	);
 }
 
 .sns[data-link="profile"] {
-	background-color: #4cdabc;
+	--color-local-background: #4cdabc;
 }
 
 .sns[data-link="x"] {
-	background-color: #000;
+	--color-local-background: #000;
 }
 
 .sns[data-link="bluesky"] {
-	background-color: #006aff;
+	--color-local-background: #006aff;
 }
 
 .sns[data-link="youtube"] {
-	background-color: #ff0033;
+	--color-local-background: #ff0033;
 }
 
 .sns[data-link="niconico"] {
-	background-color: #252525;
+	--color-local-background: #252525;
 }
 
 .sns[data-link="pixiv"] {
-	background-color: #0096fa;
+	--color-local-background: #0096fa;
 }
 
 .sns[data-link="github"] {
-	background-color: #171515;
+	--color-local-background: #171515;
 }

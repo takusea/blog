@@ -5,9 +5,20 @@
 	height: 2.5rem;
 	padding-inline: 0.5rem;
 	background-color: var(--color-surface);
-	border: 1px solid var(--color-border);
+	border-color: var(--color-border);
+	border-style: solid;
+	border-width: 1px;
 	border-radius: 0.5rem;
 	backdrop-filter: blur(16px);
+	transition-duration: 50ms;
+	transition-property: border-color;
+}
+
+.wrapper:hover {
+	border-color: light-dark(
+		oklch(from var(--color-border) l c h / 0.5),
+		oklch(from var(--color-border) l c h / 0.5)
+	);
 }
 
 .wrapper:focus-within {
@@ -22,6 +33,7 @@
 
 .search {
 	flex: 1;
+	height: 100%;
 	outline: none;
 }
 

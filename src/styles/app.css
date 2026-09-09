@@ -50,3 +50,12 @@
 :root[data-theme="device"] {
 	color-scheme: light dark;
 }
+
+* {
+	transition-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+:root[data-changing-theme] * {
+	transition-duration: 200ms !important;
+	transition-property: color, background-color, border-color !important;
+}
