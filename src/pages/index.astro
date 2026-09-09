@@ -22,7 +22,7 @@ const posts = (await getCollection("posts"))
 
 <GlobalLayout description="雑記だとか備忘録だとかを残すブログです。たくしいはお絵描き・動画投稿・プログラミング・ゲームなどをするひとです。">
   <Fragment slot="header">
-    <h1 class={styles.logo} aria-label="たくしいのこんせき"></h1>
+    <h1 class={styles.logo} aria-label="たくしいのこんせき" transition:name="logo"></h1>
     <p>雑記だとか備忘録だとか。</p>
   </Fragment>
 

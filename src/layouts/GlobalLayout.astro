@@ -2,6 +2,7 @@
 import styles from "./GlobalLayout.module.css";
 import "~/styles/app.css";
 import "destyle.css";
+import { ClientRouter } from "astro:transitions";
 
 const { title, description, type, thumbnail } = Astro.props;
 
@@ -55,6 +56,7 @@ const siteName = "たくしいのこんせき";
       const hue = ((Date.now() % 86400000) / 86400000) * 360;
       document.documentElement.style.setProperty("--hue", hue.toString());
     </script>
+    <ClientRouter />
   </head>
   <body>
     <div class={styles.wrapper}>

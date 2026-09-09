@@ -60,7 +60,7 @@ const latestPosts = posts
   )}
 
   <Fragment slot="header">
-    <a href="/" class={styles.logo} aria-label="たくしいのこんせき"></a>
+    <a href="/" class={styles.logo} aria-label="たくしいのこんせき" transition:name="logo"></a>
     <h1 class={styles.title}>{post.data.title}</h1>
     <div class={styles.metadata}>
       <time class={styles.date} datetime={post.data.date} data-pagefind-sort="date[datatime]">

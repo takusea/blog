@@ -13,6 +13,10 @@ import remarkLinkCard from "remark-link-card-plus";
 import rehypeLocalImage from "./src/lib/unifiedPlugins/rehypeLocalImage.js";
 
 export default defineConfig({
+	prefetch: {
+		prefetchAll: true,
+		defaultStrategy: "hover",
+	},
 	site: "https://blog.takusea.com/",
 	trailingSlash: "always",
 	output: "static",
