@@ -1,5 +1,5 @@
 .document > * {
-	margin-block: 1rem;
+	margin-block: 1.5rem;
 }
 
 .document > :first-child {
@@ -41,6 +41,11 @@
 
 .document h6 {
 	font-size: 1rem;
+}
+
+.document p:not(:has(img)) {
+	margin-block: 1rem;
+	line-height: 1.75;
 }
 
 .document a:not(:global(.remark-link-card-plus__card)) {
