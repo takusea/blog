@@ -56,6 +56,8 @@
 }
 
 :root[data-changing-theme] * {
+	/* biome-ignore lint/complexity/noImportantStyles: テーマ変更時の一時的なtransition適用のため */
 	transition-duration: 200ms !important;
+	/* biome-ignore lint/complexity/noImportantStyles: テーマ変更時の一時的なtransition適用のため */
 	transition-property: color, background-color, border-color !important;
 }
