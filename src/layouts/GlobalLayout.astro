@@ -44,17 +44,20 @@ const siteName = "たくしいのこんせき";
       window.pagefind = pagefind;
     </script>
     <script is:inline>
-      const theme = document.cookie
-        .split("; ")
-        .find((cookie) => cookie.startsWith("theme="))
-        ?.slice("theme=".length);
+      const initTheme = () => {
+        const theme = document.cookie
+          .split("; ")
+          .find((cookie) => cookie.startsWith("theme="))
+          ?.slice("theme=".length);
 
-      if (theme) {
-        document.documentElement.dataset.theme = theme;
+        if (theme) {
+          document.documentElement.dataset.theme = theme;
+        }
+        const hue = ((Date.now() % 86400000) / 86400000) * 360;
+        document.documentElement.style.setProperty("--hue", hue.toString());
       }
-
-      const hue = ((Date.now() % 86400000) / 86400000) * 360;
-      document.documentElement.style.setProperty("--hue", hue.toString());
+      initTheme();
+      document.addEventListener("astro:after-swap", initTheme);
     </script>
     <ClientRouter />
   </head>
