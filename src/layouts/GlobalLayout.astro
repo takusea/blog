@@ -59,6 +59,75 @@ const siteName = "たくしいのこんせき";
       initTheme();
       document.addEventListener("astro:after-swap", initTheme);
     </script>
+    <script is:inline>
+      const getCurrentXTheme = () => {
+        const storedTheme = document.documentElement.dataset.theme;
+
+        if (storedTheme === "device") {
+          return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+
+        return storedTheme;
+      };
+
+      const renderXPostEmbeds = () => {
+        const theme = getCurrentXTheme();
+
+        for (const post of document.querySelectorAll(".x-post-embed")) {
+          const url = post.dataset.xPostUrl;
+          if (!url) {
+            continue;
+          }
+
+          const blockquote = document.createElement("blockquote");
+          blockquote.className = "twitter-tweet";
+          blockquote.dataset.conversation = "none";
+          blockquote.dataset.theme = theme;
+          blockquote.style.height = `${post.clientHeight}px`;
+          blockquote.innerHTML = `<a href="${url}">X post</a>`;
+
+          post.replaceChildren(blockquote);
+        }
+
+        window.twttr.widgets.load();
+      };
+
+      const ensureXWidgets = () => {
+        if (window.twttr) {
+          renderXPostEmbeds();
+          return;
+        }
+
+        if (!document.querySelector('script[src*="platform.twitter.com/widgets.js"]')) {
+          const script = document.createElement("script");
+          script.src = "https://platform.twitter.com/widgets.js";
+          script.async = true;
+          script.addEventListener("load", renderXPostEmbeds);
+          document.head.appendChild(script);
+        }
+      };
+
+      const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+      mediaQuery.addEventListener("change", () => {
+        if (document.documentElement.dataset.theme === "device") {
+          renderXPostEmbeds();
+        }
+      });
+
+      const themeObserver = new MutationObserver((mutations) => {
+        if (mutations.some((mutation) => mutation.attributeName === "data-theme")) {
+          renderXPostEmbeds();
+        }
+      });
+
+      themeObserver.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ["data-theme"],
+      });
+
+      document.addEventListener("DOMContentLoaded", ensureXWidgets);
+      document.addEventListener("astro:after-swap", ensureXWidgets);
+    </script>
     <ClientRouter />
   </head>
   <body>

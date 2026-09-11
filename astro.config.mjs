@@ -13,6 +13,8 @@ import remarkGfm from "remark-gfm";
 import remarkLinkCard from "remark-link-card-plus";
 import rehypeLocalImage from "~/lib/unifiedPlugins/rehypeLocalImage.js";
 import remarkNote from "~/lib/unifiedPlugins/remarkNote.js";
+import remarkXPostEmbed from "~/lib/unifiedPlugins/remarkXPostEmbed.js";
+import remarkYouTubeEmbed from "~/lib/unifiedPlugins/remarkYouTubeEmbed.js";
 
 export default defineConfig({
 	prefetch: {
@@ -42,6 +44,8 @@ export default defineConfig({
 				remarkGfm,
 				remarkDirective,
 				remarkNote,
+				remarkYouTubeEmbed,
+				remarkXPostEmbed,
 				[
 					remarkLinkCard,
 					{

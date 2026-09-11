@@ -97,7 +97,7 @@
 	backdrop-filter: blur(16px);
 }
 
-.document blockquote {
+.document blockquote:not(:global(.twitter-tweet)) {
 	position: relative;
 	padding: 1rem;
 	padding-top: 2rem;
@@ -107,7 +107,7 @@
 	backdrop-filter: blur(16px);
 }
 
-.document blockquote::before {
+.document blockquote:not(:global(.twitter-tweet))::before {
 	position: absolute;
 	top: -1rem;
 	left: 1rem;
