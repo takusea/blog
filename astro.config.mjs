@@ -8,9 +8,11 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeRaw from "rehype-raw";
+import remarkDirective from "remark-directive";
 import remarkGfm from "remark-gfm";
 import remarkLinkCard from "remark-link-card-plus";
-import rehypeLocalImage from "./src/lib/unifiedPlugins/rehypeLocalImage.js";
+import rehypeLocalImage from "~/lib/unifiedPlugins/rehypeLocalImage.js";
+import remarkNote from "~/lib/unifiedPlugins/remarkNote.js";
 
 export default defineConfig({
 	prefetch: {
@@ -38,6 +40,8 @@ export default defineConfig({
 		processor: unified({
 			remarkPlugins: [
 				remarkGfm,
+				remarkDirective,
+				remarkNote,
 				[
 					remarkLinkCard,
 					{

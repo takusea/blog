@@ -164,3 +164,51 @@
 	padding: 0.5rem;
 	border: 1px solid var(--color-border);
 }
+
+.document :global(.note) {
+	position: relative;
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: 1rem;
+	padding: 1rem;
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: 1rem;
+	backdrop-filter: blur(16px);
+}
+
+.document :global(.note) > * {
+	grid-column: 2;
+	margin: 0;
+}
+
+.document :global(.note)::before {
+	display: inline-flex;
+	grid-column: 1;
+	align-items: center;
+	justify-content: center;
+	width: 2rem;
+	height: 2rem;
+	font-weight: 800;
+	color: var(--color-incolor);
+	border: 1px solid var(--color-border);
+	border-radius: 1rem;
+}
+
+.document :global(.note.info) {
+	background-color: oklch(from var(--color-surface) l 0.1 210);
+}
+
+.document :global(.note.info)::before {
+	content: "i";
+	background-color: oklch(from var(--color-primary) l c 210);
+}
+
+.document :global(.note.warn) {
+	background-color: oklch(from var(--color-surface) l 0.1 30);
+}
+
+.document :global(.note.warn)::before {
+	content: "!";
+	background-color: oklch(from var(--color-primary) l c 30);
+}

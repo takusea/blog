@@ -1,9 +1,16 @@
-export {};
+import "mdast";
 
 type SearchOption = {
 	filters?: Record<string, string | string[]>;
 	sort?: Record<string, "desc" | "asc">;
 };
+
+declare module "mdast" {
+	interface Data {
+		hName?: string;
+		hProperties?: Record<string, unknown>;
+	}
+}
 
 declare global {
 	interface Window {
