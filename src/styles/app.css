@@ -1,13 +1,4 @@
 :root {
-	line-height: 1.5;
-	overflow-wrap: anywhere;
-	word-break: normal;
-	line-break: strict;
-	scroll-behavior: smooth;
-	scroll-padding: 1rem;
-	scrollbar-gutter: stable;
-	color-scheme: light dark;
-
 	--hue: 180;
 	--color-base: oklch(72.126% 0.13582 var(--hue));
 	--color-mono: oklch(from var(--color-base) l 0.001 h);
@@ -37,6 +28,17 @@
 
 	background-color: var(--color-back);
 	color: var(--color-front);
+	color-scheme: light dark;
+	scrollbar-gutter: stable;
+	scroll-behavior: smooth;
+	scroll-padding: 1rem;
+	overflow-wrap: anywhere;
+	word-break: normal;
+	line-break: strict;
+	line-height: 1.5;
+	letter-spacing: 0.05em;
+	font-feature-settings: "palt";
+	text-wrap: pretty;
 }
 
 :root[data-theme="light"] {
