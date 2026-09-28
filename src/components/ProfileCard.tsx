@@ -15,12 +15,14 @@ const ProfileCard = () => {
 		<Card>
 			<div class={`${styles.inner} h-card`}>
 				<img src="/icon.png" alt="" class={`${styles.icon} u-photo`} />
-				<a href="/" class={`${styles.name} u-url u-uid p-name`} rel="me">
-					たくしい / Takusea
-				</a>
-				<p class={`${styles.description} p-note`}>
-					お絵描き・動画投稿・プログラミング・ゲームなどをするひとです。
-				</p>
+				<div class={styles.text}>
+					<a href="/" class={`${styles.name} u-url u-uid p-name`} rel="me">
+						たくしい / Takusea
+					</a>
+					<p class={`${styles.description} p-note`}>
+						お絵描き・動画投稿・プログラミング・ゲームなどをするひとです。
+					</p>
+				</div>
 				<div class={styles.snslist}>
 					<a
 						href="https://takusea.com"
