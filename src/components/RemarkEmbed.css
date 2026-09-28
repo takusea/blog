@@ -5,6 +5,7 @@
 	background: var(--color-surface);
 	border: 1px solid var(--color-border);
 	border-radius: calc(var(--base-radius) * 2);
+	box-shadow: 0 1px 1px var(--color-shadow);
 }
 
 .youtube-embed iframe {
@@ -21,6 +22,7 @@
 	background: var(--color-surface);
 	border: 1px solid var(--color-border);
 	border-radius: calc(var(--base-radius) * 2);
+	box-shadow: 0 1px 1px var(--color-shadow);
 }
 
 .twitter-tweet:not(:last-child) {
