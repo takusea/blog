@@ -1,4 +1,7 @@
 :root {
+	--base-radius: 1rem;
+	--radius-scale: 2;
+
 	--hue: 180;
 	--color-base: oklch(72.126% 0.13582 var(--hue));
 	--color-mono: oklch(from var(--color-base) l 0.001 h);
@@ -56,6 +59,7 @@
 
 * {
 	transition-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+	corner-shape: squircle;
 }
 
 :root[data-changing-theme] * {
@@ -63,4 +67,10 @@
 	transition-duration: 200ms !important;
 	/* biome-ignore lint/complexity/noImportantStyles: テーマ変更時の一時的なtransition適用のため */
 	transition-property: color, background-color, border-color !important;
+}
+
+@supports not (corner-shape: squircle) {
+	:root {
+		--base-radius: 0.5rem;
+	}
 }

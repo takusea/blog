@@ -5,13 +5,13 @@
 	background-image: var(--background);
 	background-position: center;
 	background-size: cover;
-	border-radius: 1rem;
+	border-radius: calc(var(--base-radius) * 2);
 	opacity: 0.1;
 	filter: blur(2px);
 }
 
 .link {
-	border-radius: 1rem;
+	border-radius: calc(var(--base-radius) * 2);
 }
 
 .list {
@@ -46,5 +46,5 @@
 	padding-inline: 0.5rem;
 	color: var(--color-incolor);
 	background-color: var(--color-primary);
-	border-radius: 0.5rem;
+	border-radius: var(--base-radius);
 }

@@ -19,5 +19,5 @@
 	padding-inline: 0.25rem;
 	color: var(--color-incolor);
 	background-color: var(--color-primary);
-	border-radius: 0.5rem;
+	border-radius: var(--base-radius);
 }

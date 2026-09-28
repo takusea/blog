@@ -1,16 +1,22 @@
+.container {
+	--radius-scale-inner: calc(var(--radius-scale) / 2);
+	display: contents;
+}
+
 .card {
+	--radius-scale: var(--radius-scale-inner);
 	display: grid;
 	padding: 1rem;
 	overflow: hidden;
 	background-color: var(--color-surface);
 	border: 1px solid var(--color-border);
-	border-radius: 1rem;
+	border-radius: calc(var(--base-radius) * var(--radius-scale) * 2);
 	backdrop-filter: blur(16px);
 	transition-duration: 50ms;
 	transition-property: background-color;
 }
 
-a > .card:hover {
+a .card:hover {
 	background-color: light-dark(
 		oklch(from var(--color-surface) calc(l - 0.2) c h),
 		oklch(from var(--color-surface) calc(l + 0.2) c h)
