@@ -39,7 +39,6 @@
 	word-break: normal;
 	line-break: strict;
 	line-height: 1.5;
-	letter-spacing: 0.05em;
 	font-feature-settings: "palt";
 	font-family: sans-serif;
 	text-wrap: pretty;
@@ -58,6 +57,7 @@
 }
 
 * {
+	letter-spacing: 0.05em;
 	transition-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
 	corner-shape: squircle;
 }
