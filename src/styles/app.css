@@ -19,17 +19,17 @@
 		oklch(from var(--color-mono) 95% c h)
 	);
 	--color-surface: light-dark(
-		oklch(from var(--color-mono) 100% c h / 0.5),
-		oklch(from var(--color-mono) 30% c h / 0.5)
+		oklch(from var(--color-mono) 100% c h / 50%),
+		oklch(from var(--color-mono) 30% c h / 50%)
 	);
-	--color-sub: oklch(from var(--color-front) l c h / 0.5);
+	--color-sub: oklch(from var(--color-front) l c h / 50%);
 	--color-border: light-dark(
-		oklch(from var(--color-front) l c h / 0.2),
-		oklch(from var(--color-front) l c h / 0.1)
+		oklch(from var(--color-front) l c h / 20%),
+		oklch(from var(--color-front) l c h / 10%)
 	);
 	--color-shadow: light-dark(
-		oklch(from var(--color-mono) 0 c h / 0.05),
-		oklch(from var(--color-mono) 0 c h / 0.5)
+		oklch(from var(--color-mono) 0 c h / 5%),
+		oklch(from var(--color-mono) 0 c h / 50%)
 	);
 	--color-incolor: var(--color-back);
 
