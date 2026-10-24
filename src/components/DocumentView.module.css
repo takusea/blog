@@ -48,12 +48,18 @@
 	line-height: 1.75;
 }
 
-.document a:not(:global(.remark-link-card-plus__card)) {
+.document a:not(:has(*)) {
 	color: var(--color-primary);
 }
 
-.document a:not(:global(.remark-link-card-plus__card)):hover {
+.document a:not(:has(*)):hover {
 	text-decoration: underline;
+}
+
+.document a[target="_blank"]:not(:empty):not(:has(*))::after {
+	display: inline-block;
+	margin-inline-start: 0.1rem;
+	content: "↗";
 }
 
 .document ul {

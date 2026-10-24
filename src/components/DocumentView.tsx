@@ -1,7 +1,7 @@
 import styles from "./DocumentView.module.css";
-import "./RemarkLinkCardPlus.css";
-import "./RehypePrettyCode.css";
-import "./RemarkEmbed.css";
+import "./DocumentViewRemarkLinkCardPlus.css";
+import "./DocumentViewRehypePrettyCode.css";
+import "./DocumentViewRemarkEmbed.css";
 import type { JSX } from "astro/jsx-runtime";
 
 type Props = {
